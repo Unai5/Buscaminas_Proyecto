@@ -10,4 +10,8 @@
     Private Sub TableLayoutPanel1_Paint_1(sender As Object, e As PaintEventArgs)
 
     End Sub
+
+    Private Sub TableLayoutPanel1_Paint_2(sender As Object, e As PaintEventArgs) Handles TableLayoutPanel1.Paint
+
+    End Sub
 End Class
