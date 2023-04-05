@@ -1,5 +1,5 @@
 ﻿Module Modulo
 
-    Public tabla As TableLayoutPanel
+    Public lado As Integer = 10
 
 End Module
