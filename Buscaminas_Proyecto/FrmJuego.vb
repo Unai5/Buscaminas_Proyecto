@@ -1,4 +1,4 @@
-﻿Public Class Form1
+﻿Public Class FrmJuego
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
     End Sub
@@ -11,7 +11,7 @@
 
     End Sub
 
-    Private Sub TableLayoutPanel1_Paint_2(sender As Object, e As PaintEventArgs) Handles TableLayoutPanel1.Paint
+    Private Sub TableLayoutPanel1_Paint_2(sender As Object, e As PaintEventArgs) Handles TLPjuego.Paint
 
     End Sub
 End Class
