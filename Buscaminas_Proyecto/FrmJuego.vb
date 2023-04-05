@@ -4,7 +4,10 @@ Public Class FrmJuego
 
     End Sub
 
-    Private Sub TLPjuego_Paint(sender As Object, e As PaintEventArgs) Handles tlpJjuego.Paint
+    Private Sub tlpJjuego_Paint(sender As Object, e As PaintEventArgs) Handles tlpJjuego.Paint
+        tlpJjuego.GetCellPosition(sender)
+
+
 
     End Sub
 End Class
