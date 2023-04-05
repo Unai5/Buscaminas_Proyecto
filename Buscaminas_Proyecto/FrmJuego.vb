@@ -1,10 +1,15 @@
 ﻿Imports BibliotecaDeClases
 Public Class FrmJuego
+
     Private Sub FrmJuego_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+        tabla = New TableLayoutPanel
+
+        tabla.
 
     End Sub
 
-    Private Sub TLPjuego_Paint(sender As Object, e As PaintEventArgs) Handles tlpJjuego.Paint
+    Private Sub tlpJjuego_Paint(sender As Object, e As PaintEventArgs)
 
     End Sub
 End Class
