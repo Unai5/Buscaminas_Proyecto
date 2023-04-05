@@ -5,15 +5,7 @@ Public Class FrmJuego
 
         tabla = New TableLayoutPanel
 
-        tabla.
-
     End Sub
 
-    Private Sub tlpJjuego_Paint(sender As Object, e As PaintEventArgs) Handles tlpJuego.Paint
-        tlpJuego.GetCellPosition(sender)
-        Dim botonSeleccionado As Button = TryCast(sender, Button)
 
-
-
-    End Sub
 End Class
