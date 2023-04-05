@@ -6,6 +6,7 @@ Public Class FrmJuego
 
     Private Sub tlpJjuego_Paint(sender As Object, e As PaintEventArgs) Handles tlpJuego.Paint
         tlpJuego.GetCellPosition(sender)
+        Dim botonSeleccionado As Button = TryCast(sender, Button)
 
 
 
