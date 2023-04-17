@@ -25,20 +25,24 @@ Partial Class FrmInicioDeSesion
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmInicioDeSesion))
         Me.lblUsuario = New System.Windows.Forms.Label()
         Me.btnAceptar = New System.Windows.Forms.Button()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.txtUsuario = New System.Windows.Forms.TextBox()
         Me.lblBuscaminas = New System.Windows.Forms.Label()
         Me.btnRankin = New System.Windows.Forms.Button()
         Me.panelUsr = New System.Windows.Forms.Panel()
+        Me.panelContraseña = New System.Windows.Forms.Panel()
+        Me.lblContraseña = New System.Windows.Forms.Label()
+        Me.txtContraseña = New System.Windows.Forms.TextBox()
         Me.panelUsr.SuspendLayout()
+        Me.panelContraseña.SuspendLayout()
         Me.SuspendLayout()
         '
         'lblUsuario
         '
         Me.lblUsuario.AutoSize = True
-        Me.lblUsuario.Font = New System.Drawing.Font("Rockwell", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblUsuario.Location = New System.Drawing.Point(12, 11)
+        Me.lblUsuario.Font = New System.Drawing.Font("Rockwell", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblUsuario.Location = New System.Drawing.Point(11, 11)
         Me.lblUsuario.Name = "lblUsuario"
-        Me.lblUsuario.Size = New System.Drawing.Size(154, 17)
+        Me.lblUsuario.Size = New System.Drawing.Size(161, 18)
         Me.lblUsuario.TabIndex = 0
         Me.lblUsuario.Text = "Nombre de Usuario :"
         '
@@ -53,13 +57,13 @@ Partial Class FrmInicioDeSesion
         Me.btnAceptar.Text = "Aceptar"
         Me.btnAceptar.UseVisualStyleBackColor = False
         '
-        'TextBox1
+        'txtUsuario
         '
-        Me.TextBox1.Font = New System.Drawing.Font("Rockwell", 11.25!)
-        Me.TextBox1.Location = New System.Drawing.Point(173, 8)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(163, 25)
-        Me.TextBox1.TabIndex = 2
+        Me.txtUsuario.Font = New System.Drawing.Font("Rockwell", 11.25!)
+        Me.txtUsuario.Location = New System.Drawing.Point(173, 8)
+        Me.txtUsuario.Name = "txtUsuario"
+        Me.txtUsuario.Size = New System.Drawing.Size(163, 25)
+        Me.txtUsuario.TabIndex = 2
         '
         'lblBuscaminas
         '
@@ -85,13 +89,41 @@ Partial Class FrmInicioDeSesion
         '
         'panelUsr
         '
-        Me.panelUsr.BackColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.panelUsr.BackColor = System.Drawing.Color.LightGreen
         Me.panelUsr.Controls.Add(Me.lblUsuario)
-        Me.panelUsr.Controls.Add(Me.TextBox1)
-        Me.panelUsr.Location = New System.Drawing.Point(78, 165)
+        Me.panelUsr.Controls.Add(Me.txtUsuario)
+        Me.panelUsr.Location = New System.Drawing.Point(78, 135)
         Me.panelUsr.Name = "panelUsr"
         Me.panelUsr.Size = New System.Drawing.Size(346, 40)
         Me.panelUsr.TabIndex = 5
+        '
+        'panelContraseña
+        '
+        Me.panelContraseña.BackColor = System.Drawing.Color.Tomato
+        Me.panelContraseña.Controls.Add(Me.lblContraseña)
+        Me.panelContraseña.Controls.Add(Me.txtContraseña)
+        Me.panelContraseña.Location = New System.Drawing.Point(104, 192)
+        Me.panelContraseña.Name = "panelContraseña"
+        Me.panelContraseña.Size = New System.Drawing.Size(292, 42)
+        Me.panelContraseña.TabIndex = 6
+        '
+        'lblContraseña
+        '
+        Me.lblContraseña.AutoSize = True
+        Me.lblContraseña.Font = New System.Drawing.Font("Rockwell", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblContraseña.Location = New System.Drawing.Point(11, 11)
+        Me.lblContraseña.Name = "lblContraseña"
+        Me.lblContraseña.Size = New System.Drawing.Size(103, 18)
+        Me.lblContraseña.TabIndex = 0
+        Me.lblContraseña.Text = "Contraseña :"
+        '
+        'txtContraseña
+        '
+        Me.txtContraseña.Font = New System.Drawing.Font("Rockwell", 11.25!)
+        Me.txtContraseña.Location = New System.Drawing.Point(117, 9)
+        Me.txtContraseña.Name = "txtContraseña"
+        Me.txtContraseña.Size = New System.Drawing.Size(163, 25)
+        Me.txtContraseña.TabIndex = 2
         '
         'FrmInicioDeSesion
         '
@@ -100,6 +132,7 @@ Partial Class FrmInicioDeSesion
         Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(491, 442)
+        Me.Controls.Add(Me.panelContraseña)
         Me.Controls.Add(Me.panelUsr)
         Me.Controls.Add(Me.btnRankin)
         Me.Controls.Add(Me.lblBuscaminas)
@@ -108,6 +141,8 @@ Partial Class FrmInicioDeSesion
         Me.Text = "Form1"
         Me.panelUsr.ResumeLayout(False)
         Me.panelUsr.PerformLayout()
+        Me.panelContraseña.ResumeLayout(False)
+        Me.panelContraseña.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -115,8 +150,11 @@ Partial Class FrmInicioDeSesion
 
     Friend WithEvents lblUsuario As Label
     Friend WithEvents btnAceptar As Button
-    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents txtUsuario As TextBox
     Friend WithEvents lblBuscaminas As Label
     Friend WithEvents btnRankin As Button
     Friend WithEvents panelUsr As Panel
+    Friend WithEvents panelContraseña As Panel
+    Friend WithEvents lblContraseña As Label
+    Friend WithEvents txtContraseña As TextBox
 End Class
