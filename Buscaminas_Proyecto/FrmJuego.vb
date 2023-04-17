@@ -1,7 +1,7 @@
 ﻿Imports BibliotecaDeClases
 Public Class FrmJuego
 
-    Private botones As Button()()
+    Private botones As Button(9)(9)
 
 
 
@@ -11,6 +11,18 @@ Public Class FrmJuego
 
 
         tabla = New TableLayoutPanel
+
+        For i = 0 To botones.length - 1
+    For j = 0 To botones.length - 1
+    Public btn & i & j As New Button 
+            Next
+    Next
+
+
+
+    End Sub
+
+
 
 
 
