@@ -6,15 +6,17 @@ Public Class FrmJuego
 
 
     Private Sub FrmJuego_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        tabla = New TableLayoutPanel
+    End Sub
 
 
         tabla = New TableLayoutPanel
 
         For i = 0 To botones.length - 1
-            For j = 0 To botones.length - 1
-                Public btn & i & j As New Button 
+    For j = 0 To botones.length - 1
+    Public btn & i & j As New Button 
             Next
-        Next
+    Next
 
 
 
