@@ -73,6 +73,12 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmConfiguracionDeJuego.Designer.vb">
+      <DependentUpon>FrmConfiguracionDeJuego.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmConfiguracionDeJuego.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FrmInicioDeSesion.Designer.vb">
       <DependentUpon>FrmInicioDeSesion.vb</DependentUpon>
     </Compile>
@@ -97,6 +103,7 @@
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
       <DependentUpon>Application.myapp</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="My Project\Resources.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -110,6 +117,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="FrmConfiguracionDeJuego.resx">
+      <DependentUpon>FrmConfiguracionDeJuego.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmInicioDeSesion.resx">
       <DependentUpon>FrmInicioDeSesion.vb</DependentUpon>
     </EmbeddedResource>

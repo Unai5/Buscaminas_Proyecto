@@ -39,11 +39,10 @@ Partial Class FrmInicioDeSesion
         'lblUsuario
         '
         Me.lblUsuario.AutoSize = True
-        Me.lblUsuario.Font = New System.Drawing.Font("Rockwell", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblUsuario.Location = New System.Drawing.Point(15, 13)
-        Me.lblUsuario.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblUsuario.Font = New System.Drawing.Font("Rockwell", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblUsuario.Location = New System.Drawing.Point(11, 11)
         Me.lblUsuario.Name = "lblUsuario"
-        Me.lblUsuario.Size = New System.Drawing.Size(194, 21)
+        Me.lblUsuario.Size = New System.Drawing.Size(161, 18)
         Me.lblUsuario.TabIndex = 0
         Me.lblUsuario.Text = "Nombre de Usuario :"
         '
@@ -51,10 +50,9 @@ Partial Class FrmInicioDeSesion
         '
         Me.btnAceptar.BackColor = System.Drawing.SystemColors.ButtonHighlight
         Me.btnAceptar.Font = New System.Drawing.Font("Cooper Black", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnAceptar.Location = New System.Drawing.Point(165, 353)
-        Me.btnAceptar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnAceptar.Location = New System.Drawing.Point(124, 287)
         Me.btnAceptar.Name = "btnAceptar"
-        Me.btnAceptar.Size = New System.Drawing.Size(125, 46)
+        Me.btnAceptar.Size = New System.Drawing.Size(94, 37)
         Me.btnAceptar.TabIndex = 1
         Me.btnAceptar.Text = "Aceptar"
         Me.btnAceptar.UseVisualStyleBackColor = False
@@ -62,20 +60,18 @@ Partial Class FrmInicioDeSesion
         'txtUsuario
         '
         Me.txtUsuario.Font = New System.Drawing.Font("Rockwell", 11.25!)
-        Me.txtUsuario.Location = New System.Drawing.Point(231, 10)
-        Me.txtUsuario.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtUsuario.Location = New System.Drawing.Point(173, 8)
         Me.txtUsuario.Name = "txtUsuario"
-        Me.txtUsuario.Size = New System.Drawing.Size(216, 30)
+        Me.txtUsuario.Size = New System.Drawing.Size(163, 25)
         Me.txtUsuario.TabIndex = 2
         '
         'lblBuscaminas
         '
         Me.lblBuscaminas.AutoSize = True
         Me.lblBuscaminas.Font = New System.Drawing.Font("Cooper Black", 12.0!)
-        Me.lblBuscaminas.Location = New System.Drawing.Point(248, 22)
-        Me.lblBuscaminas.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblBuscaminas.Location = New System.Drawing.Point(186, 18)
         Me.lblBuscaminas.Name = "lblBuscaminas"
-        Me.lblBuscaminas.Size = New System.Drawing.Size(157, 23)
+        Me.lblBuscaminas.Size = New System.Drawing.Size(125, 19)
         Me.lblBuscaminas.TabIndex = 3
         Me.lblBuscaminas.Text = "BUSCAMINAS"
         '
@@ -84,69 +80,63 @@ Partial Class FrmInicioDeSesion
         Me.btnRankin.BackColor = System.Drawing.SystemColors.ButtonHighlight
         Me.btnRankin.FlatAppearance.BorderColor = System.Drawing.Color.Snow
         Me.btnRankin.Font = New System.Drawing.Font("Cooper Black", 12.0!)
-        Me.btnRankin.Location = New System.Drawing.Point(361, 353)
-        Me.btnRankin.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnRankin.Location = New System.Drawing.Point(271, 287)
         Me.btnRankin.Name = "btnRankin"
-        Me.btnRankin.Size = New System.Drawing.Size(133, 46)
+        Me.btnRankin.Size = New System.Drawing.Size(100, 37)
         Me.btnRankin.TabIndex = 4
         Me.btnRankin.Text = "Rankin"
         Me.btnRankin.UseVisualStyleBackColor = False
         '
         'panelUsr
         '
-        Me.panelUsr.BackColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.panelUsr.BackColor = System.Drawing.Color.LightGreen
         Me.panelUsr.Controls.Add(Me.lblUsuario)
         Me.panelUsr.Controls.Add(Me.txtUsuario)
-        Me.panelUsr.Location = New System.Drawing.Point(104, 166)
-        Me.panelUsr.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.panelUsr.Location = New System.Drawing.Point(78, 135)
         Me.panelUsr.Name = "panelUsr"
-        Me.panelUsr.Size = New System.Drawing.Size(461, 49)
+        Me.panelUsr.Size = New System.Drawing.Size(346, 40)
         Me.panelUsr.TabIndex = 5
         '
         'panelContraseña
         '
-        Me.panelContraseña.BackColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.panelContraseña.BackColor = System.Drawing.Color.Tomato
         Me.panelContraseña.Controls.Add(Me.lblContraseña)
         Me.panelContraseña.Controls.Add(Me.txtContraseña)
-        Me.panelContraseña.Location = New System.Drawing.Point(139, 236)
-        Me.panelContraseña.Margin = New System.Windows.Forms.Padding(4)
+        Me.panelContraseña.Location = New System.Drawing.Point(104, 192)
         Me.panelContraseña.Name = "panelContraseña"
-        Me.panelContraseña.Size = New System.Drawing.Size(390, 52)
+        Me.panelContraseña.Size = New System.Drawing.Size(292, 42)
         Me.panelContraseña.TabIndex = 6
         '
         'lblContraseña
         '
         Me.lblContraseña.AutoSize = True
-        Me.lblContraseña.Font = New System.Drawing.Font("Rockwell", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblContraseña.Location = New System.Drawing.Point(15, 16)
-        Me.lblContraseña.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblContraseña.Font = New System.Drawing.Font("Rockwell", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblContraseña.Location = New System.Drawing.Point(11, 11)
         Me.lblContraseña.Name = "lblContraseña"
-        Me.lblContraseña.Size = New System.Drawing.Size(122, 21)
+        Me.lblContraseña.Size = New System.Drawing.Size(103, 18)
         Me.lblContraseña.TabIndex = 0
         Me.lblContraseña.Text = "Contraseña :"
         '
         'txtContraseña
         '
         Me.txtContraseña.Font = New System.Drawing.Font("Rockwell", 11.25!)
-        Me.txtContraseña.Location = New System.Drawing.Point(148, 13)
-        Me.txtContraseña.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtContraseña.Location = New System.Drawing.Point(117, 9)
         Me.txtContraseña.Name = "txtContraseña"
-        Me.txtContraseña.Size = New System.Drawing.Size(216, 30)
+        Me.txtContraseña.Size = New System.Drawing.Size(163, 25)
         Me.txtContraseña.TabIndex = 2
         '
         'FrmInicioDeSesion
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.ClientSize = New System.Drawing.Size(655, 544)
+        Me.ClientSize = New System.Drawing.Size(491, 442)
         Me.Controls.Add(Me.panelContraseña)
         Me.Controls.Add(Me.panelUsr)
         Me.Controls.Add(Me.btnRankin)
         Me.Controls.Add(Me.lblBuscaminas)
         Me.Controls.Add(Me.btnAceptar)
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Name = "FrmInicioDeSesion"
         Me.Text = "Form1"
         Me.panelUsr.ResumeLayout(False)

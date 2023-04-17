@@ -1,32 +1,18 @@
 ﻿Imports BibliotecaDeClases
 Public Class FrmJuego
 
-    Private botones As Button(9)(9)
-
-
-
     Private Sub FrmJuego_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        tabla = New TableLayoutPanel
-    End Sub
 
+        GenerarBotones(10, 10)
 
-        tabla = New TableLayoutPanel
-
-        For i = 0 To botones.length - 1
-    For j = 0 To botones.length - 1
-    Public btn & i & j As New Button 
+        For i = 0 To botones.GetLength(0) - 1
+            For j = 0 To botones.GetLength(1) - 1
+                Controls.Add(botones(i, j))
+                botones(i, j).Location = New Point((i + 1) * 23, (j + 1) * 23)
             Next
-    Next
-
-
+        Next
 
     End Sub
 
-
-
-
-
-    Private Sub tlpJjuego_Paint(sender As Object, e As PaintEventArgs)
-        tlpJuego.GetCellPosition(sender)
 
 End Class
