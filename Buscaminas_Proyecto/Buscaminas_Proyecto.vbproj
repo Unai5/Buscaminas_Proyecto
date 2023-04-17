@@ -86,6 +86,12 @@
       <DependentUpon>FrmJuego.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmRanking.Designer.vb">
+      <DependentUpon>frmRanking.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmRanking.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Modulo.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -109,6 +115,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmJuego.resx">
       <DependentUpon>FrmJuego.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRanking.resx">
+      <DependentUpon>frmRanking.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
