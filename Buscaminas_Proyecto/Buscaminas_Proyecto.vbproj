@@ -73,6 +73,12 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmInicioDeSesion.Designer.vb">
+      <DependentUpon>FrmInicioDeSesion.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmInicioDeSesion.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FrmJuego.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -98,6 +104,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="FrmInicioDeSesion.resx">
+      <DependentUpon>FrmInicioDeSesion.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmJuego.resx">
       <DependentUpon>FrmJuego.vb</DependentUpon>
     </EmbeddedResource>
