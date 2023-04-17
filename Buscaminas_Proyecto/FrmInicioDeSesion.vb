@@ -1,7 +1,11 @@
 ﻿Public Class FrmInicioDeSesion
     Private Sub btnAceptar_Click(sender As Object, e As EventArgs) Handles btnAceptar.Click
-        If lblUsuario.Text = "" Then
-            MessageBox.Show("Es necesario introducir un Nombred de Usuario", "Error")
+        If String.IsNullOrWhiteSpace(txtUsuario.Text) Then
+            MessageBox.Show("Es necesario introducir un nombre de Usuario", "Error")
+            Exit Sub
+        End If
+        If String.IsNullOrWhiteSpace(txtContraseña.Text) Then
+            MessageBox.Show("Es necesario introducir una contraseña", "Error")
             Exit Sub
         End If
 
@@ -15,4 +19,7 @@
         End If
     End Sub
 
+    Private Sub Label1_Click(sender As Object, e As EventArgs) Handles lblContraseña.Click
+
+    End Sub
 End Class
