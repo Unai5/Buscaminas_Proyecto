@@ -4,7 +4,6 @@
             MessageBox.Show("Es necesario introducir un Nombred de Usuario", "Error")
             Exit Sub
         End If
-
     End Sub
 
     Private Sub FrmInicioSesion_FormClosing(sender As Object, e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
