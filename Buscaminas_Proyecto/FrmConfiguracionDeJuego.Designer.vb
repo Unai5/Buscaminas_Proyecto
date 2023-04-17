@@ -23,89 +23,72 @@ Partial Class FrmConfiguracionDeJuego
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.chckCronometro = New System.Windows.Forms.CheckBox()
-        Me.btnVolver = New System.Windows.Forms.Button()
-        Me.btnAceptar = New System.Windows.Forms.Button()
-        Me.RadioButton1 = New System.Windows.Forms.RadioButton()
-        Me.RadioButton2 = New System.Windows.Forms.RadioButton()
-        Me.RadioButton3 = New System.Windows.Forms.RadioButton()
+        Me.radButtNormal = New System.Windows.Forms.RadioButton()
+        Me.radButtFacil = New System.Windows.Forms.RadioButton()
+        Me.radButtDificil = New System.Windows.Forms.RadioButton()
         Me.lblDificultad = New System.Windows.Forms.Label()
         Me.lblCronometro = New System.Windows.Forms.Label()
         Me.lblTitulo = New System.Windows.Forms.Label()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.btnVolver = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'chckCronometro
         '
         Me.chckCronometro.AutoSize = True
-        Me.chckCronometro.Location = New System.Drawing.Point(348, 104)
+        Me.chckCronometro.Location = New System.Drawing.Point(343, 121)
         Me.chckCronometro.Name = "chckCronometro"
         Me.chckCronometro.Size = New System.Drawing.Size(15, 14)
         Me.chckCronometro.TabIndex = 0
         Me.chckCronometro.UseVisualStyleBackColor = True
         '
-        'btnVolver
+        'radButtNormal
         '
-        Me.btnVolver.Location = New System.Drawing.Point(302, 351)
-        Me.btnVolver.Name = "btnVolver"
-        Me.btnVolver.Size = New System.Drawing.Size(75, 23)
-        Me.btnVolver.TabIndex = 1
-        Me.btnVolver.Text = "Volver"
-        Me.btnVolver.UseVisualStyleBackColor = True
+        Me.radButtNormal.AutoSize = True
+        Me.radButtNormal.Location = New System.Drawing.Point(311, 241)
+        Me.radButtNormal.Name = "radButtNormal"
+        Me.radButtNormal.Size = New System.Drawing.Size(58, 17)
+        Me.radButtNormal.TabIndex = 4
+        Me.radButtNormal.TabStop = True
+        Me.radButtNormal.Text = "Normal"
+        Me.radButtNormal.UseVisualStyleBackColor = True
         '
-        'btnAceptar
+        'radButtFacil
         '
-        Me.btnAceptar.Location = New System.Drawing.Point(168, 351)
-        Me.btnAceptar.Name = "btnAceptar"
-        Me.btnAceptar.Size = New System.Drawing.Size(75, 23)
-        Me.btnAceptar.TabIndex = 2
-        Me.btnAceptar.Text = "Aceptar"
-        Me.btnAceptar.UseVisualStyleBackColor = True
+        Me.radButtFacil.AutoSize = True
+        Me.radButtFacil.Location = New System.Drawing.Point(311, 195)
+        Me.radButtFacil.Name = "radButtFacil"
+        Me.radButtFacil.Size = New System.Drawing.Size(47, 17)
+        Me.radButtFacil.TabIndex = 5
+        Me.radButtFacil.TabStop = True
+        Me.radButtFacil.Text = "Fácil"
+        Me.radButtFacil.UseVisualStyleBackColor = True
         '
-        'RadioButton1
+        'radButtDificil
         '
-        Me.RadioButton1.AutoSize = True
-        Me.RadioButton1.Location = New System.Drawing.Point(230, 249)
-        Me.RadioButton1.Name = "RadioButton1"
-        Me.RadioButton1.Size = New System.Drawing.Size(90, 17)
-        Me.RadioButton1.TabIndex = 4
-        Me.RadioButton1.TabStop = True
-        Me.RadioButton1.Text = "RadioButton1"
-        Me.RadioButton1.UseVisualStyleBackColor = True
-        '
-        'RadioButton2
-        '
-        Me.RadioButton2.AutoSize = True
-        Me.RadioButton2.Location = New System.Drawing.Point(230, 203)
-        Me.RadioButton2.Name = "RadioButton2"
-        Me.RadioButton2.Size = New System.Drawing.Size(90, 17)
-        Me.RadioButton2.TabIndex = 5
-        Me.RadioButton2.TabStop = True
-        Me.RadioButton2.Text = "RadioButton2"
-        Me.RadioButton2.UseVisualStyleBackColor = True
-        '
-        'RadioButton3
-        '
-        Me.RadioButton3.AutoSize = True
-        Me.RadioButton3.Location = New System.Drawing.Point(230, 294)
-        Me.RadioButton3.Name = "RadioButton3"
-        Me.RadioButton3.Size = New System.Drawing.Size(90, 17)
-        Me.RadioButton3.TabIndex = 6
-        Me.RadioButton3.TabStop = True
-        Me.RadioButton3.Text = "RadioButton3"
-        Me.RadioButton3.UseVisualStyleBackColor = True
+        Me.radButtDificil.AutoSize = True
+        Me.radButtDificil.Location = New System.Drawing.Point(311, 286)
+        Me.radButtDificil.Name = "radButtDificil"
+        Me.radButtDificil.Size = New System.Drawing.Size(52, 17)
+        Me.radButtDificil.TabIndex = 6
+        Me.radButtDificil.TabStop = True
+        Me.radButtDificil.Text = "Difícil"
+        Me.radButtDificil.UseVisualStyleBackColor = True
         '
         'lblDificultad
         '
         Me.lblDificultad.AutoSize = True
-        Me.lblDificultad.Location = New System.Drawing.Point(250, 154)
+        Me.lblDificultad.Font = New System.Drawing.Font("Cooper Black", 12.0!)
+        Me.lblDificultad.Location = New System.Drawing.Point(132, 193)
         Me.lblDificultad.Name = "lblDificultad"
-        Me.lblDificultad.Size = New System.Drawing.Size(51, 13)
+        Me.lblDificultad.Size = New System.Drawing.Size(92, 19)
         Me.lblDificultad.TabIndex = 7
         Me.lblDificultad.Text = "Dificultad"
         '
         'lblCronometro
         '
         Me.lblCronometro.AutoSize = True
-        Me.lblCronometro.Location = New System.Drawing.Point(191, 104)
+        Me.lblCronometro.Location = New System.Drawing.Point(186, 121)
         Me.lblCronometro.Name = "lblCronometro"
         Me.lblCronometro.Size = New System.Drawing.Size(151, 13)
         Me.lblCronometro.TabIndex = 10
@@ -114,25 +97,48 @@ Partial Class FrmConfiguracionDeJuego
         'lblTitulo
         '
         Me.lblTitulo.AutoSize = True
-        Me.lblTitulo.Location = New System.Drawing.Point(180, 53)
+        Me.lblTitulo.Font = New System.Drawing.Font("Cooper Black", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblTitulo.Location = New System.Drawing.Point(105, 37)
         Me.lblTitulo.Name = "lblTitulo"
-        Me.lblTitulo.Size = New System.Drawing.Size(183, 13)
+        Me.lblTitulo.Size = New System.Drawing.Size(349, 21)
         Me.lblTitulo.TabIndex = 9
         Me.lblTitulo.Text = "SELECCIONA EL MODO DE JUEGO"
+        '
+        'Button1
+        '
+        Me.Button1.BackColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.Button1.Font = New System.Drawing.Font("Cooper Black", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button1.Location = New System.Drawing.Point(150, 351)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(94, 37)
+        Me.Button1.TabIndex = 11
+        Me.Button1.Text = "Aceptar"
+        Me.Button1.UseVisualStyleBackColor = False
+        '
+        'btnVolver
+        '
+        Me.btnVolver.BackColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.btnVolver.Font = New System.Drawing.Font("Cooper Black", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnVolver.Location = New System.Drawing.Point(289, 351)
+        Me.btnVolver.Name = "btnVolver"
+        Me.btnVolver.Size = New System.Drawing.Size(94, 37)
+        Me.btnVolver.TabIndex = 12
+        Me.btnVolver.Text = "Volver"
+        Me.btnVolver.UseVisualStyleBackColor = False
         '
         'FrmConfiguracionDeJuego
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(545, 450)
+        Me.Controls.Add(Me.btnVolver)
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.lblCronometro)
         Me.Controls.Add(Me.lblTitulo)
         Me.Controls.Add(Me.lblDificultad)
-        Me.Controls.Add(Me.RadioButton3)
-        Me.Controls.Add(Me.RadioButton2)
-        Me.Controls.Add(Me.RadioButton1)
-        Me.Controls.Add(Me.btnAceptar)
-        Me.Controls.Add(Me.btnVolver)
+        Me.Controls.Add(Me.radButtDificil)
+        Me.Controls.Add(Me.radButtFacil)
+        Me.Controls.Add(Me.radButtNormal)
         Me.Controls.Add(Me.chckCronometro)
         Me.Name = "FrmConfiguracionDeJuego"
         Me.Text = "Form1"
@@ -142,12 +148,12 @@ Partial Class FrmConfiguracionDeJuego
     End Sub
 
     Friend WithEvents chckCronometro As CheckBox
-    Friend WithEvents btnVolver As Button
-    Friend WithEvents btnAceptar As Button
-    Friend WithEvents RadioButton1 As RadioButton
-    Friend WithEvents RadioButton2 As RadioButton
-    Friend WithEvents RadioButton3 As RadioButton
+    Friend WithEvents radButtNormal As RadioButton
+    Friend WithEvents radButtFacil As RadioButton
+    Friend WithEvents radButtDificil As RadioButton
     Friend WithEvents lblDificultad As Label
     Friend WithEvents lblCronometro As Label
     Friend WithEvents lblTitulo As Label
+    Friend WithEvents Button1 As Button
+    Friend WithEvents btnVolver As Button
 End Class
