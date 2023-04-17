@@ -13,11 +13,15 @@ Public Class FrmInicioDeSesion
         Dim nuevoUsuario As New Usuario(txtUsuario.Text, txtContraseña.Text)
         For Each usr In listaUsuarios
             If usr.Equals(nuevoUsuario) AndAlso usr.Contraseña = nuevoUsuario.Contraseña Then
+                jugador = usr
                 Exit Sub
             End If
         Next
         listaUsuarios.Add(nuevoUsuario)
+        jugador = nuevoUsuario
         MessageBox.Show($"Bienvenido/a {nuevoUsuario.Nombre}")
+        FrmConfiguracionDeJuego.Show()
+        Close()
     End Sub
 
     Private Sub FrmInicioSesion_FormClosing(sender As Object, e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
@@ -33,4 +37,9 @@ Public Class FrmInicioDeSesion
         txtUsuario.Clear()
     End Sub
 
+    Private Sub btnRankin_Click(sender As Object, e As EventArgs) Handles btnRankin.Click
+
+        frmRanking.Show()
+        Close()
+    End Sub
 End Class
