@@ -28,5 +28,9 @@ Public Class FrmInicioDeSesion
         End If
     End Sub
 
+    Private Sub FrmInicioDeSesion_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        txtContraseña.Clear()
+        txtUsuario.Clear()
+    End Sub
 
 End Class

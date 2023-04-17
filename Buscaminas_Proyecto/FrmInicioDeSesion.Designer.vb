@@ -39,10 +39,10 @@ Partial Class FrmInicioDeSesion
         'lblUsuario
         '
         Me.lblUsuario.AutoSize = True
-        Me.lblUsuario.Font = New System.Drawing.Font("Rockwell", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblUsuario.Font = New System.Drawing.Font("Rockwell", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblUsuario.Location = New System.Drawing.Point(11, 11)
         Me.lblUsuario.Name = "lblUsuario"
-        Me.lblUsuario.Size = New System.Drawing.Size(154, 17)
+        Me.lblUsuario.Size = New System.Drawing.Size(161, 18)
         Me.lblUsuario.TabIndex = 0
         Me.lblUsuario.Text = "Nombre de Usuario :"
         '
@@ -89,7 +89,7 @@ Partial Class FrmInicioDeSesion
         '
         'panelUsr
         '
-        Me.panelUsr.BackColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.panelUsr.BackColor = System.Drawing.Color.LightGreen
         Me.panelUsr.Controls.Add(Me.lblUsuario)
         Me.panelUsr.Controls.Add(Me.txtUsuario)
         Me.panelUsr.Location = New System.Drawing.Point(78, 135)
@@ -99,7 +99,7 @@ Partial Class FrmInicioDeSesion
         '
         'panelContraseña
         '
-        Me.panelContraseña.BackColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.panelContraseña.BackColor = System.Drawing.Color.Tomato
         Me.panelContraseña.Controls.Add(Me.lblContraseña)
         Me.panelContraseña.Controls.Add(Me.txtContraseña)
         Me.panelContraseña.Location = New System.Drawing.Point(104, 192)
@@ -110,17 +110,17 @@ Partial Class FrmInicioDeSesion
         'lblContraseña
         '
         Me.lblContraseña.AutoSize = True
-        Me.lblContraseña.Font = New System.Drawing.Font("Rockwell", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblContraseña.Font = New System.Drawing.Font("Rockwell", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblContraseña.Location = New System.Drawing.Point(11, 11)
         Me.lblContraseña.Name = "lblContraseña"
-        Me.lblContraseña.Size = New System.Drawing.Size(97, 17)
+        Me.lblContraseña.Size = New System.Drawing.Size(103, 18)
         Me.lblContraseña.TabIndex = 0
         Me.lblContraseña.Text = "Contraseña :"
         '
         'txtContraseña
         '
         Me.txtContraseña.Font = New System.Drawing.Font("Rockwell", 11.25!)
-        Me.txtContraseña.Location = New System.Drawing.Point(111, 9)
+        Me.txtContraseña.Location = New System.Drawing.Point(117, 9)
         Me.txtContraseña.Name = "txtContraseña"
         Me.txtContraseña.Size = New System.Drawing.Size(163, 25)
         Me.txtContraseña.TabIndex = 2
