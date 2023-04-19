@@ -33,7 +33,7 @@ Partial Class frmRanking
         '
         Me.lblRanking.AutoSize = True
         Me.lblRanking.Font = New System.Drawing.Font("Cooper Black", 12.0!)
-        Me.lblRanking.Location = New System.Drawing.Point(225, 25)
+        Me.lblRanking.Location = New System.Drawing.Point(225, 22)
         Me.lblRanking.Name = "lblRanking"
         Me.lblRanking.Size = New System.Drawing.Size(93, 19)
         Me.lblRanking.TabIndex = 4
@@ -42,7 +42,7 @@ Partial Class frmRanking
         'lstRanking
         '
         Me.lstRanking.FormattingEnabled = True
-        Me.lstRanking.Location = New System.Drawing.Point(206, 79)
+        Me.lstRanking.Location = New System.Drawing.Point(203, 74)
         Me.lstRanking.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.lstRanking.Name = "lstRanking"
         Me.lstRanking.Size = New System.Drawing.Size(260, 277)
@@ -52,7 +52,7 @@ Partial Class frmRanking
         '
         Me.btnDificultad.BackColor = System.Drawing.SystemColors.ButtonHighlight
         Me.btnDificultad.Font = New System.Drawing.Font("Cooper Black", 12.0!)
-        Me.btnDificultad.Location = New System.Drawing.Point(54, 166)
+        Me.btnDificultad.Location = New System.Drawing.Point(54, 153)
         Me.btnDificultad.Name = "btnDificultad"
         Me.btnDificultad.Size = New System.Drawing.Size(115, 38)
         Me.btnDificultad.TabIndex = 6
@@ -63,7 +63,7 @@ Partial Class frmRanking
         '
         Me.btnRankingIndividual.BackColor = System.Drawing.SystemColors.ButtonHighlight
         Me.btnRankingIndividual.Font = New System.Drawing.Font("Cooper Black", 12.0!)
-        Me.btnRankingIndividual.Location = New System.Drawing.Point(54, 225)
+        Me.btnRankingIndividual.Location = New System.Drawing.Point(54, 232)
         Me.btnRankingIndividual.Name = "btnRankingIndividual"
         Me.btnRankingIndividual.Size = New System.Drawing.Size(115, 38)
         Me.btnRankingIndividual.TabIndex = 7
@@ -74,7 +74,7 @@ Partial Class frmRanking
         '
         Me.btnVolver.BackColor = System.Drawing.SystemColors.ButtonHighlight
         Me.btnVolver.Font = New System.Drawing.Font("Cooper Black", 12.0!)
-        Me.btnVolver.Location = New System.Drawing.Point(229, 389)
+        Me.btnVolver.Location = New System.Drawing.Point(217, 386)
         Me.btnVolver.Name = "btnVolver"
         Me.btnVolver.Size = New System.Drawing.Size(109, 36)
         Me.btnVolver.TabIndex = 8
