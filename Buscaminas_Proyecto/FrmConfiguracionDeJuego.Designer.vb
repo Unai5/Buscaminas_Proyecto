@@ -119,7 +119,7 @@ Partial Class FrmConfiguracionDeJuego
         '
         Me.btnVolver.BackColor = System.Drawing.SystemColors.ButtonHighlight
         Me.btnVolver.Font = New System.Drawing.Font("Cooper Black", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnVolver.Location = New System.Drawing.Point(289, 351)
+        Me.btnVolver.Location = New System.Drawing.Point(311, 351)
         Me.btnVolver.Name = "btnVolver"
         Me.btnVolver.Size = New System.Drawing.Size(94, 37)
         Me.btnVolver.TabIndex = 12
