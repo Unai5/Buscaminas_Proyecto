@@ -36,7 +36,7 @@ Partial Class FrmConfiguracionDeJuego
         'chckCronometro
         '
         Me.chckCronometro.AutoSize = True
-        Me.chckCronometro.Location = New System.Drawing.Point(343, 121)
+        Me.chckCronometro.Location = New System.Drawing.Point(311, 121)
         Me.chckCronometro.Name = "chckCronometro"
         Me.chckCronometro.Size = New System.Drawing.Size(15, 14)
         Me.chckCronometro.TabIndex = 0
@@ -45,9 +45,10 @@ Partial Class FrmConfiguracionDeJuego
         'radButtNormal
         '
         Me.radButtNormal.AutoSize = True
-        Me.radButtNormal.Location = New System.Drawing.Point(311, 241)
+        Me.radButtNormal.Font = New System.Drawing.Font("Microsoft Tai Le", 9.75!)
+        Me.radButtNormal.Location = New System.Drawing.Point(311, 216)
         Me.radButtNormal.Name = "radButtNormal"
-        Me.radButtNormal.Size = New System.Drawing.Size(58, 17)
+        Me.radButtNormal.Size = New System.Drawing.Size(69, 20)
         Me.radButtNormal.TabIndex = 4
         Me.radButtNormal.TabStop = True
         Me.radButtNormal.Text = "Normal"
@@ -56,9 +57,10 @@ Partial Class FrmConfiguracionDeJuego
         'radButtFacil
         '
         Me.radButtFacil.AutoSize = True
-        Me.radButtFacil.Location = New System.Drawing.Point(311, 195)
+        Me.radButtFacil.Font = New System.Drawing.Font("Microsoft Tai Le", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.radButtFacil.Location = New System.Drawing.Point(311, 170)
         Me.radButtFacil.Name = "radButtFacil"
-        Me.radButtFacil.Size = New System.Drawing.Size(47, 17)
+        Me.radButtFacil.Size = New System.Drawing.Size(50, 20)
         Me.radButtFacil.TabIndex = 5
         Me.radButtFacil.TabStop = True
         Me.radButtFacil.Text = "Fácil"
@@ -67,9 +69,10 @@ Partial Class FrmConfiguracionDeJuego
         'radButtDificil
         '
         Me.radButtDificil.AutoSize = True
-        Me.radButtDificil.Location = New System.Drawing.Point(311, 286)
+        Me.radButtDificil.Font = New System.Drawing.Font("Microsoft Tai Le", 9.75!)
+        Me.radButtDificil.Location = New System.Drawing.Point(311, 261)
         Me.radButtDificil.Name = "radButtDificil"
-        Me.radButtDificil.Size = New System.Drawing.Size(52, 17)
+        Me.radButtDificil.Size = New System.Drawing.Size(56, 20)
         Me.radButtDificil.TabIndex = 6
         Me.radButtDificil.TabStop = True
         Me.radButtDificil.Text = "Difícil"
@@ -79,7 +82,7 @@ Partial Class FrmConfiguracionDeJuego
         '
         Me.lblDificultad.AutoSize = True
         Me.lblDificultad.Font = New System.Drawing.Font("Cooper Black", 12.0!)
-        Me.lblDificultad.Location = New System.Drawing.Point(132, 193)
+        Me.lblDificultad.Location = New System.Drawing.Point(132, 168)
         Me.lblDificultad.Name = "lblDificultad"
         Me.lblDificultad.Size = New System.Drawing.Size(92, 19)
         Me.lblDificultad.TabIndex = 7
@@ -88,11 +91,12 @@ Partial Class FrmConfiguracionDeJuego
         'lblCronometro
         '
         Me.lblCronometro.AutoSize = True
-        Me.lblCronometro.Location = New System.Drawing.Point(186, 121)
+        Me.lblCronometro.Font = New System.Drawing.Font("Cooper Black", 12.0!)
+        Me.lblCronometro.Location = New System.Drawing.Point(132, 121)
         Me.lblCronometro.Name = "lblCronometro"
-        Me.lblCronometro.Size = New System.Drawing.Size(151, 13)
+        Me.lblCronometro.Size = New System.Drawing.Size(122, 19)
         Me.lblCronometro.TabIndex = 10
-        Me.lblCronometro.Text = "Cronometrar tiempo de partida "
+        Me.lblCronometro.Text = "Tiempo límite"
         '
         'lblTitulo
         '
@@ -108,7 +112,7 @@ Partial Class FrmConfiguracionDeJuego
         '
         Me.Button1.BackColor = System.Drawing.SystemColors.ButtonHighlight
         Me.Button1.Font = New System.Drawing.Font("Cooper Black", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.Location = New System.Drawing.Point(150, 351)
+        Me.Button1.Location = New System.Drawing.Point(150, 334)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(94, 37)
         Me.Button1.TabIndex = 11
@@ -119,7 +123,7 @@ Partial Class FrmConfiguracionDeJuego
         '
         Me.btnVolver.BackColor = System.Drawing.SystemColors.ButtonHighlight
         Me.btnVolver.Font = New System.Drawing.Font("Cooper Black", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnVolver.Location = New System.Drawing.Point(311, 351)
+        Me.btnVolver.Location = New System.Drawing.Point(311, 334)
         Me.btnVolver.Name = "btnVolver"
         Me.btnVolver.Size = New System.Drawing.Size(94, 37)
         Me.btnVolver.TabIndex = 12

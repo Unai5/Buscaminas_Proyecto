@@ -1,6 +1,5 @@
 ﻿Imports BibliotecaDeClases
 Public Class FrmInicioDeSesion
-    Public listaUsuarios As List(Of Usuario)
     Private Sub btnAceptar_Click(sender As Object, e As EventArgs) Handles btnAceptar.Click
         If String.IsNullOrWhiteSpace(txtUsuario.Text) Then
             MessageBox.Show("Es necesario introducir un nombre de Usuario", "Error")
@@ -11,13 +10,13 @@ Public Class FrmInicioDeSesion
             Exit Sub
         End If
         Dim nuevoUsuario As New Usuario(txtUsuario.Text, txtContraseña.Text)
-        For Each usr In listaUsuarios
+        For Each usr In listaJugadores
             If usr.Equals(nuevoUsuario) AndAlso usr.Contraseña = nuevoUsuario.Contraseña Then
                 jugador = usr
                 Exit Sub
             End If
         Next
-        listaUsuarios.Add(nuevoUsuario)
+        listaJugadores.Add(nuevoUsuario)
         jugador = nuevoUsuario
         MessageBox.Show($"Bienvenido/a {nuevoUsuario.Nombre}")
         FrmConfiguracionDeJuego.Show()
