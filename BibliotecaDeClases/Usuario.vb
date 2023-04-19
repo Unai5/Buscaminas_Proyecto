@@ -1,9 +1,9 @@
 ﻿Public Class Usuario
     Implements IEquatable(Of Usuario)
-
+    Public listaTiempos As List(Of Date)
     Public Property Nombre As String
     Public Property Contraseña As String
-    Public Property MaxPuntuacion As Integer
+    Public Property MejorTiempo As Date
 
     Public Sub New(nombre As String, contraseña As String)
         Me.Nombre = nombre
