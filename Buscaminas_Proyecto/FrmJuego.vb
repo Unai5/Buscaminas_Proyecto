@@ -54,9 +54,25 @@ Public Class FrmJuego
 
                 If botones(i, j).Tag <> -1 Then
                     bombasAlrededor = 0
+
                     If i - 1 >= 0 AndAlso j - 1 >= 0 AndAlso botones(i - 1, j - 1).Tag = -1 Then bombasAlrededor += 1
 
+                    If j - 1 >= 0 AndAlso botones(i, j - 1).Tag = -1 Then bombasAlrededor += 1
 
+                    If i + 1 <= botones.GetLength(0) - 1 AndAlso j - 1 >= 0 AndAlso botones(i + 1, j - 1).Tag = -1 Then bombasAlrededor += 1
+
+                    If i + 1 <= botones.GetLength(0) - 1 AndAlso botones(i + 1, j).Tag = -1 Then bombasAlrededor += 1
+
+                    If i + 1 <= botones.GetLength(0) - 1 AndAlso j + 1 <= botones.GetLength(1) - 1 AndAlso botones(i + 1, j + 1).Tag = -1 Then bombasAlrededor += 1
+
+                    If j + 1 <= botones.GetLength(1) - 1 AndAlso botones(i, j + 1).Tag = -1 Then bombasAlrededor += 1
+
+                    If i - 1 >= 0 AndAlso j + 1 <= botones.GetLength(1) - 1 AndAlso botones(i - 1, j + 1).Tag = -1 Then bombasAlrededor += 1
+
+                    If i - 1 >= 0 AndAlso botones(i - 1, j).Tag = -1 Then bombasAlrededor += 1
+
+                    botones(i, j).Text = bombasAlrededor.ToString
+                    botones(i, j).Tag = bombasAlrededor
                 End If
 
             Next
