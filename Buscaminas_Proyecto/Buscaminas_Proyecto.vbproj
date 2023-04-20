@@ -154,5 +154,10 @@
       <Name>BibliotecaDeClases</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Fichero.txt" />
+    <Content Include="Ficheros\TodosLosUsuarios.txt" />
+    <None Include="Resources\1674235618744.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

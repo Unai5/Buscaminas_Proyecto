@@ -1,4 +1,5 @@
-﻿Imports BibliotecaDeClases
+﻿Imports System.IO
+Imports BibliotecaDeClases
 Public Class FrmInicioDeSesion
     Private Sub btnAceptar_Click(sender As Object, e As EventArgs) Handles btnAceptar.Click
         If String.IsNullOrWhiteSpace(txtUsuario.Text) Then
@@ -20,7 +21,6 @@ Public Class FrmInicioDeSesion
         jugador = nuevoUsuario
         MessageBox.Show($"Bienvenido/a {nuevoUsuario.Nombre}")
         FrmConfiguracionDeJuego.Show()
-        Close()
     End Sub
 
     Private Sub FrmInicioSesion_FormClosing(sender As Object, e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
