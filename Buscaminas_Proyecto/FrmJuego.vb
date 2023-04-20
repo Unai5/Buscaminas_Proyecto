@@ -28,6 +28,8 @@ Public Class FrmJuego
                     .Size = New Size(23, 23),
                     .Tag = 0
                 }
+                AddHandler botones(i, j).Click, AddressOf BotonClic
+                AddHandler botones(i, j).MouseDown, AddressOf BotonClicDerecho
             Next
         Next
 
@@ -44,7 +46,6 @@ Public Class FrmJuego
 
             botones(x, y).Tag = -1
 
-            botones(x, y).Text = "B"
         Next
 
         Dim bombasAlrededor As Integer
@@ -71,7 +72,6 @@ Public Class FrmJuego
 
                     If i - 1 >= 0 AndAlso botones(i - 1, j).Tag = -1 Then bombasAlrededor += 1
 
-                    botones(i, j).Text = bombasAlrededor.ToString
                     botones(i, j).Tag = bombasAlrededor
                 End If
 
@@ -80,4 +80,29 @@ Public Class FrmJuego
 
     End Sub
 
+    Private Sub BotonClicDerecho(sender As Object, e As MouseEventArgs)
+        If e.Button = System.Windows.Forms.MouseButtons.Right Then
+            sender.backgroundImage = Image.FromFile("../../img/banderita.png")
+        End If
+
+    End Sub
+
+    Private Sub BotonClic(sender As Object, e As EventArgs)
+        If sender.tag > -1 Then
+            sender.text = sender.tag
+            sender.enabled = False
+        End If
+        If sender.tag = -1 Then
+            For i = 0 To botones.GetLength(0) - 1
+                For j = 0 To botones.GetLength(1) - 1
+                    If botones(i, j).Tag = -1 Then
+                        botones(i, j).Image = Image.FromFile("..\..\img\mina.jpg")
+
+                    End If
+                    RemoveHandler botones(i, j).Click, AddressOf BotonClic
+                    RemoveHandler botones(i, j).MouseDown, AddressOf BotonClicDerecho
+                Next
+            Next
+        End If
+    End Sub
 End Class
