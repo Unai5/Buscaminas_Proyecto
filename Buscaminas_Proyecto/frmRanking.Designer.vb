@@ -43,7 +43,7 @@ Partial Class frmRanking
         '
         Me.lstRanking.FormattingEnabled = True
         Me.lstRanking.Location = New System.Drawing.Point(203, 74)
-        Me.lstRanking.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.lstRanking.Margin = New System.Windows.Forms.Padding(2)
         Me.lstRanking.Name = "lstRanking"
         Me.lstRanking.Size = New System.Drawing.Size(260, 277)
         Me.lstRanking.TabIndex = 5
@@ -91,7 +91,7 @@ Partial Class frmRanking
         Me.Controls.Add(Me.btnDificultad)
         Me.Controls.Add(Me.lstRanking)
         Me.Controls.Add(Me.lblRanking)
-        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Margin = New System.Windows.Forms.Padding(2)
         Me.Name = "frmRanking"
         Me.Text = "frmRanking"
         Me.ResumeLayout(False)
