@@ -3,7 +3,20 @@
     Public listaTiempos As List(Of Date)
     Public Property Nombre As String
     Public Property Contraseña As String
+    Private Property _MejorTiempo As Date
     Public Property MejorTiempo As Date
+        Get
+            For Each tiempo In listaTiempos
+                If tiempo < _MejorTiempo Then
+                    _MejorTiempo = tiempo
+                End If
+            Next
+            Return _MejorTiempo.ToShortTimeString
+        End Get
+        Set(value As Date)
+            _MejorTiempo = Date.MaxValue
+        End Set
+    End Property
 
     Public Sub New(nombre As String, contraseña As String)
         Me.Nombre = nombre
