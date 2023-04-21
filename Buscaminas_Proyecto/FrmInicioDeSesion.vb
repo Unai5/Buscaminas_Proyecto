@@ -39,6 +39,5 @@ Public Class FrmInicioDeSesion
     Private Sub btnRankin_Click(sender As Object, e As EventArgs) Handles btnRankin.Click
 
         frmRanking.Show()
-        Close()
     End Sub
 End Class
