@@ -1,7 +1,21 @@
-﻿Imports BibliotecaDeClases
+﻿Imports System.Drawing.Text
+Imports System.Security.Cryptography.X509Certificates
+Imports BibliotecaDeClases
+
 Public Class FrmJuego
 
     Private Sub FrmJuego_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+
+
+
+
+
+        Me.Size = New Size(507, 480)
+        MaximizeBox = False
+        AutoSizeMode = AutoSizeMode.GrowAndShrink
+
+
 
         GenerarBotones(10, 10)
 
@@ -11,6 +25,7 @@ Public Class FrmJuego
                 botones(i, j).Location = New Point((i + 1) * 23, (j + 1) * 23)
             Next
         Next
+
 
 
 
@@ -26,7 +41,8 @@ Public Class FrmJuego
                     .Text = Nothing,
                     .Name = $"btn{i}{j}",
                     .Size = New Size(23, 23),
-                    .Tag = 0
+                    .Tag = 0,
+                    .BackColor = BackColor.LightGreen
                 }
                 AddHandler botones(i, j).Click, AddressOf BotonClic
                 AddHandler botones(i, j).MouseDown, AddressOf BotonClicDerecho
@@ -88,8 +104,13 @@ Public Class FrmJuego
     End Sub
 
     Private Sub BotonClic(sender As Object, e As EventArgs)
+        sender.backcolor = Nothing
         If sender.tag > -1 Then
-            sender.text = sender.tag
+            If sender.tag > 0 Then
+                sender.text = sender.tag
+            Else
+                sender.text = ""
+            End If
             sender.enabled = False
         End If
         If sender.tag = -1 Then
@@ -103,6 +124,17 @@ Public Class FrmJuego
                     RemoveHandler botones(i, j).MouseDown, AddressOf BotonClicDerecho
                 Next
             Next
+
         End If
+
+    End Sub
+
+    Private Sub btnReiniciar_Click(sender As Object, e As EventArgs) Handles btnReiniciar.Click
+        GenerarBotones(10, 10)
+    End Sub
+
+    Private Sub btnSalir_Click(sender As Object, e As EventArgs) Handles btnSalir.Click
+        FrmConfiguracionDeJuego.Show()
+        Me.Close()
     End Sub
 End Class
