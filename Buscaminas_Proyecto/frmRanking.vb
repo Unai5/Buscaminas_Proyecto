@@ -65,23 +65,21 @@ Public Class frmRanking
         If lstRanking.SelectedItem = "" OrElse lstRanking.SelectedItem Is Nothing Then
             MessageBox.Show($"No has seleccionado a nadie", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
         Else
-            lstRanking.Location = New Point(141, 74)
-            'Ahora funciona pero los tengo que sacar el nombre de la persona selecionada de otro sitio
-            lblRanking.Text = $"RANKING DE {lstRanking.SelectedItem}"
-
-            lblRanking.Location = New Point(225 - (93 / 2), 22)
-
             btnDificultad.Visible = False
             btnRankingIndividual.Visible = False
+            lstRanking.Location = New Point(141, 74)
+            lblRanking.Text = $"RANKING DE {lstRanking.SelectedItem}"
+            lblRanking.Location = New Point(225 - (93 / 2), 22)
+            'Ahora funciona, con ficheros no, sacar el nombre de la persona selecionada de otro sitio
 
-
-
-            'impostar todos los resultados
+            'importar todos los resultados
         End If
     End Sub
 
     Private Sub btnVolver_Click(sender As Object, e As EventArgs) Handles btnVolver.Click
-        If lblRanking.Text = "RANKING INDIVIDUAL" Then
+        If lblRanking.Text = "RANKING" Then
+            Me.Close()
+        Else
             lblRanking.Location = New Point()
             btnRankingIndividual.Visible = False
             btnDificultad.Visible = True
@@ -90,8 +88,7 @@ Public Class frmRanking
             lstRanking.Items.Clear()
             btnDificultad.Text = "Dificultad"
             lblRanking.Text = "RANKING"
-        Else
-            Close()
+            Me.Show()
         End If
     End Sub
 End Class
