@@ -41,11 +41,14 @@ Partial Class frmRanking
         '
         'lstRanking
         '
+        Me.lstRanking.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
+        Me.lstRanking.Font = New System.Drawing.Font("Rockwell", 11.25!)
         Me.lstRanking.FormattingEnabled = True
+        Me.lstRanking.ItemHeight = 17
         Me.lstRanking.Location = New System.Drawing.Point(203, 74)
         Me.lstRanking.Margin = New System.Windows.Forms.Padding(2)
         Me.lstRanking.Name = "lstRanking"
-        Me.lstRanking.Size = New System.Drawing.Size(260, 277)
+        Me.lstRanking.Size = New System.Drawing.Size(260, 276)
         Me.lstRanking.TabIndex = 5
         '
         'btnDificultad
