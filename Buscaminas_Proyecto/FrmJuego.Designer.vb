@@ -22,16 +22,41 @@ Partial Class FrmJuego
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Me.btnReiniciar = New System.Windows.Forms.Button()
+        Me.btnSalir = New System.Windows.Forms.Button()
         Me.SuspendLayout()
+        '
+        'btnReiniciar
+        '
+        Me.btnReiniciar.Location = New System.Drawing.Point(293, 340)
+        Me.btnReiniciar.Name = "btnReiniciar"
+        Me.btnReiniciar.Size = New System.Drawing.Size(75, 23)
+        Me.btnReiniciar.TabIndex = 0
+        Me.btnReiniciar.Text = "REINICIAR"
+        Me.btnReiniciar.UseVisualStyleBackColor = True
+        '
+        'btnSalir
+        '
+        Me.btnSalir.Location = New System.Drawing.Point(109, 340)
+        Me.btnSalir.Name = "btnSalir"
+        Me.btnSalir.Size = New System.Drawing.Size(75, 23)
+        Me.btnSalir.TabIndex = 1
+        Me.btnSalir.Text = "SALIR"
+        Me.btnSalir.UseVisualStyleBackColor = True
         '
         'FrmJuego
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(491, 441)
+        Me.Controls.Add(Me.btnSalir)
+        Me.Controls.Add(Me.btnReiniciar)
         Me.Name = "FrmJuego"
         Me.Text = "Form1"
         Me.ResumeLayout(False)
 
     End Sub
+
+    Friend WithEvents btnReiniciar As Button
+    Friend WithEvents btnSalir As Button
 End Class
