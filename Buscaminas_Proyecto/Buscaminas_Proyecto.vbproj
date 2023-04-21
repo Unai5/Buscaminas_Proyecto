@@ -155,7 +155,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Fichero.txt" />
     <Content Include="Ficheros\TodosLosUsuarios.txt" />
     <None Include="Resources\1674235618744.png" />
   </ItemGroup>
