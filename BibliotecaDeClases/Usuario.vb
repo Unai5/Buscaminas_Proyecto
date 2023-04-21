@@ -1,22 +1,17 @@
-﻿Public Class Usuario
+﻿Imports System.Collections.Generic
+Public Class Usuario
     Implements IEquatable(Of Usuario)
+    Public listaTiempos As List(Of TimeSpan)
 
     Public Property listaTiempos As List(Of Date)
     Public Property Nombre As String
     Public Property Contraseña As String
+    Public ReadOnly Property MejorTiempo As TimeSpan
     Private _MejorTiempo As Date
     Public Property MejorTiempo As Date
         Get
-            For Each tiempo In listaTiempos
-                If tiempo < _MejorTiempo Then
-                    _MejorTiempo = tiempo
-                End If
-            Next
-            Return _MejorTiempo.ToShortTimeString
+            Return listaTiempos.Min
         End Get
-        Set(value As Date)
-            _MejorTiempo = Date.MaxValue
-        End Set
     End Property
 
     Public Sub New(nombre As String, contraseña As String)
@@ -25,6 +20,7 @@
     End Sub
     Public Sub New()
     End Sub
+
 
     Public Overrides Function Equals(obj As Object) As Boolean
         Return Equals(TryCast(obj, Usuario))
