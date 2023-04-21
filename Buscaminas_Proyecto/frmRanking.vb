@@ -81,7 +81,7 @@ Public Class frmRanking
             btnDificultad.Text = "Dificultad"
             lblRanking.Text = "RANKING"
         Else
-            Close()
+            Me.Close()
         End If
     End Sub
 End Class

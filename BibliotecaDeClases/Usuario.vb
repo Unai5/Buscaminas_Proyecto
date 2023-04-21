@@ -1,9 +1,10 @@
 ﻿Public Class Usuario
     Implements IEquatable(Of Usuario)
-    Public listaTiempos As List(Of Date)
+
+    Public Property listaTiempos As List(Of Date)
     Public Property Nombre As String
     Public Property Contraseña As String
-    Private Property _MejorTiempo As Date
+    Private _MejorTiempo As Date
     Public Property MejorTiempo As Date
         Get
             For Each tiempo In listaTiempos

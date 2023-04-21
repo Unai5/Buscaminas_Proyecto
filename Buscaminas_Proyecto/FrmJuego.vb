@@ -1,4 +1,6 @@
-﻿Imports System.Drawing.Text
+﻿Imports System.Drawing.Drawing2D
+Imports System.Drawing.Text
+Imports System.Linq.Expressions
 Imports System.Security.Cryptography.X509Certificates
 Imports BibliotecaDeClases
 
@@ -15,7 +17,13 @@ Public Class FrmJuego
         MaximizeBox = False
         AutoSizeMode = AutoSizeMode.GrowAndShrink
 
-
+        'If dificultad = 1 Then
+        '    ReDim botones(6, 6)
+        '    GenerarBotones(7, 7)
+        'ElseIf dificultad = 3 Then
+        '    ReDim botones(15, 15)
+        '    GenerarBotones(16, 16)
+        'End If
 
         GenerarBotones(10, 10)
 
@@ -130,7 +138,7 @@ Public Class FrmJuego
     End Sub
 
     Private Sub btnReiniciar_Click(sender As Object, e As EventArgs) Handles btnReiniciar.Click
-        GenerarBotones(10, 10)
+
     End Sub
 
     Private Sub btnSalir_Click(sender As Object, e As EventArgs) Handles btnSalir.Click
