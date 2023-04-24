@@ -1,28 +1,28 @@
-﻿Imports BibliotecaDeClases
+﻿Imports System.Runtime.ConstrainedExecution
+Imports BibliotecaDeClases
 Public Class frmRanking
     ReadOnly usr1 As New Usuario("Pedro", "AAA")
     ReadOnly usr2 As New Usuario("Paula", "BBB")
+    ReadOnly usr3 As New Usuario("Paco", "CCC")
     ''' <summary>
     ''' Ejemplo de lista, luego se importará la información de los ficheros
     ''' </summary>
-    Public listaEjemplo As New List(Of Usuario) From {usr1, usr2}
+    Public listaEjemplo As New List(Of Usuario) From {usr1, usr2, usr3}
     Private Sub frmRanking_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        lstRanking.Items.Clear()
+        'lstRanking.Items.Clear()
         btnRankingIndividual.Visible = False
         btnDificultad.Location = New Point(54, 188)
         btnDificultad.Text = "Dificultad"
         lblRanking.Text = "RANKING"
         lblRanking.Location = New Point(225, 22)
 
-
         For Each per In listaEjemplo
             lstRanking.Items.Add(per.Nombre)
         Next
-
     End Sub
 
     Private Sub btnDificultad_Click(sender As Object, e As EventArgs) Handles btnDificultad.Click
-        lstRanking.Items.Clear()
+        'lstRanking.Items.Clear()
 
         Dim titulo As String = "RANKING"
         Dim a As String = "Fácil"
@@ -83,7 +83,9 @@ Public Class frmRanking
             lstRanking.Items.Clear()
             btnDificultad.Text = "Dificultad"
             lblRanking.Text = "RANKING"
-            Me.Show()
+
+            'Agregar el ranking de inicio 
+
         End If
     End Sub
 End Class
