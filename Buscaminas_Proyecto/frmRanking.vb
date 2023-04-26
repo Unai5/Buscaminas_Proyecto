@@ -15,7 +15,6 @@ Public Class frmRanking
         btnDificultad.Text = "Dificultad"
         lblRanking.Text = "RANKING"
         lblRanking.Location = New Point(225, 22)
-
         For Each per In listaEjemplo
             lstRanking.Items.Add(per.Nombre)
         Next
@@ -44,13 +43,11 @@ Public Class frmRanking
             If btnDificultad.Text.Contains(b) Then
                 btnDificultad.Text = c
                 lblRanking.Text = $"{titulo} {c.ToUpper}"
-
                 Exit Sub
             End If
             If btnDificultad.Text.Contains(c) Then
                 btnDificultad.Text = a
                 lblRanking.Text = $"{titulo} {a.ToUpper}"
-
                 Exit Sub
             End If
         End If
