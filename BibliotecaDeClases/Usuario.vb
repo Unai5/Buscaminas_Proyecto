@@ -2,6 +2,7 @@
 Public Class Usuario
     Implements IEquatable(Of Usuario)
     Public listaTiempos As List(Of TimeSpan)
+
     Public Property Nombre As String
     Public Property Contraseña As String
     Public ReadOnly Property MejorTiempo As TimeSpan

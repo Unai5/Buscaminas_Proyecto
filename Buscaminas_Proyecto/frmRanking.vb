@@ -16,11 +16,6 @@ Public Class frmRanking
         'importar una clase de ejemplo para mostrara al inicio que sea visual
         For Each per In listaEjemplo
 
-            Dim lstColor As DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable
-            lstRanking.DrawMode = DrawMode.OwnerDrawFixed
-            lstRanking.DrawItem += New DrawItemEventHandler(ListBox1_DrawItem)
-
-
             lstRanking.Items.Add(per.Nombre)
         Next
 
