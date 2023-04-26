@@ -1,15 +1,11 @@
-﻿Imports System.Collections.Generic
+﻿
 Public Class Usuario
     Implements IEquatable(Of Usuario)
-    Public listaTiempos As List(Of TimeSpan)
-
     Public Property Nombre As String
     Public Property Contraseña As String
-    Public ReadOnly Property MejorTiempo As TimeSpan
-        Get
-            Return listaTiempos.Min
-        End Get
-    End Property
+    Public Property MejorTiempoFacil As TimeSpan
+    Public Property MejorTiempoMedio As TimeSpan
+    Public Property MejorTiempoDificil As TimeSpan
 
     Public Sub New(nombre As String, contraseña As String)
         Me.Nombre = nombre
@@ -17,7 +13,6 @@ Public Class Usuario
     End Sub
     Public Sub New()
     End Sub
-
 
     Public Overrides Function Equals(obj As Object) As Boolean
         Return Equals(TryCast(obj, Usuario))

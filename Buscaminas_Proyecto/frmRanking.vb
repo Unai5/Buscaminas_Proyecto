@@ -1,4 +1,5 @@
-﻿Imports BibliotecaDeClases
+﻿Imports System.Runtime.ConstrainedExecution
+Imports BibliotecaDeClases
 Public Class frmRanking
     ReadOnly usr1 As New Usuario("Pedro", "AAA")
     ReadOnly usr2 As New Usuario("Paula", "BBB")
@@ -23,7 +24,7 @@ Public Class frmRanking
     End Sub
 
     Private Sub btnDificultad_Click(sender As Object, e As EventArgs) Handles btnDificultad.Click
-        lstRanking.Items.Clear()
+        'lstRanking.Items.Clear()
 
         Dim titulo As String = "RANKING"
         Dim a As String = "Fácil"
@@ -45,13 +46,11 @@ Public Class frmRanking
             If btnDificultad.Text.Contains(b) Then
                 btnDificultad.Text = c
                 lblRanking.Text = $"{titulo} {c.ToUpper}"
-
                 Exit Sub
             End If
             If btnDificultad.Text.Contains(c) Then
                 btnDificultad.Text = a
                 lblRanking.Text = $"{titulo} {a.ToUpper}"
-
                 Exit Sub
             End If
         End If

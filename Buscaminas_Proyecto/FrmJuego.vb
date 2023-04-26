@@ -1,4 +1,6 @@
-﻿Imports System.Drawing.Text
+﻿Imports System.Drawing.Drawing2D
+Imports System.Drawing.Text
+Imports System.Linq.Expressions
 Imports System.Security.Cryptography.X509Certificates
 Imports BibliotecaDeClases
 
@@ -15,16 +17,17 @@ Public Class FrmJuego
         MaximizeBox = False
         AutoSizeMode = AutoSizeMode.GrowAndShrink
 
-
+        'If dificultad = 1 Then
+        '    ReDim botones(6, 6)
+        '    GenerarBotones(7, 7)
+        'ElseIf dificultad = 3 Then
+        '    ReDim botones(15, 15)
+        '    GenerarBotones(16, 16)
+        'End If
 
         GenerarBotones(10, 10)
 
-        For i = 0 To botones.GetLength(0) - 1
-            For j = 0 To botones.GetLength(1) - 1
-                Controls.Add(botones(i, j))
-                botones(i, j).Location = New Point((i + 1) * 23, (j + 1) * 23)
-            Next
-        Next
+
 
 
 
@@ -34,6 +37,8 @@ Public Class FrmJuego
 
 
     Public Sub GenerarBotones(ancho As Integer, alto As Integer)
+
+        ReDim botones(ancho - 1, alto - 1)
 
         For i = 0 To ancho - 1
             For j = 0 To alto - 1
@@ -49,9 +54,9 @@ Public Class FrmJuego
             Next
         Next
 
-        numBombas = 20
+        numBombas = (ancho * alto) \ 5
 
-        Dim casillasConBomba(numBombas - 1) As String
+        'Dim casillasConBomba(numBombas - 1) As String
         Dim rnd As New Random
         For i = 0 To numBombas - 1
             Dim x, y As Integer
@@ -94,12 +99,31 @@ Public Class FrmJuego
             Next
         Next
 
+        For i = 0 To botones.GetLength(0) - 1
+            For j = 0 To botones.GetLength(1) - 1
+                Controls.Add(botones(i, j))
+                botones(i, j).Location = New Point((i + 1) * 23, (j + 1) * 23)
+            Next
+        Next
+
+    End Sub
+
+    Private Sub ReiniciarPartida(ancho As Integer, alto As Integer)
+        For i = 0 To botones.GetLength(0) - 1
+            For j = 0 To botones.GetLength(1) - 1
+                Controls.Remove(botones(i, j))
+            Next
+        Next
+        GenerarBotones(ancho, alto)
     End Sub
 
     Private Sub BotonClicDerecho(sender As Object, e As MouseEventArgs)
+
         If e.Button = System.Windows.Forms.MouseButtons.Right Then
             sender.backgroundImage = Image.FromFile("../../img/banderita.png")
         End If
+
+
 
     End Sub
 
@@ -130,11 +154,13 @@ Public Class FrmJuego
     End Sub
 
     Private Sub btnReiniciar_Click(sender As Object, e As EventArgs) Handles btnReiniciar.Click
-        GenerarBotones(10, 10)
+        ReiniciarPartida(10, 10)
     End Sub
 
     Private Sub btnSalir_Click(sender As Object, e As EventArgs) Handles btnSalir.Click
         FrmConfiguracionDeJuego.Show()
         Me.Close()
     End Sub
+
+
 End Class
