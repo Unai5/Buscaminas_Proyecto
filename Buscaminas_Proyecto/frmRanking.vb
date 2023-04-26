@@ -5,7 +5,9 @@ Public Class frmRanking
     ReadOnly usr2 As New Usuario("Paula", "BBB")
     Public listaEjemplo As New List(Of Usuario) From {usr1, usr2}
     'meter ejemplos de usuarios y probar con ejemplos en el proyecto
-    Public ficheroFacil As New StreamWriter("C:\MyDiary.txt", True)
+    Public ficheroDificultadFacil As New StreamWriter("..\Unai5\Buscaminas_Proyecto", True)
+    Public ficheroDificultadMedia As New StreamWriter("..\Unai5\Buscaminas_Proyecto", True)
+    Public ficheroDificultadDificil As New StreamWriter("..\Unai5\Buscaminas_Proyecto", True)
     Private Sub frmRanking_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         For Each per In listaEjemplo
             lstRanking.Items.Add(per.Nombre)
