@@ -1,23 +1,24 @@
 ﻿Imports BibliotecaDeClases
 Public Class frmRanking
-    Dim usr1 As New Usuario("Pedro", "AAA")
-    Dim usr2 As New Usuario("Paula", "BBB")
+    ReadOnly usr1 As New Usuario("Pedro", "AAA")
+    ReadOnly usr2 As New Usuario("Paula", "BBB")
     Public listaEjemplo As New List(Of Usuario) From {usr1, usr2}
     'meter ejemplos de usuarios y probar con ejemplos en el proyecto
 
     Private Sub frmRanking_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        For Each per In listaEjemplo
+
+            lstRanking.Items.Add(per.Nombre)
+        Next
+
         btnRankingIndividual.Visible = False
         btnDificultad.Location = New Point(54, 188)
-        lstRanking.Items.Clear()
         btnDificultad.Text = "Dificultad"
         lblRanking.Text = "RANKING"
         lblRanking.Location = New Point(225, 22)
 
         'importar una clase de ejemplo para mostrara al inicio que sea visual
-        For Each per In listaEjemplo
 
-            lstRanking.Items.Add(per.Nombre)
-        Next
 
     End Sub
 
@@ -54,6 +55,7 @@ Public Class frmRanking
                 Exit Sub
             End If
         End If
+        lblRanking.Location = New Point(225 - (93 / 2), 22)
     End Sub
 
     Private Sub btnRankingIndividual_Click(sender As Object, e As EventArgs) Handles btnRankingIndividual.Click
@@ -75,14 +77,14 @@ Public Class frmRanking
         If lblRanking.Text = "RANKING" Then
             Me.Close()
         Else
-            lblRanking.Location = New Point()
+            lblRanking.Location = New Point(225, 22)
+            lblRanking.Text = "RANKING"
             btnRankingIndividual.Visible = False
             btnDificultad.Visible = True
             btnDificultad.Location = New Point(54, 188)
             lstRanking.Location = New Point(203, 74)
             lstRanking.Items.Clear()
             btnDificultad.Text = "Dificultad"
-            lblRanking.Text = "RANKING"
             Me.Show()
         End If
     End Sub
