@@ -6,3 +6,4 @@
         Me.ModoJuego = modojuego
     End Sub
 End Class
+facil -lucia /// hashcode
