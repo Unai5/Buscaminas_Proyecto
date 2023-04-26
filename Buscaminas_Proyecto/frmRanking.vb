@@ -9,48 +9,51 @@ Public Class frmRanking
     ''' </summary>
     Public listaEjemplo As New List(Of Usuario) From {usr1, usr2, usr3}
     Private Sub frmRanking_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        For Each per In listaEjemplo
+            lstRanking.Items.Add(per.Nombre)
+        Next
         'lstRanking.Items.Clear()
         btnRankingIndividual.Visible = False
         btnDificultad.Location = New Point(54, 188)
         btnDificultad.Text = "Dificultad"
         lblRanking.Text = "RANKING"
         lblRanking.Location = New Point(225, 22)
-        For Each per In listaEjemplo
-            lstRanking.Items.Add(per.Nombre)
-        Next
+
+
     End Sub
 
     Private Sub btnDificultad_Click(sender As Object, e As EventArgs) Handles btnDificultad.Click
         'lstRanking.Items.Clear()
 
         Dim titulo As String = "RANKING"
-        Dim a As String = "Fácil"
-        Dim b As String = "Medio"
-        Dim c As String = "Difícil"
+        Dim f As String = "Fácil"
+        Dim m As String = "Medio"
+        Dim d As String = "Difícil"
         If btnDificultad.Text = "Dificultad" Then
-            btnDificultad.Text = a
-            lblRanking.Text = $"{titulo} {a.ToUpper}"
+            btnDificultad.Text = f
+            lblRanking.Text = $"{titulo} {f.ToUpper}"
             btnRankingIndividual.Visible = True
             btnDificultad.Location = New Point(54, 153)
             btnRankingIndividual.Location = New Point(54, 232)
         Else
-            If btnDificultad.Text = $"{a}" Then
-                btnDificultad.Text = b
-                lblRanking.Text = $"{titulo} {b.ToUpper}"
+            If btnDificultad.Text = $"{f}" Then
+                btnDificultad.Text = m
+                lblRanking.Text = $"{titulo} {m.ToUpper}"
                 'Meter los ficheros
                 Exit Sub
             End If
-            If btnDificultad.Text.Contains(b) Then
-                btnDificultad.Text = c
-                lblRanking.Text = $"{titulo} {c.ToUpper}"
+            If btnDificultad.Text.Contains(m) Then
+                btnDificultad.Text = d
+                lblRanking.Text = $"{titulo} {d.ToUpper}"
                 Exit Sub
             End If
-            If btnDificultad.Text.Contains(c) Then
-                btnDificultad.Text = a
-                lblRanking.Text = $"{titulo} {a.ToUpper}"
+            If btnDificultad.Text.Contains(d) Then
+                btnDificultad.Text = f
+                lblRanking.Text = $"{titulo} {f.ToUpper}"
                 Exit Sub
             End If
         End If
+        lblRanking.Location = New Point(225 - (93 / 2), 22)
     End Sub
 
     Private Sub btnRankingIndividual_Click(sender As Object, e As EventArgs) Handles btnRankingIndividual.Click
