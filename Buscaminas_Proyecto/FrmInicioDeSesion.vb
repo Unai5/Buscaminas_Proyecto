@@ -1,7 +1,8 @@
 ﻿Imports System.IO
 Imports BibliotecaDeClases
 Public Class FrmInicioDeSesion
-    Private Sub btnAceptar_Click(sender As Object, e As EventArgs) Handles btnAceptar.Click
+    Public gestion1 As New GestionUsuario
+    Private Sub btnAceptar_Click(sender As Object, e As EventArgs) Handles btnIniciarSesion.Click
         If String.IsNullOrWhiteSpace(txtUsuario.Text) Then
             MessageBox.Show("Es necesario introducir un nombre de Usuario", "Error")
             Exit Sub
@@ -10,16 +11,11 @@ Public Class FrmInicioDeSesion
             MessageBox.Show("Es necesario introducir una contraseña", "Error")
             Exit Sub
         End If
-        Dim nuevoUsuario As New Usuario(txtUsuario.Text, txtContraseña.Text)
-        For Each usr In listaJugadores
-            If usr.Equals(nuevoUsuario) AndAlso usr.Contraseña = nuevoUsuario.Contraseña Then
-                jugador = usr
-                Exit Sub
-            End If
-        Next
-        listaJugadores.Add(nuevoUsuario)
-        jugador = nuevoUsuario
-        MessageBox.Show($"Bienvenido/a {nuevoUsuario.Nombre}")
+        If Not gestion1.ValidarUsuario(txtUsuario.Text, txtContraseña.Text) = "Sesión iniciada" Then
+            MessageBox.Show(gestion1.ValidarUsuario(txtUsuario.Text, txtContraseña.Text))
+            Exit Sub
+        End If
+        MessageBox.Show(gestion1.ValidarUsuario(txtUsuario.Text, txtContraseña.Text))
         FrmConfiguracionDeJuego.Show()
     End Sub
 
@@ -36,8 +32,7 @@ Public Class FrmInicioDeSesion
         txtUsuario.Clear()
     End Sub
 
-    Private Sub btnRankin_Click(sender As Object, e As EventArgs) Handles btnRankin.Click
-
-        frmRanking.Show()
+    Private Sub btnRankin_Click(sender As Object, e As EventArgs) Handles btnRegistrarse.Click
+        FrmRegistro.Show()
     End Sub
 End Class
