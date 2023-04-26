@@ -72,17 +72,15 @@ Public Class frmRanking
         If lblRanking.Text = "RANKING" Then
             Me.Close()
         Else
-            lblRanking.Location = New Point()
+            lblRanking.Location = New Point(225, 22)
+            lblRanking.Text = "RANKING"
             btnRankingIndividual.Visible = False
             btnDificultad.Visible = True
             btnDificultad.Location = New Point(54, 188)
             lstRanking.Location = New Point(203, 74)
             lstRanking.Items.Clear()
             btnDificultad.Text = "Dificultad"
-            lblRanking.Text = "RANKING"
-
             'Agregar el ranking de inicio 
-
         End If
     End Sub
 End Class
