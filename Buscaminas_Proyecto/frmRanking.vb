@@ -3,11 +3,9 @@ Imports BibliotecaDeClases
 Public Class frmRanking
     ReadOnly usr1 As New Usuario("Pedro", "AAA")
     ReadOnly usr2 As New Usuario("Paula", "BBB")
-    ReadOnly usr3 As New Usuario("Paco", "CCC")
-    ''' <summary>
-    ''' Ejemplo de lista, luego se importará la información de los ficheros
-    ''' </summary>
-    Public listaEjemplo As New List(Of Usuario) From {usr1, usr2, usr3}
+    Public listaEjemplo As New List(Of Usuario) From {usr1, usr2}
+    'meter ejemplos de usuarios y probar con ejemplos en el proyecto
+
     Private Sub frmRanking_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         For Each per In listaEjemplo
             lstRanking.Items.Add(per.Nombre)
@@ -83,7 +81,7 @@ Public Class frmRanking
             lstRanking.Location = New Point(203, 74)
             lstRanking.Items.Clear()
             btnDificultad.Text = "Dificultad"
-            'Agregar el ranking de inicio 
+            Me.Show()
         End If
     End Sub
 End Class
