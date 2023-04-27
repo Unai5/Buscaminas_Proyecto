@@ -5,85 +5,65 @@ Public Class frmRanking
     ReadOnly usr2 As New Usuario("Paula", "BBB")
     Public listaEjemplo As New List(Of Usuario) From {usr1, usr2}
     'meter ejemplos de usuarios y probar con ejemplos en el proyecto
-    Public ficheroDificultadFacil As New StreamWriter("..\Unai5\Buscaminas_Proyecto", True)
-    Public ficheroDificultadMedia As New StreamWriter("..\Unai5\Buscaminas_Proyecto", True)
-    Public ficheroDificultadDificil As New StreamWriter("..\Unai5\Buscaminas_Proyecto", True)
+    Public ficheroDificultadFacil As New StreamWriter("..\Ficheros\.txt", True)
+    Public ficheroDificultadMedia As New StreamWriter("..\Ficheros\.txt", True)
+    Public ficheroDificultadDificil As New StreamWriter(".\Ficheros\.txt", True)
     Private Sub frmRanking_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        F 'Dim nombre As String
+        ' Dim partidasDificultadFacil As 
+        'For i = 0 To partidasDificultadFacil
+        'nombre = partidasDificultadFacil(i)
+        'Next
         For Each per In listaEjemplo
             lstRanking.Items.Add(per.Nombre)
         Next
-        'lstRanking.Items.Clear()
-        btnRankingIndividual.Visible = False
-        btnDificultad.Location = New Point(54, 188)
-        btnDificultad.Text = "Dificultad"
-        lblRanking.Text = "RANKING"
-        lblRanking.Location = New Point(225, 22)
-
-
+        btnDificultad.Text = "Dificultad: Media"
+        lblRanking.Text = "RANKING FÁCIL"
     End Sub
 
     Private Sub btnDificultad_Click(sender As Object, e As EventArgs) Handles btnDificultad.Click
         'lstRanking.Items.Clear()
-
-        Dim titulo As String = "RANKING"
-        Dim f As String = "Fácil"
-        Dim m As String = "Medio"
-        Dim d As String = "Difícil"
-        If btnDificultad.Text = "Dificultad" Then
-            btnDificultad.Text = f
-            lblRanking.Text = $"{titulo} {f.ToUpper}"
-            btnRankingIndividual.Visible = True
-            btnDificultad.Location = New Point(54, 153)
-            btnRankingIndividual.Location = New Point(54, 232)
-        Else
-            If btnDificultad.Text = $"{f}" Then
-                btnDificultad.Text = m
-                lblRanking.Text = $"{titulo} {m.ToUpper}"
-                'Meter los ficheros
-                Exit Sub
-            End If
-            If btnDificultad.Text.Contains(m) Then
-                btnDificultad.Text = d
-                lblRanking.Text = $"{titulo} {d.ToUpper}"
-                Exit Sub
-            End If
-            If btnDificultad.Text.Contains(d) Then
-                btnDificultad.Text = f
-                lblRanking.Text = $"{titulo} {f.ToUpper}"
-                Exit Sub
-            End If
+        Dim a As String = "Fácil"
+        Dim b As String = "Medio"
+        Dim c As String = "Difícil"
+        If lblRanking.Text.Substring(8) = a.ToUpper Then
+            btnDificultad.Text = $"Dificultad: {c}"
+            lblRanking.Text = $"RANKING {b.ToUpper}"
+        ElseIf lblRanking.Text.Substring(8) = b.ToUpper Then
+            btnDificultad.Text = $"Dificultad: {a}"
+            lblRanking.Text = $"RANKING {c.ToUpper}"
+        ElseIf lblRanking.Text.Substring(8) = c.ToUpper Then
+            btnDificultad.Text = $"Dificultad: {b}"
+            lblRanking.Text = $"RANKING {a.ToUpper}"
         End If
-        lblRanking.Location = New Point(225 - (93 / 2), 22)
+        lblRanking.Location = New Point(226 - (lblRanking.Width / 2), 26)
     End Sub
 
-    Private Sub btnRankingIndividual_Click(sender As Object, e As EventArgs) Handles btnRankingIndividual.Click
+    Private Sub btnVolver_Click(sender As Object, e As EventArgs) Handles btnVolver.Click
+        If btnDificultad.Visible = True Then
+            Me.Close()
+        Else
+            lstRanking.Items.Clear()
+            lblRanking.Text = "RANKING FÁCIL"
+            btnDificultad.Text = "Dificultad: Media"
+            'cargar los datos
+            For Each per In listaEjemplo
+                lstRanking.Items.Add(per.Nombre)
+            Next
+            btnDificultad.Visible = True
+            btnDificultad.Location = New Point(74, 391)
+            btnVolver.Location = New Point(358, 392)
+
+        End If
+    End Sub
+    Private Sub lstRanking_DoubleClick(sender As Object, e As EventArgs) Handles lstRanking.DoubleClick
         If lstRanking.SelectedItem = "" OrElse lstRanking.SelectedItem Is Nothing Then
             MessageBox.Show($"No has seleccionado a nadie", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
         Else
             btnDificultad.Visible = False
-            btnRankingIndividual.Visible = False
-            lstRanking.Location = New Point(141, 74)
-            lblRanking.Text = $"RANKING DE {lstRanking.SelectedItem}"
-            lblRanking.Location = New Point(225 - (93 / 2), 22)
-            'Ahora funciona, con ficheros no, sacar el nombre de la persona selecionada de otro sitio
+            btnVolver.Location = New Point(218, 392)
 
-            'importar todos los resultados
-        End If
-    End Sub
-
-    Private Sub btnVolver_Click(sender As Object, e As EventArgs) Handles btnVolver.Click
-        If lblRanking.Text = "RANKING" Then
-            Me.Close()
-        Else
-            lblRanking.Location = New Point(225, 22)
-            lblRanking.Text = "RANKING"
-            btnRankingIndividual.Visible = False
-            btnDificultad.Visible = True
-            btnDificultad.Location = New Point(54, 188)
-            lstRanking.Location = New Point(203, 74)
-            lstRanking.Items.Clear()
-            btnDificultad.Text = "Dificultad"
-            Me.Show()
+            lblRanking.Text = $"RANKING DE {lstRanking.SelectedItem.ToString.ToUpper}"
         End If
     End Sub
 End Class
