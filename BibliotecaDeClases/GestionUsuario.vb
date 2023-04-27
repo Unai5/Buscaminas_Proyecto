@@ -9,9 +9,12 @@ Public Class GestionUsuario
     End Property
 
     Public Sub New()
-        Dim ficheroR As New StreamReader("C:\Users\inazi\Source\Repos\Unai5\Buscaminas_Proyecto\Buscaminas_Proyecto\Ficheros\TodosLosUsuarios.txt")
+        'TODO ¿Que pasa si no existe el fichero
+        Dim ficheroR As New StreamReader(".\Ficheros\TodosLosUsuarios.txt")
         Do Until ficheroR.EndOfStream
             Dim linea As String = ficheroR.ReadLine
+
+            'Que pasa si no hay asteriscos y solo hay un campo
             Dim datosLinea() As String = linea.Split("*")
             _Usuarios.Add(New Usuario(datosLinea(0), datosLinea(1)))
         Loop
@@ -29,7 +32,7 @@ Public Class GestionUsuario
             End If
         Next
         _Usuarios.Add(nuevo)
-        Dim ficheroW As New StreamWriter("C:\Users\inazi\Source\Repos\Unai5\Buscaminas_Proyecto\Buscaminas_Proyecto\Ficheros\TodosLosUsuarios.txt")
+        Dim ficheroW As New StreamWriter(".\Ficheros\TodosLosUsuarios.txt")
         For Each usu As Usuario In Usuarios
             ficheroW.WriteLine(usu.Nombre & "*" & usu.Contraseña)
         Next
@@ -45,5 +48,8 @@ Public Class GestionUsuario
         Next
         Return "No existe el usuario, no se puede iniciar sesion"
     End Function
+
+
+
 
 End Class
