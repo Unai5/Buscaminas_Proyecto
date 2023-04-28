@@ -5,11 +5,9 @@ Public Class frmRanking
     ReadOnly usr2 As New Usuario("Paula", "BBB")
     Public listaEjemplo As New List(Of Usuario) From {usr1, usr2}
     'meter ejemplos de usuarios y probar con ejemplos en el proyecto
-    Public ficheroDificultadFacil As New StreamWriter("..\Ficheros\.txt", True)
-    Public ficheroDificultadMedia As New StreamWriter("..\Ficheros\.txt", True)
-    Public ficheroDificultadDificil As New StreamWriter(".\Ficheros\.txt", True)
+
     Private Sub frmRanking_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        F 'Dim nombre As String
+        'Dim nombre As String
         ' Dim partidasDificultadFacil As 
         'For i = 0 To partidasDificultadFacil
         'nombre = partidasDificultadFacil(i)

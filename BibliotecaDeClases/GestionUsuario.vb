@@ -1,8 +1,7 @@
 ﻿Imports System
 Imports System.IO
+
 Public Class GestionUsuario
-    Public ficheroUsuarios As New StreamWriter(".\Ficheros\TodosLosUsuarios.txt")
-    Public ficheroPartidas As New StreamWriter(".\Ficheros\Partidas.txt")
     Private _Usuarios As New List(Of Usuario)
     Public ReadOnly Property Usuarios As ObjectModel.ReadOnlyCollection(Of Usuario)
         Get
@@ -12,6 +11,7 @@ Public Class GestionUsuario
 
     Public Sub New()
         'TODO ¿Que pasa si no existe el fichero
+
         Dim ficheroR As New StreamReader(".\Ficheros\TodosLosUsuarios.txt")
         Do Until ficheroR.EndOfStream
             Dim linea As String = ficheroR.ReadLine
@@ -36,7 +36,7 @@ Public Class GestionUsuario
         _Usuarios.Add(nuevo)
 
         For Each usu As Usuario In Usuarios
-            ficheroUsuarios.WriteLine(usu.Nombre & "*" & usu.Contraseña)
+            'ficheroUsuarios.WriteLine(usu.Nombre & "*" & usu.Contraseña)
         Next
         Return "Usuario creado"
     End Function
@@ -52,12 +52,12 @@ Public Class GestionUsuario
 
     Public Function OrdenarFichero(nombreFichero As String)
         Dim ficheroSinOrdenar As New StreamWriter($".\Ficheros\{nombreFichero}")
-        For i = 0 To ficheroSinOrdenar
+
     End Function
     Public Function AnadirPartida(tiempo As String, usuario As String, modoJuego As String)
-        For Each usu As Usuario In Usuarios
-            ficheroPartidas.WriteLine(tiempo & "*" & usuario & "*" & modoJuego)
-        Next
+        'For Each usu As Usuario In Usuarios
+        '    ficheroPartidas.WriteLine(tiempo & "*" & usuario & "*" & modoJuego)
+        'Next
     End Function
 
 End Class
