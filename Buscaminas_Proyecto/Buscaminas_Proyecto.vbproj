@@ -158,12 +158,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BibliotecaDeClases\BibliotecaDeClases.vbproj">
-      <Project>{d7649845-e29c-4126-90ee-2469f3aaa3f6}</Project>
-      <Name>BibliotecaDeClases</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Ficheros\TodosLosUsuarios.txt" />
     <None Include="Resources\1674235618744.png" />
   </ItemGroup>
