@@ -62,7 +62,6 @@ Public Class frmRanking
         Else
             btnDificultad.Visible = False
             btnVolver.Location = New Point(218, 392)
-
             lblRanking.Text = $"RANKING DE {lstRanking.SelectedItem.ToString.ToUpper}"
         End If
     End Sub

@@ -1,6 +1,8 @@
-﻿Imports System.IO
+﻿Imports System
+Imports System.IO
 Public Class GestionUsuario
-
+    Public ficheroUsuarios As New StreamWriter(".\Ficheros\TodosLosUsuarios.txt")
+    Public ficheroPartidas As New StreamWriter(".\Ficheros\Partidas.txt")
     Private _Usuarios As New List(Of Usuario)
     Public ReadOnly Property Usuarios As ObjectModel.ReadOnlyCollection(Of Usuario)
         Get
@@ -32,11 +34,10 @@ Public Class GestionUsuario
             End If
         Next
         _Usuarios.Add(nuevo)
-        Dim ficheroW As New StreamWriter(".\Ficheros\TodosLosUsuarios.txt")
+
         For Each usu As Usuario In Usuarios
-            ficheroW.WriteLine(usu.Nombre & "*" & usu.Contraseña)
+            ficheroUsuarios.WriteLine(usu.Nombre & "*" & usu.Contraseña)
         Next
-        ficheroW.Close()
         Return "Usuario creado"
     End Function
 
@@ -49,7 +50,14 @@ Public Class GestionUsuario
         Return "No existe el usuario, no se puede iniciar sesion"
     End Function
 
-
-
+    Public Function OrdenarFichero(nombreFichero As String)
+        Dim ficheroSinOrdenar As New StreamWriter($".\Ficheros\{nombreFichero}")
+        For i = 0 To ficheroSinOrdenar
+    End Function
+    Public Function AnadirPartida(tiempo As String, usuario As String, modoJuego As String)
+        For Each usu As Usuario In Usuarios
+            ficheroPartidas.WriteLine(tiempo & "*" & usuario & "*" & modoJuego)
+        Next
+    End Function
 
 End Class
