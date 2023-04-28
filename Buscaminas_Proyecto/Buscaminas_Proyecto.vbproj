@@ -158,7 +158,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Ficheros\TodosLosUsuarios.txt" />
+    <Content Include="Ficheros\TodosLosUsuarios.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="Resources\1674235618744.png" />
   </ItemGroup>
   <ItemGroup>
