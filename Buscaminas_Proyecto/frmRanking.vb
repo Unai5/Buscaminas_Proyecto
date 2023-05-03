@@ -12,6 +12,7 @@ Public Class frmRanking
         'For i = 0 To partidasDificultadFacil
         'nombre = partidasDificultadFacil(i)
         'Next
+        'Controlar si el fichero esta vacio
         For Each per In listaEjemplo
             lstRanking.Items.Add(per.Nombre)
         Next
@@ -42,18 +43,18 @@ Public Class frmRanking
         If btnDificultad.Visible = True Then
             Me.Close()
         Else
-            lstRanking.Items.Clear()
-            lblRanking.Text = "RANKING FÁCIL"
-            btnDificultad.Text = "Dificultad: Media"
-            'cargar los datos
-            For Each per In listaEjemplo
-                lstRanking.Items.Add(per.Nombre)
-            Next
-            btnDificultad.Visible = True
-            btnDificultad.Location = New Point(56, 384)
-            btnVolver.Location = New Point(346, 386)
-
         End If
+        lstRanking.Items.Clear()
+        lblRanking.Text = "RANKING FÁCIL"
+        btnDificultad.Text = "Dificultad: Media"
+        'cargar los datos
+        For Each per In listaEjemplo
+            lstRanking.Items.Add(per.Nombre)
+        Next
+        btnDificultad.Visible = True
+        btnDificultad.Location = New Point(56, 384)
+        btnVolver.Location = New Point(346, 386)
+
     End Sub
     Private Sub lstRanking_DoubleClick(sender As Object, e As EventArgs) Handles lstRanking.DoubleClick
         If lstRanking.SelectedItem = "" OrElse lstRanking.SelectedItem Is Nothing Then
@@ -62,7 +63,12 @@ Public Class frmRanking
             btnDificultad.Visible = False
             btnVolver.Location = New Point(217, 386)
             lblRanking.Text = $"RANKING DE {lstRanking.SelectedItem.ToString.ToUpper}"
-            lblRanking.Location = New Point(225 - (lblRanking.Width / 6), 22)
+            If lstRanking.SelectedItem.ToString.Length > 10 Then
+                lblRanking.Location = New Point(225 - (lblRanking.Width / 4), 22)
+            Else
+                lblRanking.Location = New Point(225 - (lblRanking.Width / 6), 22)
+            End If
+
         End If
     End Sub
 End Class
