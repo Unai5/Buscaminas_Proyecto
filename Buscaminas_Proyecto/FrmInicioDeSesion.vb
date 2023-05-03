@@ -2,7 +2,8 @@
 Imports BibliotecaDeClases
 Public Class FrmInicioDeSesion
     Public gestion1 As New GestionUsuario
-    Const caracteresInvalidos = "*/-+.=)(\^¿?$%&·#@|!¡[]_€"
+    Const caracteresValidos = ""
+    'Añadir abecedario mayusculas y minusculas, tildes y numeros
     Private Sub btnAceptar_Click(sender As Object, e As EventArgs) Handles btnIniciarSesion.Click
         If String.IsNullOrWhiteSpace(txtUsuario.Text) Then
             MessageBox.Show("Introduce usuario", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
@@ -18,14 +19,18 @@ Public Class FrmInicioDeSesion
             MessageBox.Show("Introduce contraseña", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Exit Sub
         End If
-        For i = 0 To caracteresInvalidos.Length - 1
-            If txtContraseña.Text.Contains(caracteresInvalidos(i)) Then
-                MessageBox.Show("La contraseña no es válida", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-                txtContraseña.Clear()
-                txtContraseña.Focus()
-                Exit Sub
+        Dim errores As Integer = 0
+        For i = 0 To caracteresValidos.Length - 1
+            If txtContraseña.Text.Contains(caracteresValidos(i)) = False Then
+                errores += 1
             End If
         Next
+        If errores > 0 Then
+            MessageBox.Show("La contraseña no es válida", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            txtContraseña.Clear()
+            txtContraseña.Focus()
+            Exit Sub
+        End If
         If Not gestion1.ValidarUsuario(txtUsuario.Text, txtContraseña.Text) = "Sesión iniciada" Then
             MessageBox.Show(gestion1.ValidarUsuario(txtUsuario.Text, txtContraseña.Text))
             Exit Sub
@@ -66,5 +71,4 @@ Public Class FrmInicioDeSesion
         End If
         FrmRegistro.Show()
     End Sub
-
 End Class
