@@ -68,7 +68,6 @@ Public Class frmRanking
             Else
                 lblRanking.Location = New Point(225 - (lblRanking.Width / 6), 22)
             End If
-
         End If
     End Sub
 End Class
