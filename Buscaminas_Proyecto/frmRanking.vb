@@ -4,11 +4,10 @@ Public Class frmRanking
     ReadOnly usr1 As New Usuario("Pedro", "AAA")
     ReadOnly usr2 As New Usuario("Paula", "BBB")
     Public listaEjemplo As New List(Of Usuario) From {usr1, usr2}
-    'meter ejemplos de usuarios y probar con ejemplos en el proyecto
 
     Private Sub frmRanking_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'Dim nombre As String
-        ' Dim partidasDificultadFacil As 
+        ' Dim partidasDificultadFacil As StreamReader()
         'For i = 0 To partidasDificultadFacil
         'nombre = partidasDificultadFacil(i)
         'Next
@@ -17,6 +16,7 @@ Public Class frmRanking
         Next
         btnDificultad.Text = "Dificultad: Media"
         lblRanking.Text = "RANKING FÁCIL"
+        lblRanking.Location = New Point(225 - (lblRanking.Width / 6), 22)
     End Sub
 
     Private Sub btnDificultad_Click(sender As Object, e As EventArgs) Handles btnDificultad.Click
@@ -34,7 +34,7 @@ Public Class frmRanking
             btnDificultad.Text = $"Dificultad: {b}"
             lblRanking.Text = $"RANKING {a.ToUpper}"
         End If
-        lblRanking.Location = New Point(226 - (lblRanking.Width / 2), 26)
+        lblRanking.Location = New Point(225 - (lblRanking.Width / 6), 22)
     End Sub
 
     Private Sub btnVolver_Click(sender As Object, e As EventArgs) Handles btnVolver.Click
@@ -49,8 +49,8 @@ Public Class frmRanking
                 lstRanking.Items.Add(per.Nombre)
             Next
             btnDificultad.Visible = True
-            btnDificultad.Location = New Point(74, 391)
-            btnVolver.Location = New Point(358, 392)
+            btnDificultad.Location = New Point(56, 384)
+            btnVolver.Location = New Point(346, 386)
 
         End If
     End Sub
@@ -59,7 +59,7 @@ Public Class frmRanking
             MessageBox.Show($"No has seleccionado a nadie", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
         Else
             btnDificultad.Visible = False
-            btnVolver.Location = New Point(218, 392)
+            btnVolver.Location = New Point(217, 386)
             lblRanking.Text = $"RANKING DE {lstRanking.SelectedItem.ToString.ToUpper}"
         End If
     End Sub
