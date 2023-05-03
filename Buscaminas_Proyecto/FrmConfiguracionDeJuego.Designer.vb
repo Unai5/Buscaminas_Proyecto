@@ -35,10 +35,9 @@ Partial Class FrmConfiguracionDeJuego
         '
         Me.radButtNormal.AutoSize = True
         Me.radButtNormal.Font = New System.Drawing.Font("Microsoft Tai Le", 9.75!)
-        Me.radButtNormal.Location = New System.Drawing.Point(415, 198)
-        Me.radButtNormal.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.radButtNormal.Location = New System.Drawing.Point(311, 161)
         Me.radButtNormal.Name = "radButtNormal"
-        Me.radButtNormal.Size = New System.Drawing.Size(88, 26)
+        Me.radButtNormal.Size = New System.Drawing.Size(69, 20)
         Me.radButtNormal.TabIndex = 4
         Me.radButtNormal.TabStop = True
         Me.radButtNormal.Text = "Normal"
@@ -48,10 +47,9 @@ Partial Class FrmConfiguracionDeJuego
         '
         Me.radButtFacil.AutoSize = True
         Me.radButtFacil.Font = New System.Drawing.Font("Microsoft Tai Le", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.radButtFacil.Location = New System.Drawing.Point(415, 144)
-        Me.radButtFacil.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.radButtFacil.Location = New System.Drawing.Point(311, 117)
         Me.radButtFacil.Name = "radButtFacil"
-        Me.radButtFacil.Size = New System.Drawing.Size(64, 26)
+        Me.radButtFacil.Size = New System.Drawing.Size(50, 20)
         Me.radButtFacil.TabIndex = 5
         Me.radButtFacil.TabStop = True
         Me.radButtFacil.Text = "Fácil"
@@ -61,10 +59,9 @@ Partial Class FrmConfiguracionDeJuego
         '
         Me.radButtDificil.AutoSize = True
         Me.radButtDificil.Font = New System.Drawing.Font("Microsoft Tai Le", 9.75!)
-        Me.radButtDificil.Location = New System.Drawing.Point(415, 256)
-        Me.radButtDificil.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.radButtDificil.Location = New System.Drawing.Point(311, 208)
         Me.radButtDificil.Name = "radButtDificil"
-        Me.radButtDificil.Size = New System.Drawing.Size(72, 26)
+        Me.radButtDificil.Size = New System.Drawing.Size(56, 20)
         Me.radButtDificil.TabIndex = 6
         Me.radButtDificil.TabStop = True
         Me.radButtDificil.Text = "Difícil"
@@ -74,10 +71,9 @@ Partial Class FrmConfiguracionDeJuego
         '
         Me.lblDificultad.AutoSize = True
         Me.lblDificultad.Font = New System.Drawing.Font("Cooper Black", 12.0!)
-        Me.lblDificultad.Location = New System.Drawing.Point(176, 142)
-        Me.lblDificultad.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblDificultad.Location = New System.Drawing.Point(132, 115)
         Me.lblDificultad.Name = "lblDificultad"
-        Me.lblDificultad.Size = New System.Drawing.Size(113, 23)
+        Me.lblDificultad.Size = New System.Drawing.Size(92, 19)
         Me.lblDificultad.TabIndex = 7
         Me.lblDificultad.Text = "Dificultad"
         '
@@ -85,10 +81,9 @@ Partial Class FrmConfiguracionDeJuego
         '
         Me.lblTitulo.AutoSize = True
         Me.lblTitulo.Font = New System.Drawing.Font("Cooper Black", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTitulo.Location = New System.Drawing.Point(140, 46)
-        Me.lblTitulo.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblTitulo.Location = New System.Drawing.Point(105, 37)
         Me.lblTitulo.Name = "lblTitulo"
-        Me.lblTitulo.Size = New System.Drawing.Size(438, 27)
+        Me.lblTitulo.Size = New System.Drawing.Size(349, 21)
         Me.lblTitulo.TabIndex = 9
         Me.lblTitulo.Text = "SELECCIONA EL MODO DE JUEGO"
         '
@@ -96,10 +91,9 @@ Partial Class FrmConfiguracionDeJuego
         '
         Me.btnAceptar.BackColor = System.Drawing.SystemColors.ButtonHighlight
         Me.btnAceptar.Font = New System.Drawing.Font("Cooper Black", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnAceptar.Location = New System.Drawing.Point(200, 346)
-        Me.btnAceptar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnAceptar.Location = New System.Drawing.Point(150, 281)
         Me.btnAceptar.Name = "btnAceptar"
-        Me.btnAceptar.Size = New System.Drawing.Size(125, 46)
+        Me.btnAceptar.Size = New System.Drawing.Size(94, 37)
         Me.btnAceptar.TabIndex = 11
         Me.btnAceptar.Text = "Aceptar"
         Me.btnAceptar.UseVisualStyleBackColor = False
@@ -108,19 +102,18 @@ Partial Class FrmConfiguracionDeJuego
         '
         Me.btnVolver.BackColor = System.Drawing.SystemColors.ButtonHighlight
         Me.btnVolver.Font = New System.Drawing.Font("Cooper Black", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnVolver.Location = New System.Drawing.Point(415, 346)
-        Me.btnVolver.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnVolver.Location = New System.Drawing.Point(311, 281)
         Me.btnVolver.Name = "btnVolver"
-        Me.btnVolver.Size = New System.Drawing.Size(125, 46)
+        Me.btnVolver.Size = New System.Drawing.Size(94, 37)
         Me.btnVolver.TabIndex = 12
         Me.btnVolver.Text = "Volver"
         Me.btnVolver.UseVisualStyleBackColor = False
         '
         'FrmConfiguracionDeJuego
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(727, 530)
+        Me.ClientSize = New System.Drawing.Size(545, 431)
         Me.Controls.Add(Me.btnVolver)
         Me.Controls.Add(Me.btnAceptar)
         Me.Controls.Add(Me.lblTitulo)
@@ -128,7 +121,6 @@ Partial Class FrmConfiguracionDeJuego
         Me.Controls.Add(Me.radButtDificil)
         Me.Controls.Add(Me.radButtFacil)
         Me.Controls.Add(Me.radButtNormal)
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Name = "FrmConfiguracionDeJuego"
         Me.Text = "Form1"
         Me.ResumeLayout(False)

@@ -19,4 +19,8 @@
         MessageBox.Show(FrmInicioDeSesion.gestion1.AñadirUsuario(txtNuevoUsuario.Text, txtNuevaContraseña.Text))
         Me.Close()
     End Sub
+
+    Private Sub FrmRegistro_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    End Sub
 End Class

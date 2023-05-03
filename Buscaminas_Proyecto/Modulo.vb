@@ -4,6 +4,7 @@ Module Modulo
     'Public listaJugadores As New List(Of Usuario)
 
     Public jugador As Usuario
+
     Public botones(9, 9) As Button
 
 

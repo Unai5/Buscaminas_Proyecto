@@ -28,18 +28,21 @@ Partial Class FrmJuego
         '
         'btnReiniciar
         '
+        Me.btnReiniciar.Font = New System.Drawing.Font("Cooper Black", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnReiniciar.Location = New System.Drawing.Point(293, 340)
         Me.btnReiniciar.Name = "btnReiniciar"
-        Me.btnReiniciar.Size = New System.Drawing.Size(75, 23)
+        Me.btnReiniciar.Size = New System.Drawing.Size(117, 29)
         Me.btnReiniciar.TabIndex = 0
         Me.btnReiniciar.Text = "REINICIAR"
         Me.btnReiniciar.UseVisualStyleBackColor = True
         '
         'btnSalir
         '
-        Me.btnSalir.Location = New System.Drawing.Point(109, 340)
+        Me.btnSalir.Font = New System.Drawing.Font("Cooper Black", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnSalir.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.btnSalir.Location = New System.Drawing.Point(83, 340)
         Me.btnSalir.Name = "btnSalir"
-        Me.btnSalir.Size = New System.Drawing.Size(75, 23)
+        Me.btnSalir.Size = New System.Drawing.Size(91, 29)
         Me.btnSalir.TabIndex = 1
         Me.btnSalir.Text = "SALIR"
         Me.btnSalir.UseVisualStyleBackColor = True
