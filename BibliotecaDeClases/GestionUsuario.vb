@@ -13,6 +13,7 @@ Public Class GestionUsuario
         'TODO ¿Que pasa si no existe el fichero
 
         Dim ficheroR As New StreamReader(".\Ficheros\TodosLosUsuarios.txt")
+
         Do Until ficheroR.EndOfStream
             Dim linea As String = ficheroR.ReadLine
 
@@ -20,7 +21,9 @@ Public Class GestionUsuario
             Dim datosLinea() As String = linea.Split("*")
             _Usuarios.Add(New Usuario(datosLinea(0), datosLinea(1)))
         Loop
+
         ficheroR.Close()
+
     End Sub
 
     Public Function AñadirUsuario(nombre As String, contraseña As String) As String

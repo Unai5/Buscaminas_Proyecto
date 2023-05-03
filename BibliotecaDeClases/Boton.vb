@@ -4,7 +4,9 @@ Public Class Boton
 
 
 
+    Public Sub New()
 
+    End Sub
 
 
 
