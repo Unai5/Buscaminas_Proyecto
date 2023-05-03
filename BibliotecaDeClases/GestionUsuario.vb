@@ -14,12 +14,15 @@ Public Class GestionUsuario
         'TODO Que pasa si no hay asteriscos y solo hay un campo
 
         Dim ficheroR As New StreamReader(".\Ficheros\TodosLosUsuarios.txt")
+
         Do Until ficheroR.EndOfStream
             Dim linea As String = ficheroR.ReadLine
             Dim datosLinea() As String = linea.Split("*")
             _Usuarios.Add(New Usuario(datosLinea(0), datosLinea(1)))
         Loop
+
         ficheroR.Close()
+
     End Sub
 
     Public Function AñadirUsuario(nombre As String, contraseña As String) As String
