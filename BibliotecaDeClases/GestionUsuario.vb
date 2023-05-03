@@ -53,7 +53,7 @@ Public Class GestionUsuario
     End Function
 
     Public Function OrdenarFichero(nombreFichero As String)
-        Dim ficheroSinOrdenar As StreamReader(".\Ficheros\" + nombreFichero)
+        'Dim ficheroSinOrdenar As StreamReader(".\Ficheros\" + nombreFichero)
 
     End Function
     Public Function AnadirPartida(tiempo As String, usuario As String, modoJuego As String)
