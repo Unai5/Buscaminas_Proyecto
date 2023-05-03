@@ -11,12 +11,11 @@ Public Class GestionUsuario
 
     Public Sub New()
         'TODO ¿Que pasa si no existe el fichero
+        'TODO Que pasa si no hay asteriscos y solo hay un campo
 
         Dim ficheroR As New StreamReader(".\Ficheros\TodosLosUsuarios.txt")
         Do Until ficheroR.EndOfStream
             Dim linea As String = ficheroR.ReadLine
-
-            'Que pasa si no hay asteriscos y solo hay un campo
             Dim datosLinea() As String = linea.Split("*")
             _Usuarios.Add(New Usuario(datosLinea(0), datosLinea(1)))
         Loop
@@ -51,8 +50,8 @@ Public Class GestionUsuario
     End Function
 
     Public Function OrdenarFichero(nombreFichero As String)
-        Dim ficheroSinOrdenar As New StreamWriter($".\Ficheros\{nombreFichero}")
-
+        Dim ficheroSinOrdenar As StreamReader = ($".\Ficheros\{nombreFichero}")
+        For i = 0 To ficheroSinOrdenar
     End Function
     Public Function AnadirPartida(tiempo As String, usuario As String, modoJuego As String)
         'For Each usu As Usuario In Usuarios
