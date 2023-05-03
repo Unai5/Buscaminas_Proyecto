@@ -3,7 +3,8 @@ Imports BibliotecaDeClases
 Public Class frmRanking
     ReadOnly usr1 As New Usuario("Pedro", "AAA")
     ReadOnly usr2 As New Usuario("Paula", "BBB")
-    Public listaEjemplo As New List(Of Usuario) From {usr1, usr2}
+    ReadOnly usr3 As New Usuario("Aaaaaaaaaaa", "CCC")
+    Public listaEjemplo As New List(Of Usuario) From {usr1, usr2, usr3}
 
     Private Sub frmRanking_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'Dim nombre As String
@@ -61,6 +62,7 @@ Public Class frmRanking
             btnDificultad.Visible = False
             btnVolver.Location = New Point(217, 386)
             lblRanking.Text = $"RANKING DE {lstRanking.SelectedItem.ToString.ToUpper}"
+            lblRanking.Location = New Point(225 - (lblRanking.Width / 6), 22)
         End If
     End Sub
 End Class

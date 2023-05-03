@@ -8,6 +8,12 @@ Public Class FrmInicioDeSesion
             MessageBox.Show("Introduce usuario", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Exit Sub
         End If
+        If txtUsuario.Text.Length > 14 Then
+            MessageBox.Show("El nombre de usuario supera la longitud máxima", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            txtUsuario.Clear()
+            txtUsuario.Focus()
+            Exit Sub
+        End If
         If String.IsNullOrWhiteSpace(txtContraseña.Text) Then
             MessageBox.Show("Introduce contraseña", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Exit Sub
@@ -60,4 +66,5 @@ Public Class FrmInicioDeSesion
         End If
         FrmRegistro.Show()
     End Sub
+
 End Class
