@@ -53,10 +53,8 @@ Public Class GestionUsuario
     End Function
 
     Public Function OrdenarFichero(nombreFichero As String)
-        'Dim ficheroSinOrdenar As StreamReader = ($".\Ficheros\{nombreFichero}")
-        'For i = 0 To ficheroSinOrdenar
+        'Dim ficheroSinOrdenar As StreamReader(".\Ficheros\" + nombreFichero)
 
-        'Next
     End Function
     Public Function AnadirPartida(tiempo As String, usuario As String, modoJuego As String)
         'For Each usu As Usuario In Usuarios
