@@ -4,11 +4,11 @@ Public Class FrmInicioDeSesion
     Public gestion1 As New GestionUsuario
     Private Sub btnAceptar_Click(sender As Object, e As EventArgs) Handles btnIniciarSesion.Click
         If String.IsNullOrWhiteSpace(txtUsuario.Text) Then
-            MessageBox.Show("Es necesario introducir un nombre de Usuario", "Error")
+            MessageBox.Show("Es necesario introducir un nombre de Usuario", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Exit Sub
         End If
         If String.IsNullOrWhiteSpace(txtContraseña.Text) Then
-            MessageBox.Show("Es necesario introducir una contraseña", "Error")
+            MessageBox.Show("Es necesario introducir una contraseña", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Exit Sub
         End If
         If Not gestion1.ValidarUsuario(txtUsuario.Text, txtContraseña.Text) = "Sesión iniciada" Then
@@ -31,8 +31,18 @@ Public Class FrmInicioDeSesion
         txtContraseña.Clear()
         txtUsuario.Clear()
     End Sub
-
+    Const caracteresInvalidos = "*/-+.=)(\^¿?$%&·#@|!¡[]_€"
     Private Sub btnRankin_Click(sender As Object, e As EventArgs) Handles btnRegistrarse.Click
+        For i = 0 To caracteresInvalidos.Length - 1
+            If txtContraseña.Text.Contains(caracteresInvalidos(i)) Then
+                MessageBox.Show("La contraseña no es válida", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                Exit Sub
+            End If
+        Next
+        If txtContraseña.Text = "" OrElse txtUsuario.Text = "" Then
+            MessageBox.Show("Faltan datos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Exit Sub
+        End If
         FrmRegistro.Show()
     End Sub
 End Class
