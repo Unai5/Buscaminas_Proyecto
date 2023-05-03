@@ -10,6 +10,8 @@ Module Modulo
 
     Public dificultad As Integer
 
+    Public temporizador As Timer
+
 
 
 

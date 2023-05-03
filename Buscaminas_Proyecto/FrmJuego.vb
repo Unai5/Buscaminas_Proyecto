@@ -17,26 +17,24 @@ Public Class FrmJuego
         MaximizeBox = False
         AutoSizeMode = AutoSizeMode.GrowAndShrink
 
-
-
-
         If dificultad = 1 Then
-            Me.Size = New Size(270, 340)
-            Me.btnReiniciar.Location = New Point(20, 250)
-            Me.btnSalir.Location = New Point(150, 250)
+
+            Me.Size = New Size(270, 360)
+            Me.btnReiniciar.Location = New Point(20, 270)
+            Me.btnSalir.Location = New Point(150, 270)
 
             GenerarBotones(NivelDificultad.FACIL, NivelDificultad.FACIL)
 
         ElseIf dificultad = 3 Then
-            Me.Size = New Size(520, 590)
-            Me.btnReiniciar.Location = New Point(60, 500)
-            Me.btnSalir.Location = New Point(300, 500)
+            Me.Size = New Size(520, 610)
+            Me.btnReiniciar.Location = New Point(60, 520)
+            Me.btnSalir.Location = New Point(300, 520)
             GenerarBotones(16, 16)
 
         Else
-            Me.Size = New Size(350, 430)
-            Me.btnReiniciar.Location = New Point(40, 340)
-            Me.btnSalir.Location = New Point(200, 340)
+            Me.Size = New Size(350, 450)
+            Me.btnReiniciar.Location = New Point(40, 360)
+            Me.btnSalir.Location = New Point(200, 360)
             GenerarBotones(10, 10)
 
         End If
@@ -121,7 +119,7 @@ Public Class FrmJuego
         For i = 0 To botones.GetLength(0) - 1
             For j = 0 To botones.GetLength(1) - 1
                 Controls.Add(botones(i, j))
-                botones(i, j).Location = New Point((i + 1) * 28, (j + 1) * 28)
+                botones(i, j).Location = New Point((i + 1) * 28, (j + 1) * 28 + 20)
             Next
         Next
 
