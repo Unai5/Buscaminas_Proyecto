@@ -26,6 +26,7 @@ Partial Class frmRanking
         Me.lstRanking = New System.Windows.Forms.ListBox()
         Me.btnDificultad = New System.Windows.Forms.Button()
         Me.btnVolver = New System.Windows.Forms.Button()
+        Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
         Me.SuspendLayout()
         '
         'lblRanking
@@ -93,4 +94,5 @@ Partial Class frmRanking
     Friend WithEvents lstRanking As ListBox
     Friend WithEvents btnDificultad As Button
     Friend WithEvents btnVolver As Button
+    Friend WithEvents BackgroundWorker1 As System.ComponentModel.BackgroundWorker
 End Class
