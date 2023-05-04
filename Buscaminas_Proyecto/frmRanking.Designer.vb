@@ -82,6 +82,7 @@ Partial Class frmRanking
         Me.Controls.Add(Me.lblRanking)
         Me.Margin = New System.Windows.Forms.Padding(2)
         Me.Name = "frmRanking"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "frmRanking"
         Me.ResumeLayout(False)
         Me.PerformLayout()

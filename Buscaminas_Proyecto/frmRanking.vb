@@ -56,6 +56,7 @@ Public Class frmRanking
     Private Sub btnVolver_Click(sender As Object, e As EventArgs) Handles btnVolver.Click
         If btnDificultad.Visible = True Then
             Me.Close()
+            FrmConfiguracionDeJuego.Show()
         Else
         End If
         lstRanking.Items.Clear()
