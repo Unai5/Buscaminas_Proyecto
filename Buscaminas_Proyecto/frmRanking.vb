@@ -1,9 +1,5 @@
 ﻿Imports BibliotecaDeClases
 Public Class frmRanking
-    'ReadOnly usr1 As New Usuario("Pedro", "AAA")
-    'ReadOnly usr2 As New Usuario("Paula", "BBB")
-    'ReadOnly usr3 As New Usuario("Aaaaaaaaaaa", "CCC")
-    'Public listaEjemplo As New List(Of Usuario) From {usr1, usr2, usr3}
     Public gestionUsrs As New GestionUsuario
     Private Sub frmRanking_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         If gestionUsrs.Usuarios Is Nothing Then
