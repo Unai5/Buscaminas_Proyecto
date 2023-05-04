@@ -2,7 +2,7 @@
 Imports BibliotecaDeClases
 Public Class FrmInicioDeSesion
     Public gestion1 As New GestionUsuario
-    Const caracteresValidos = ""
+    Const caracteresValidos = "abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ1234567890!¡¿?- "
     'Añadir abecedario mayusculas y minusculas, tildes y numeros
     Private Sub btnAceptar_Click(sender As Object, e As EventArgs) Handles btnIniciarSesion.Click
         If String.IsNullOrWhiteSpace(txtUsuario.Text) Then
@@ -53,8 +53,8 @@ Public Class FrmInicioDeSesion
     End Sub
 
     Private Sub btnRankin_Click(sender As Object, e As EventArgs) Handles btnRegistrarse.Click
-        For i = 0 To caracteresInvalidos.Length - 1
-            If txtContraseña.Text.Contains(caracteresInvalidos(i)) Then
+        For i = 0 To caracteresValidos.Length - 1
+            If Not txtContraseña.Text.Contains(caracteresValidos(i)) Then
                 MessageBox.Show("La contraseña no es válida", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                 txtContraseña.Clear()
                 txtContraseña.Focus()
