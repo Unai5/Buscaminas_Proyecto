@@ -12,7 +12,7 @@ Module Modulo
 
     Public temporizador As Timer
 
-
+    Public gestionUsrs As New GestionUsuario
 
 
 End Module

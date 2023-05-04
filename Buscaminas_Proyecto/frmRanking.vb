@@ -1,12 +1,11 @@
 ﻿Imports BibliotecaDeClases
 Public Class frmRanking
-    Public gestionUsrs As New GestionUsuario
     Private Sub frmRanking_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         If gestionUsrs.Usuarios Is Nothing Then
             MessageBox.Show("No hay usuarios todavía")
         Else
             For Each per In gestionUsrs.Usuarios
-                lstRanking.Items.Add($"{per.Nombre} ...............{per.MejorTiempoFacil}")
+                lstRanking.Items.Add($"{per.Nombre} ........................... {per.MejorTiempoFacil}")
             Next
         End If
 
