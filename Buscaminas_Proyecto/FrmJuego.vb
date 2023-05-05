@@ -185,7 +185,6 @@ Public Class FrmJuego
                     RemoveHandler sender.MouseDown, AddressOf BotonClicDerecho
                 Next
             Next
-
         End If
 
     End Sub
