@@ -37,9 +37,9 @@ Public Class GestionUsuario
         Next
         _Usuarios.Add(nuevo)
 
-        For Each usu As Usuario In Usuarios
-            'ficheroUsuarios.WriteLine(usu.Nombre & "*" & usu.Contraseña)
-        Next
+        Dim ficheroW As New StreamWriter(".\..\..\Ficheros\TodosLosUsuarios.txt", True)
+        ficheroW.WriteLine(nuevo.Nombre & "*" & nuevo.Contraseña)
+        ficheroW.Close()
         Return "Usuario creado"
     End Function
 
@@ -52,8 +52,55 @@ Public Class GestionUsuario
         Return "No existe el usuario, no se puede iniciar sesion"
     End Function
 
-    Public Function OrdenarFichero(nombreFichero As String)
+    Public Function OrdenarFichero(dificultad As Integer)
         'Dim ficheroSinOrdenar As StreamReader(".\Ficheros\" + nombreFichero)
+        Dim primero As Usuario
+        If dificultad = 1 Then
+            Dim ficheroW As New StreamWriter(".\..\..\Ficheros\RankingFacil.txt", True)
+            ficheroW.Flush()
+            For i = 0 To _Usuarios.Count
+                For j = i To _Usuarios.Count
+                    If j = i Then
+                        primero = _Usuarios(j)
+                    ElseIf _Usuarios(j).MejorTiempoFacil > primero.MejorTiempoFacil Then
+                        primero = _Usuarios(j)
+                    End If
+                Next
+                _Usuarios(i) = primero
+                ficheroW.WriteLine(primero.Nombre & "*" & primero.MejorTiempoFacil.ToString)
+            Next
+            ficheroW.Close()
+        ElseIf dificultad = 2 Then
+            Dim ficheroW As New StreamWriter(".\..\..\Ficheros\RankingMedio.txt", True)
+            ficheroW.Flush()
+            For i = 0 To _Usuarios.Count
+                For j = i To _Usuarios.Count
+                    If j = i Then
+                        primero = _Usuarios(j)
+                    ElseIf _Usuarios(j).MejorTiempoMedio > primero.MejorTiempoMedio Then
+                        primero = _Usuarios(j)
+                    End If
+                Next
+                _Usuarios(i) = primero
+                ficheroW.WriteLine(primero.Nombre & "*" & primero.MejorTiempoMedio.ToString)
+            Next
+            ficheroW.Close()
+        Else
+            Dim ficheroW As New StreamWriter(".\..\..\Ficheros\RankingDificil.txt", True)
+            ficheroW.Flush()
+            For i = 0 To _Usuarios.Count
+                For j = i To _Usuarios.Count
+                    If j = i Then
+                        primero = _Usuarios(j)
+                    ElseIf _Usuarios(j).MejorTiempoDificil > primero.MejorTiempoDificil Then
+                        primero = _Usuarios(j)
+                    End If
+                Next
+                _Usuarios(i) = primero
+                ficheroW.WriteLine(primero.Nombre & "*" & primero.MejorTiempoDificil.ToString)
+            Next
+            ficheroW.Close()
+        End If
 
     End Function
     Public Function AnadirPartida(tiempo As String, usuario As String, modoJuego As String)
