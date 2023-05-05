@@ -146,9 +146,10 @@ Public Class FrmJuego
             ReDim botones(15, 15)
             GenerarBotones(16, 16)
         Else
-            ReDim botones(9, 9)
-            GenerarBotones(10, 10)
+            ReDim botones(NivelDificultad.MEDIO - 1, NivelDificultad.MEDIO - 1)
+            GenerarBotones(NivelDificultad.MEDIO, NivelDificultad.MEDIO)
         End If
+
     End Sub
 
     Private Sub BotonClic(sender As Button, e As EventArgs)
@@ -181,8 +182,8 @@ Public Class FrmJuego
                     If botones(i, j).Tag.bombasAlrededor = -1 Then
                         botones(i, j).Image = Image.FromFile("..\..\img\mina.jpg")
                     End If
-                    RemoveHandler sender.Click, AddressOf BotonClic
-                    RemoveHandler sender.MouseDown, AddressOf BotonClicDerecho
+                    RemoveHandler botones(i, j).Click, AddressOf BotonClic
+                    RemoveHandler botones(i, j).MouseDown, AddressOf BotonClicDerecho
                 Next
             Next
         End If
