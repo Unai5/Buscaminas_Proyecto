@@ -1,19 +1,20 @@
 ﻿Imports System.Drawing.Drawing2D
 Imports System.Drawing.Text
 Imports System.Linq.Expressions
+Imports System.Net.Sockets
 Imports System.Security.Cryptography.X509Certificates
 Imports BibliotecaDeClases
 
 Public Enum NivelDificultad As Byte
     FACIL = 7
-    DIFICIL = 10
-    IMPOSIBLE = 16
+    MEDIO = 10
+    DIFICIL = 16
 End Enum
 Public Class FrmJuego
 
     Private Sub FrmJuego_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-
+        esPrimerClick = True
         MaximizeBox = False
         AutoSizeMode = AutoSizeMode.GrowAndShrink
 
@@ -26,6 +27,7 @@ Public Class FrmJuego
             GenerarBotones(NivelDificultad.FACIL, NivelDificultad.FACIL)
 
         ElseIf dificultad = 3 Then
+
             Me.Size = New Size(520, 610)
             Me.btnReiniciar.Location = New Point(60, 520)
             Me.btnSalir.Location = New Point(300, 520)
@@ -53,9 +55,10 @@ Public Class FrmJuego
                     .Text = Nothing,
                     .Name = $"btn{i}{j}",
                     .Size = New Size(28, 28),
-                    .Tag = 0,
+                    .Tag = New TagBoton(0, i, j),
                     .BackColor = BackColor.LightGreen,
-                    .ForeColor = Color.Black
+                    .ForeColor = Color.Black,
+                    .Enabled = True
                 }
                 AddHandler botones(i, j).Click, AddressOf BotonClic
                 AddHandler botones(i, j).MouseDown, AddressOf BotonClicDerecho
@@ -64,25 +67,35 @@ Public Class FrmJuego
 
         numBombas = Math.Truncate((ancho * alto) / 5)
 
-        'Dim casillasConBomba(numBombas - 1) As String
+        For i = 0 To botones.GetLength(0) - 1
+            For j = 0 To botones.GetLength(1) - 1
+                Controls.Add(botones(i, j))
+                botones(i, j).Location = New Point((i + 1) * 28, (j + 1) * 28 + 20)
+            Next
+        Next
+
+    End Sub
+
+    Private Sub GenerarBombas(xPrimerClic As Integer, yPrimerClic As Integer)
+
         Dim rnd As New Random
         For i = 0 To numBombas - 1
             Dim x, y As Integer
             Do
                 If dificultad = 3 Then
-                    x = rnd.Next(16)
-                    y = rnd.Next(16)
+                    x = rnd.Next(NivelDificultad.DIFICIL)
+                    y = rnd.Next(NivelDificultad.DIFICIL)
                 ElseIf dificultad = 2 Then
-                    x = rnd.Next(10)
-                    y = rnd.Next(10)
+                    x = rnd.Next(NivelDificultad.MEDIO)
+                    y = rnd.Next(NivelDificultad.MEDIO)
                 Else
                     x = rnd.Next(NivelDificultad.FACIL)
                     y = rnd.Next(NivelDificultad.FACIL)
                 End If
 
-            Loop While botones(x, y).Tag = -1
+            Loop While botones(x, y).Tag.bombasAlrededor = -1 AndAlso Not botones(x, y).Equals(botones(xPrimerClic, yPrimerClic))
 
-            botones(x, y).Tag = -1
+            botones(x, y).Tag.bombasAlrededor = -1
 
         Next
 
@@ -91,37 +104,32 @@ Public Class FrmJuego
             For j = 0 To botones.GetLength(1) - 1
 
 
-                If botones(i, j).Tag <> -1 Then
+                If botones(i, j).Tag.bombasAlrededor <> -1 Then
                     bombasAlrededor = 0
 
-                    If i - 1 >= 0 AndAlso j - 1 >= 0 AndAlso botones(i - 1, j - 1).Tag = -1 Then bombasAlrededor += 1
+                    If i - 1 >= 0 AndAlso j - 1 >= 0 AndAlso botones(i - 1, j - 1).Tag.bombasAlrededor = -1 Then bombasAlrededor += 1
 
-                    If j - 1 >= 0 AndAlso botones(i, j - 1).Tag = -1 Then bombasAlrededor += 1
+                    If j - 1 >= 0 AndAlso botones(i, j - 1).Tag.bombasAlrededor = -1 Then bombasAlrededor += 1
 
-                    If i + 1 <= botones.GetLength(0) - 1 AndAlso j - 1 >= 0 AndAlso botones(i + 1, j - 1).Tag = -1 Then bombasAlrededor += 1
+                    If i + 1 <= botones.GetLength(0) - 1 AndAlso j - 1 >= 0 AndAlso botones(i + 1, j - 1).Tag.bombasAlrededor = -1 Then bombasAlrededor += 1
 
-                    If i + 1 <= botones.GetLength(0) - 1 AndAlso botones(i + 1, j).Tag = -1 Then bombasAlrededor += 1
+                    If i + 1 <= botones.GetLength(0) - 1 AndAlso botones(i + 1, j).Tag.bombasAlrededor = -1 Then bombasAlrededor += 1
 
-                    If i + 1 <= botones.GetLength(0) - 1 AndAlso j + 1 <= botones.GetLength(1) - 1 AndAlso botones(i + 1, j + 1).Tag = -1 Then bombasAlrededor += 1
+                    If i + 1 <= botones.GetLength(0) - 1 AndAlso j + 1 <= botones.GetLength(1) - 1 AndAlso botones(i + 1, j + 1).Tag.bombasAlrededor = -1 Then bombasAlrededor += 1
 
-                    If j + 1 <= botones.GetLength(1) - 1 AndAlso botones(i, j + 1).Tag = -1 Then bombasAlrededor += 1
+                    If j + 1 <= botones.GetLength(1) - 1 AndAlso botones(i, j + 1).Tag.bombasAlrededor = -1 Then bombasAlrededor += 1
 
-                    If i - 1 >= 0 AndAlso j + 1 <= botones.GetLength(1) - 1 AndAlso botones(i - 1, j + 1).Tag = -1 Then bombasAlrededor += 1
+                    If i - 1 >= 0 AndAlso j + 1 <= botones.GetLength(1) - 1 AndAlso botones(i - 1, j + 1).Tag.bombasAlrededor = -1 Then bombasAlrededor += 1
 
-                    If i - 1 >= 0 AndAlso botones(i - 1, j).Tag = -1 Then bombasAlrededor += 1
+                    If i - 1 >= 0 AndAlso botones(i - 1, j).Tag.bombasAlrededor = -1 Then bombasAlrededor += 1
 
-                    botones(i, j).Tag = bombasAlrededor
+                    botones(i, j).Tag.bombasAlrededor = bombasAlrededor
                 End If
 
             Next
         Next
 
-        For i = 0 To botones.GetLength(0) - 1
-            For j = 0 To botones.GetLength(1) - 1
-                Controls.Add(botones(i, j))
-                botones(i, j).Location = New Point((i + 1) * 28, (j + 1) * 28 + 20)
-            Next
-        Next
+
 
     End Sub
 
@@ -143,6 +151,45 @@ Public Class FrmJuego
         End If
     End Sub
 
+    Private Sub BotonClic(sender As Button, e As EventArgs)
+
+
+        If esPrimerClick Then
+
+            GenerarBombas(sender.Tag.posX, sender.Tag.posY)
+
+            esPrimerClick = False
+
+        End If
+
+
+
+
+        sender.BackColor = Nothing
+        If sender.Tag.bombasAlrededor > -1 Then
+            If sender.Tag.bombasAlrededor > 0 Then
+                sender.Text = sender.Tag.bombasAlrededor
+            Else
+                sender.Text = ""
+            End If
+            sender.Enabled = False
+        End If
+
+        If sender.Tag.bombasAlrededor = -1 Then
+            For i = 0 To botones.GetLength(0) - 1
+                For j = 0 To botones.GetLength(1) - 1
+                    If botones(i, j).Tag.bombasAlrededor = -1 Then
+                        botones(i, j).Image = Image.FromFile("..\..\img\mina.jpg")
+                    End If
+                    RemoveHandler sender.Click, AddressOf BotonClic
+                    RemoveHandler sender.MouseDown, AddressOf BotonClicDerecho
+                Next
+            Next
+        End If
+
+    End Sub
+
+
     Private Sub BotonClicDerecho(sender As Button, e As MouseEventArgs)
 
         If e.Button = System.Windows.Forms.MouseButtons.Right Then
@@ -159,38 +206,16 @@ Public Class FrmJuego
 
         End If
 
-
-
-    End Sub
-
-    Private Sub BotonClic(sender As Object, e As EventArgs)
-        sender.backcolor = Nothing
-        If sender.tag > -1 Then
-            If sender.tag > 0 Then
-                sender.text = sender.tag
-            Else
-                sender.text = ""
-            End If
-            sender.enabled = False
-        End If
-        If sender.tag = -1 Then
-            For i = 0 To botones.GetLength(0) - 1
-                For j = 0 To botones.GetLength(1) - 1
-                    If botones(i, j).Tag = -1 Then
-                        botones(i, j).Image = Image.FromFile("..\..\img\mina.jpg")
-
-                    End If
-                    RemoveHandler botones(i, j).Click, AddressOf BotonClic
-                    RemoveHandler botones(i, j).MouseDown, AddressOf BotonClicDerecho
-                Next
-            Next
-
-        End If
-
     End Sub
 
     Private Sub btnReiniciar_Click(sender As Object, e As EventArgs) Handles btnReiniciar.Click
-        ReiniciarPartida(10, 10)
+        If dificultad = 1 Then
+            ReiniciarPartida(7, 7)
+        ElseIf dificultad = 2 Then
+            ReiniciarPartida(10, 10)
+        Else
+            ReiniciarPartida(16, 16)
+        End If
     End Sub
 
     Private Sub btnSalir_Click(sender As Object, e As EventArgs) Handles btnSalir.Click
