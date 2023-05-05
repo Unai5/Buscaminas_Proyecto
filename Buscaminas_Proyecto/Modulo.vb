@@ -13,6 +13,7 @@ Module Modulo
     Public temporizador As Timer
 
     Public esPrimerClick As Boolean
+    Public gestionUsrs As New GestionUsuario
 
 
 End Module

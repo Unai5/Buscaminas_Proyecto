@@ -1,21 +1,14 @@
-﻿Imports System.Runtime.ConstrainedExecution
-Imports BibliotecaDeClases
+﻿Imports BibliotecaDeClases
 Public Class frmRanking
-    ReadOnly usr1 As New Usuario("Pedro", "AAA")
-    ReadOnly usr2 As New Usuario("Paula", "BBB")
-    ReadOnly usr3 As New Usuario("Aaaaaaaaaaa", "CCC")
-    Public listaEjemplo As New List(Of Usuario) From {usr1, usr2, usr3}
-
     Private Sub frmRanking_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'Dim nombre As String
-        ' Dim partidasDificultadFacil As StreamReader()
-        'For i = 0 To partidasDificultadFacil
-        'nombre = partidasDificultadFacil(i)
-        'Next
-        'Controlar si el fichero esta vacio
-        For Each per In listaEjemplo
-            lstRanking.Items.Add(per.Nombre)
-        Next
+        If gestionUsrs.Usuarios Is Nothing Then
+            MessageBox.Show("No hay usuarios todavía")
+        Else
+            For Each per In gestionUsrs.Usuarios
+                lstRanking.Items.Add($"{per.Nombre} ........................... {per.MejorTiempoFacil}")
+            Next
+        End If
+
         btnDificultad.Text = "Dificultad: Media"
         lblRanking.Text = "RANKING FÁCIL"
         lblRanking.Location = New Point(225 - (lblRanking.Width / 6), 22)
@@ -29,12 +22,33 @@ Public Class frmRanking
         If lblRanking.Text.Substring(8) = a.ToUpper Then
             btnDificultad.Text = $"Dificultad: {c}"
             lblRanking.Text = $"RANKING {b.ToUpper}"
+            If gestionUsrs.Usuarios Is Nothing Then
+                MessageBox.Show("No hay usuarios todavía")
+            Else
+                For Each per In gestionUsrs.Usuarios
+                    lstRanking.Items.Add($"{per.Nombre} ...............{per.MejorTiempoMedio}")
+                Next
+            End If
         ElseIf lblRanking.Text.Substring(8) = b.ToUpper Then
             btnDificultad.Text = $"Dificultad: {a}"
             lblRanking.Text = $"RANKING {c.ToUpper}"
+            If gestionUsrs.Usuarios Is Nothing Then
+                MessageBox.Show("No hay usuarios todavía")
+            Else
+                For Each per In gestionUsrs.Usuarios
+                    lstRanking.Items.Add($"{per.Nombre} ...............{per.MejorTiempoDificil}")
+                Next
+            End If
         ElseIf lblRanking.Text.Substring(8) = c.ToUpper Then
             btnDificultad.Text = $"Dificultad: {b}"
             lblRanking.Text = $"RANKING {a.ToUpper}"
+            If gestionUsrs.Usuarios Is Nothing Then
+                MessageBox.Show("No hay usuarios todavía")
+            Else
+                For Each per In gestionUsrs.Usuarios
+                    lstRanking.Items.Add($"{per.Nombre} ...............{per.MejorTiempoFacil}")
+                Next
+            End If
         End If
         lblRanking.Location = New Point(225 - (lblRanking.Width / 6), 22)
     End Sub
@@ -42,15 +56,19 @@ Public Class frmRanking
     Private Sub btnVolver_Click(sender As Object, e As EventArgs) Handles btnVolver.Click
         If btnDificultad.Visible = True Then
             Me.Close()
+            FrmConfiguracionDeJuego.Show()
         Else
         End If
         lstRanking.Items.Clear()
         lblRanking.Text = "RANKING FÁCIL"
         btnDificultad.Text = "Dificultad: Media"
-        'cargar los datos
-        For Each per In listaEjemplo
-            lstRanking.Items.Add(per.Nombre)
-        Next
+        If gestionUsrs.Usuarios Is Nothing Then
+            MessageBox.Show("No hay usuarios todavía")
+        Else
+            For Each per In gestionUsrs.Usuarios
+                lstRanking.Items.Add($"{per.Nombre} ...............{per.MejorTiempoFacil}")
+            Next
+        End If
         btnDificultad.Visible = True
         btnDificultad.Location = New Point(56, 384)
         btnVolver.Location = New Point(346, 386)
@@ -68,6 +86,16 @@ Public Class frmRanking
             Else
                 lblRanking.Location = New Point(225 - (lblRanking.Width / 6), 22)
             End If
+            If gestionUsrs.Usuarios Is Nothing Then
+                MessageBox.Show("No hay usuarios todavía")
+            Else
+                'Encontrar usuario
+                For Each tiempo In gestionUsrs.Usuarios
+                    'lstRanking.Items.Add($"{per.Nombre} ...............{per.MejorTiempoFacil}")
+                Next
+            End If
         End If
     End Sub
+
+
 End Class

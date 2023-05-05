@@ -26,6 +26,7 @@ Partial Class frmRanking
         Me.lstRanking = New System.Windows.Forms.ListBox()
         Me.btnDificultad = New System.Windows.Forms.Button()
         Me.btnVolver = New System.Windows.Forms.Button()
+        Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
         Me.SuspendLayout()
         '
         'lblRanking
@@ -82,6 +83,7 @@ Partial Class frmRanking
         Me.Controls.Add(Me.lblRanking)
         Me.Margin = New System.Windows.Forms.Padding(2)
         Me.Name = "frmRanking"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "frmRanking"
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -92,4 +94,5 @@ Partial Class frmRanking
     Friend WithEvents lstRanking As ListBox
     Friend WithEvents btnDificultad As Button
     Friend WithEvents btnVolver As Button
+    Friend WithEvents BackgroundWorker1 As System.ComponentModel.BackgroundWorker
 End Class
