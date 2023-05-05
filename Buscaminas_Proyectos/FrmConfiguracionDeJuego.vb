@@ -1,5 +1,4 @@
 ﻿Public Class FrmConfiguracionDeJuego
-
     Private Sub btnAceptar_Click(sender As Object, e As EventArgs) Handles btnAceptar.Click
         If Not radButtFacil.Checked AndAlso Not radButtNormal.Checked AndAlso Not radButtDificil.Checked Then
             MessageBox.Show("Selecciona una dificultad de juego")

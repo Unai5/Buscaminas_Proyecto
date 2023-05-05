@@ -1,7 +1,4 @@
-﻿Imports System.IO
-Imports BibliotecaDeClases
-Public Class FrmInicioDeSesion
-    Public gestion1 As New GestionUsuario
+﻿Public Class FrmInicioDeSesion
     Const caracteresValidos = "abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ1234567890!¡¿?- "
     'Añadir abecedario mayusculas y minusculas, tildes y numeros
     Private Sub btnAceptar_Click(sender As Object, e As EventArgs) Handles btnIniciarSesion.Click
@@ -31,11 +28,11 @@ Public Class FrmInicioDeSesion
             txtContraseña.Focus()
             Exit Sub
         End If
-        If Not gestion1.ValidarUsuario(txtUsuario.Text, txtContraseña.Text) = "Sesión iniciada" Then
-            MessageBox.Show(gestion1.ValidarUsuario(txtUsuario.Text, txtContraseña.Text))
+        If Not gestionUsrs.ValidarUsuario(txtUsuario.Text, txtContraseña.Text) = "Sesión iniciada" Then
+            MessageBox.Show(gestionUsrs.ValidarUsuario(txtUsuario.Text, txtContraseña.Text))
             Exit Sub
         End If
-        MessageBox.Show(gestion1.ValidarUsuario(txtUsuario.Text, txtContraseña.Text))
+        MessageBox.Show(gestionUsrs.ValidarUsuario(txtUsuario.Text, txtContraseña.Text))
         FrmConfiguracionDeJuego.Show()
     End Sub
 

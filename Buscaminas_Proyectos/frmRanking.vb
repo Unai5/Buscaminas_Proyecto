@@ -1,5 +1,4 @@
-﻿Imports BibliotecaDeClases
-Public Class frmRanking
+﻿Public Class frmRanking
     Private Sub frmRanking_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         If gestionUsrs.Usuarios Is Nothing Then
             MessageBox.Show("No hay usuarios todavía")

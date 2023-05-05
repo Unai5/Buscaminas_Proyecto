@@ -1,6 +1,4 @@
-﻿Imports System
-Imports System.IO
-
+﻿Imports System.IO
 Public Class GestionUsuario
     Private _Usuarios As New List(Of Usuario)
     Public ReadOnly Property Usuarios As ObjectModel.ReadOnlyCollection(Of Usuario)
