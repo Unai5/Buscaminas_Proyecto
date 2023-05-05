@@ -12,7 +12,7 @@ Module Modulo
 
     Public temporizador As Timer
 
-
+    Public esPrimerClick As Boolean
 
 
 End Module
