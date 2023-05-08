@@ -152,7 +152,7 @@ Public Class FrmJuego
 
     End Sub
 
-    Private Sub BotonClic(sender As Button, e As EventArgs)
+    Private Sub BotonClic(sender As Object, e As EventArgs)
 
 
         If esPrimerClick Then
@@ -191,18 +191,18 @@ Public Class FrmJuego
     End Sub
 
 
-    Private Sub BotonClicDerecho(sender As Button, e As MouseEventArgs)
+    Private Sub BotonClicDerecho(sender As Object, e As MouseEventArgs)
 
         If e.Button = System.Windows.Forms.MouseButtons.Right Then
 
             If sender.ForeColor = Color.Black Then
                 sender.BackgroundImage = Image.FromFile("../../img/banderita.png")
                 sender.ForeColor = Color.White
-                RemoveHandler sender.Click, AddressOf BotonClic
+                RemoveHandler TryCast(sender, Button).Click, AddressOf BotonClic
             Else
                 sender.BackgroundImage = Nothing
                 sender.ForeColor = Color.Black
-                AddHandler sender.Click, AddressOf BotonClic
+                AddHandler TryCast(sender, Button).Click, AddressOf BotonClic
             End If
 
         End If
