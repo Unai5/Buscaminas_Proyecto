@@ -95,4 +95,16 @@
             End If
         End If
     End Sub
+
+    Private Sub lstRanking_MouseHover(sender As Object, e As EventArgs) Handles lstRanking.MouseHover
+        Dim linea As Control = TryCast(sender, Control)
+        If linea Is Nothing Then
+            Exit Sub
+        Else
+            linea.BackColor = Color.Aquamarine
+        End If
+    End Sub
+    Private Sub lstRanking_MouseLeave(sender As Object, e As EventArgs) Handles lstRanking.MouseLeave
+
+    End Sub
 End Class
