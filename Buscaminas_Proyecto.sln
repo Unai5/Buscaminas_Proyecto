@@ -5,7 +5,7 @@ VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "BibliotecaDeClases", "BibliotecaClases\BibliotecaDeClases.vbproj", "{350EA223-02BF-4CA0-A7C5-6893C805E136}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Buscaminas_Proyectos", "Buscaminas_Proyectos\Buscaminas_Proyectos.vbproj", "{A5304858-4B87-43D0-ADD5-7F4433CA0049}"
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Buscaminas_Proyecto", "Buscaminas_Proyectos\Buscaminas_Proyecto.vbproj", "{A5304858-4B87-43D0-ADD5-7F4433CA0049}"
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Unit-Test-Buscaminas", "Unit-Test-Buscaminas\Unit-Test-Buscaminas.vbproj", "{0261519E-3227-45B8-8BE0-A767B3B8FDC3}"
 EndProject

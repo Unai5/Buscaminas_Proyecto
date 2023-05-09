@@ -96,5 +96,22 @@
         End If
     End Sub
 
-
+    Private Sub lstRanking_MouseHover(sender As Object, e As EventArgs) Handles lstRanking.MouseHover
+        Dim linea As Control = TryCast(sender, Control)
+        If linea Is Nothing Then
+            Exit Sub
+        Else
+            linea.BackColor = Color.Aquamarine
+            linea.Font = New Font("Rockwell", 11, FontStyle.Bold)
+        End If
+    End Sub
+    Private Sub lstRanking_MouseLeave(sender As Object, e As EventArgs) Handles lstRanking.MouseLeave
+        Dim linea As Control = TryCast(sender, Control)
+        If linea Is Nothing Then
+            Exit Sub
+        Else
+            linea.BackColor = Color.White
+            linea.Font = New Font("Rockwell", 11, FontStyle.Regular)
+        End If
+    End Sub
 End Class
