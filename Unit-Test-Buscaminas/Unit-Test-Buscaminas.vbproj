@@ -117,9 +117,13 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BibliotecaDeClases\BibliotecaDeClases.vbproj">
-      <Project>{d7649845-e29c-4126-90ee-2469f3aaa3f6}</Project>
+    <ProjectReference Include="..\BibliotecaClases\BibliotecaDeClases.vbproj">
+      <Project>{350ea223-02bf-4ca0-a7c5-6893c805e136}</Project>
       <Name>BibliotecaDeClases</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Buscaminas_Proyectos\Buscaminas_Proyectos.vbproj">
+      <Project>{a5304858-4b87-43d0-add5-7f4433ca0049}</Project>
+      <Name>Buscaminas_Proyectos</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />

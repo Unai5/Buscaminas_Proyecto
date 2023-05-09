@@ -154,7 +154,7 @@ Partial Class FrmRegistro
         Me.Controls.Add(Me.pnlNuevaContraseña)
         Me.Controls.Add(Me.pnlNuevoUsuario)
         Me.Controls.Add(Me.lblRegistro)
-        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Margin = New System.Windows.Forms.Padding(2)
         Me.Name = "FrmRegistro"
         Me.Text = "FrmRegistro"
         Me.pnlNuevoUsuario.ResumeLayout(False)

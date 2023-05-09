@@ -19,4 +19,5 @@
         MessageBox.Show(gestionUsrs.AñadirUsuario(txtNuevoUsuario.Text, txtNuevaContraseña.Text))
         Me.Close()
     End Sub
+
 End Class
