@@ -33,6 +33,8 @@
             Exit Sub
         End If
         MessageBox.Show(gestionUsrs.ValidarUsuario(txtUsuario.Text, txtContraseña.Text))
+        jugador.Nombre = txtUsuario.Text
+        jugador.Contraseña = txtContraseña.Text
         FrmConfiguracionDeJuego.Show()
     End Sub
 
@@ -49,23 +51,8 @@
         txtUsuario.Clear()
     End Sub
 
-    Private Sub btnRankin_Click(sender As Object, e As EventArgs) Handles btnRegistrarse.Click
-        For i = 0 To caracteresValidos.Length - 1
-            If Not txtContraseña.Text.Contains(caracteresValidos(i)) Then
-                MessageBox.Show("La contraseña no es válida", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-                txtContraseña.Clear()
-                txtContraseña.Focus()
-                Exit Sub
-            End If
-        Next
-        If String.IsNullOrWhiteSpace(txtUsuario.Text) Then
-            MessageBox.Show("Introduce usuario", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            Exit Sub
-        End If
-        If String.IsNullOrWhiteSpace(txtContraseña.Text) Then
-            MessageBox.Show("Introduce contraseña", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            Exit Sub
-        End If
+    Private Sub btnRegisto_Click(sender As Object, e As EventArgs) Handles btnRegisto.Click
         FrmRegistro.Show()
+        Me.Close()
     End Sub
 End Class

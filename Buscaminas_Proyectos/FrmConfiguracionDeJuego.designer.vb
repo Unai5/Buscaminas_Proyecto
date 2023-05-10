@@ -122,6 +122,7 @@ Partial Class FrmConfiguracionDeJuego
         Me.Controls.Add(Me.radButtFacil)
         Me.Controls.Add(Me.radButtNormal)
         Me.Name = "FrmConfiguracionDeJuego"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Form1"
         Me.ResumeLayout(False)
         Me.PerformLayout()

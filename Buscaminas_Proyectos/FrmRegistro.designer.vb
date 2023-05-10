@@ -33,6 +33,7 @@ Partial Class FrmRegistro
         Me.lblRepetirContraseña = New System.Windows.Forms.Label()
         Me.txtRepetirContraseña = New System.Windows.Forms.TextBox()
         Me.btnCompletarRegistro = New System.Windows.Forms.Button()
+        Me.btnVolver = New System.Windows.Forms.Button()
         Me.pnlNuevoUsuario.SuspendLayout()
         Me.pnlNuevaContraseña.SuspendLayout()
         Me.pnlRepetirContraseña.SuspendLayout()
@@ -137,18 +138,31 @@ Partial Class FrmRegistro
         Me.btnCompletarRegistro.BackColor = System.Drawing.SystemColors.ButtonHighlight
         Me.btnCompletarRegistro.FlatAppearance.BorderColor = System.Drawing.Color.Snow
         Me.btnCompletarRegistro.Font = New System.Drawing.Font("Cooper Black", 12.0!)
-        Me.btnCompletarRegistro.Location = New System.Drawing.Point(188, 327)
+        Me.btnCompletarRegistro.Location = New System.Drawing.Point(253, 327)
         Me.btnCompletarRegistro.Name = "btnCompletarRegistro"
         Me.btnCompletarRegistro.Size = New System.Drawing.Size(115, 37)
         Me.btnCompletarRegistro.TabIndex = 9
         Me.btnCompletarRegistro.Text = "Registrarse"
         Me.btnCompletarRegistro.UseVisualStyleBackColor = False
         '
+        'btnVolver
+        '
+        Me.btnVolver.BackColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.btnVolver.FlatAppearance.BorderColor = System.Drawing.Color.Snow
+        Me.btnVolver.Font = New System.Drawing.Font("Cooper Black", 12.0!)
+        Me.btnVolver.Location = New System.Drawing.Point(123, 327)
+        Me.btnVolver.Name = "btnVolver"
+        Me.btnVolver.Size = New System.Drawing.Size(115, 37)
+        Me.btnVolver.TabIndex = 10
+        Me.btnVolver.Text = "Volver"
+        Me.btnVolver.UseVisualStyleBackColor = False
+        '
         'FrmRegistro
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(491, 442)
+        Me.Controls.Add(Me.btnVolver)
         Me.Controls.Add(Me.btnCompletarRegistro)
         Me.Controls.Add(Me.pnlRepetirContraseña)
         Me.Controls.Add(Me.pnlNuevaContraseña)
@@ -156,6 +170,7 @@ Partial Class FrmRegistro
         Me.Controls.Add(Me.lblRegistro)
         Me.Margin = New System.Windows.Forms.Padding(2)
         Me.Name = "FrmRegistro"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "FrmRegistro"
         Me.pnlNuevoUsuario.ResumeLayout(False)
         Me.pnlNuevoUsuario.PerformLayout()
@@ -179,4 +194,5 @@ Partial Class FrmRegistro
     Friend WithEvents lblRepetirContraseña As Label
     Friend WithEvents txtRepetirContraseña As TextBox
     Friend WithEvents btnCompletarRegistro As Button
+    Friend WithEvents btnVolver As Button
 End Class

@@ -17,7 +17,14 @@
             Exit Sub
         End If
         MessageBox.Show(gestionUsrs.AñadirUsuario(txtNuevoUsuario.Text, txtNuevaContraseña.Text))
+        jugador.Nombre = txtNuevoUsuario.Text
+        jugador.Contraseña = txtNuevaContraseña.Text
+        FrmConfiguracionDeJuego.Show()
         Me.Close()
     End Sub
 
+    Private Sub btnVolver_Click(sender As Object, e As EventArgs) Handles btnVolver.Click
+        FrmInicioDeSesion.Show()
+        Me.Close()
+    End Sub
 End Class
