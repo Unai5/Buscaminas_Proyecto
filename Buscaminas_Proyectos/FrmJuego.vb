@@ -37,6 +37,8 @@ Public Class FrmJuego
 
         End If
 
+        tmrReloj.Interval = 1000
+
 
     End Sub
 
@@ -292,5 +294,7 @@ Public Class FrmJuego
         FrmConfiguracionDeJuego.Show()
         Me.Close()
     End Sub
+
+
 
 End Class
