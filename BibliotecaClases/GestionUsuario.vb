@@ -99,7 +99,29 @@ Public Class GestionUsuario
             Next
             ficheroW.Close()
         End If
-
+    End Function
+    Public Function OrdenarFicheroPersona(nombre As String)
+        Dim ficheroPersonal As New StreamWriter(".\..\..\Ficheros\FicheroPersonal.txt", True)
+        Dim ficheroCompleto As New StreamReader(".\..\..\Ficheros\FicheroPartidas.txt")
+        ficheroPersonal.Flush()
+        For i = 0 To _Usuarios.Count
+            If _Usuarios(i).Nombre = nombre Then
+                If ficheroCompleto.ReadLine.Contains($"{nombre}") Then
+                    ficheroPersonal.WriteLine()
+                End If
+            End If
+            'For j = i To _Usuarios.Count
+            '    If j = i Then
+            '        primero = _Usuarios(j)
+            '    ElseIf _Usuarios(j).MejorTiempoMedio > primero.MejorTiempoMedio Then
+            '        primero = _Usuarios(j)
+            '    End If
+            'Next
+            '_Usuarios(i) = primero
+            'ficheroW.WriteLine(primero.Nombre & "*" & primero.MejorTiempoMedio.ToString)
+        Next
+        ficheroPersonal.Close()
+        Return ficheroPersonal
     End Function
     Public Function AnadirPartida(tiempo As String, usuario As String, modoJuego As String)
         'For Each usu As Usuario In Usuarios

@@ -121,7 +121,7 @@
       <Project>{350ea223-02bf-4ca0-a7c5-6893c805e136}</Project>
       <Name>BibliotecaDeClases</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Buscaminas_Proyectos\Buscaminas_Proyectos.vbproj">
+    <ProjectReference Include="..\Buscaminas_Proyectos\Buscaminas_Proyecto.vbproj">
       <Project>{a5304858-4b87-43d0-add5-7f4433ca0049}</Project>
       <Name>Buscaminas_Proyectos</Name>
     </ProjectReference>
