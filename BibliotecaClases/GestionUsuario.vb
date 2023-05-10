@@ -101,14 +101,18 @@ Public Class GestionUsuario
         End If
     End Function
     Public Function OrdenarFicheroPersona(nombre As String)
+        Dim listaPersonas As New ArrayList
         Dim ficheroPersonal As New StreamWriter(".\..\..\Ficheros\FicheroPersonal.txt", True)
         Dim ficheroCompleto As New StreamReader(".\..\..\Ficheros\FicheroPartidas.txt")
         ficheroPersonal.Flush()
         For i = 0 To _Usuarios.Count
             If _Usuarios(i).Nombre = nombre Then
-                If ficheroCompleto.ReadLine.Contains($"{nombre}") Then
-                    ficheroPersonal.WriteLine()
-                End If
+                Do
+                    Dim linea As String = ficheroCompleto.ReadLine
+                    If linea.Contains(nombre) Then
+                        listaPersonas.Add($"{}")
+                    End If
+                Loop Until ficheroCompleto.ReadLine
             End If
             'For j = i To _Usuarios.Count
             '    If j = i Then
