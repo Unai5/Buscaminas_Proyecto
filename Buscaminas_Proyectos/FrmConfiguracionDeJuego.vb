@@ -15,10 +15,13 @@ Public Class FrmConfiguracionDeJuego
         End If
 
         FrmJuego.Show()
+        Me.Close()
     End Sub
 
 
     Private Sub btnVolver_Click(sender As Object, e As EventArgs) Handles btnVolver.Click
+        FrmInicioDeSesion.Show()
         Me.Close()
     End Sub
+
 End Class
