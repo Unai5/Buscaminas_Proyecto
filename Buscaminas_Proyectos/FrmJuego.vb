@@ -7,7 +7,7 @@ Public Enum Dific As Byte
     DIFICIL = 16
 End Enum
 Public Class FrmJuego
-
+    Private casillasSinBomba As Integer = 0
     Private Sub FrmJuego_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         esPrimerClick = True
@@ -200,6 +200,7 @@ Public Class FrmJuego
     End Sub
 
     Private Sub ReiniciarPartida(ancho As Integer, alto As Integer)
+        tmrReloj.Stop()
         esPrimerClick = True
         For i = 0 To botones.GetLength(0) - 1
             For j = 0 To botones.GetLength(1) - 1
@@ -216,22 +217,24 @@ Public Class FrmJuego
             ReDim botones(Dific.MEDIO - 1, Dific.MEDIO - 1)
             GenerarBotones(Dific.MEDIO, Dific.MEDIO)
         End If
-
+        minutosSegundos(0) = 0
+        minutosSegundos(1) = 0
+        txtReloj.Text = "00:00"
+        tmrReloj.Start()
     End Sub
 
     Private Sub BotonClic(sender As Object, e As EventArgs)
 
-
         If esPrimerClick Then
-
             GenerarBombas(sender.Tag.posX, sender.Tag.posY)
-
-            esPrimerClick = False
-
+            For i = 0 To botones.GetLength(0) - 1
+                For j = 0 To botones.GetLength(1) - 1
+                    If botones(i, j).Tag.bombasAlrededor <> -1 Then
+                        casillasSinBomba += 1
+                    End If
+                Next
+            Next
         End If
-
-
-
 
         sender.BackColor = Nothing
         If sender.Tag.bombasAlrededor > -1 Then
@@ -241,6 +244,15 @@ Public Class FrmJuego
                 sender.Text = ""
             End If
             sender.Enabled = False
+            If esPrimerClick Then
+                casillasSinBomba -= 9
+                esPrimerClick = False
+            Else
+                casillasSinBomba -= 1
+            End If
+            If casillasSinBomba = 0 Then
+                PartidaTerminada(True)
+            End If
         End If
 
         If sender.Tag.bombasAlrededor = -1 Then
@@ -257,11 +269,19 @@ Public Class FrmJuego
                     RemoveHandler botones(i, j).MouseDown, AddressOf BotonClicDerecho
                 Next
             Next
-
+            PartidaTerminada(False)
         End If
 
     End Sub
 
+    Private Sub PartidaTerminada(ganador As Boolean)
+        tmrReloj.Stop()
+        If ganador Then
+            MessageBox.Show($"VAYA MÁQUINA! {vbCrLf}Y sólo has tardado: {Format(minutosSegundos(0), "##00")}:{Format(minutosSegundos(1), "##00")}")
+        Else
+            MessageBox.Show($"GAME OVER! {vbCrLf}En el tiempo: {Format(minutosSegundos(0), "##00")}:{Format(minutosSegundos(1), "##00")}")
+        End If
+    End Sub
 
     Private Sub BotonClicDerecho(sender As Object, e As MouseEventArgs)
 
