@@ -53,7 +53,7 @@ Public Class FrmJuego
                     .Text = Nothing,
                     .Name = $"btn{i}{j}",
                     .Size = New Size(28, 28),
-                    .Tag = New BibliotecaClases.TagBoton(0, i, j),
+                    .Tag = New BibliotecaDeClases.TagBoton(0, i, j),
                     .BackColor = Color.LightGreen,
                     .ForeColor = Color.Black,
                     .Enabled = True

@@ -160,15 +160,15 @@
     <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BibliotecaClases\BibliotecaDeClases.vbproj">
-      <Project>{350ea223-02bf-4ca0-a7c5-6893c805e136}</Project>
-      <Name>BibliotecaDeClases</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Ficheros\TodosLosUsuarios.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BibliotecaDeClases\BibliotecaDeClases.vbproj">
+      <Project>{d7649845-e29c-4126-90ee-2469f3aaa3f6}</Project>
+      <Name>BibliotecaDeClases</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

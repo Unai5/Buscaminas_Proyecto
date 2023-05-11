@@ -1,4 +1,4 @@
-﻿Imports BibliotecaClases
+﻿Imports BibliotecaDeClases
 Module Modulo
     Public numBombas As Integer
     Public jugador As Usuario
