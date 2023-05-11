@@ -50,6 +50,9 @@ Partial Class FrmJuego
         Me.btnSalir.Text = "SALIR"
         Me.btnSalir.UseVisualStyleBackColor = True
         '
+        'tmrReloj
+        '
+        '
         'txtReloj
         '
         Me.txtReloj.Location = New System.Drawing.Point(173, 12)

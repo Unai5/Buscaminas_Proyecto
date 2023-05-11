@@ -13,13 +13,16 @@ Public Class FrmJuego
         esPrimerClick = True
         MaximizeBox = False
         AutoSizeMode = AutoSizeMode.GrowAndShrink
+        txtReloj.TextAlign = HorizontalAlignment.Center
+        txtReloj.Enabled = False
+
 
         If dificultad = 1 Then
 
             Me.Size = New Size(270, 360)
             Me.btnReiniciar.Location = New Point(20, 270)
             Me.btnSalir.Location = New Point(150, 270)
-
+            txtReloj.Location = New Point(80, 10)
             GenerarBotones(Dific.FACIL, Dific.FACIL)
 
         ElseIf dificultad = 3 Then
@@ -27,18 +30,21 @@ Public Class FrmJuego
             Me.Size = New Size(520, 610)
             Me.btnReiniciar.Location = New Point(60, 520)
             Me.btnSalir.Location = New Point(300, 520)
+            txtReloj.Location = New Point(200, 10)
             GenerarBotones(Dific.DIFICIL, Dific.DIFICIL)
 
         Else
             Me.Size = New Size(350, 450)
             Me.btnReiniciar.Location = New Point(40, 360)
             Me.btnSalir.Location = New Point(200, 360)
+            txtReloj.Location = New Point(120, 10)
             GenerarBotones(Dific.MEDIO, Dific.MEDIO)
 
         End If
 
+        txtReloj.Text = "00:00"
         tmrReloj.Interval = 1000
-
+        tmrReloj.Start()
 
     End Sub
 
@@ -54,7 +60,7 @@ Public Class FrmJuego
                     .Name = $"btn{i}{j}",
                     .Size = New Size(28, 28),
                     .Tag = New BibliotecaDeClases.TagBoton(0, i, j),
-                    .BackColor = Color.LightGreen,
+                    .BackColor = Color.LightBlue,
                     .ForeColor = Color.Black,
                     .Enabled = True
                 }
@@ -251,6 +257,7 @@ Public Class FrmJuego
                     RemoveHandler botones(i, j).MouseDown, AddressOf BotonClicDerecho
                 Next
             Next
+
         End If
 
     End Sub
@@ -294,7 +301,15 @@ Public Class FrmJuego
         FrmConfiguracionDeJuego.Show()
         Me.Close()
     End Sub
-
-
+    Private minutosSegundos(1) As Byte
+    Private Sub tmrReloj_Tick(sender As Object, e As EventArgs) Handles tmrReloj.Tick
+        If minutosSegundos(1) = 59 Then
+            minutosSegundos(1) = 0
+            minutosSegundos(0) += 1
+            Exit Sub
+        End If
+        minutosSegundos(1) += 1
+        txtReloj.Text = $"{Format(minutosSegundos(0), "##00")}:{Format(minutosSegundos(1), "##00")}"
+    End Sub
 
 End Class
