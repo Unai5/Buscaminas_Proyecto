@@ -17,7 +17,7 @@ Public Class FrmConfiguracionDeJuego
         End If
 
         FrmJuego.Show()
-        Me.Close()
+        Me.Visible = False
 
     End Sub
 
@@ -31,7 +31,7 @@ Public Class FrmConfiguracionDeJuego
     End Sub
     Private Sub btnVolver_Click(sender As Object, e As EventArgs) Handles btnVolver.Click
         FrmInicioDeSesion.Show()
-        Me.Close()
+        Me.Visible = False
     End Sub
 
     Private Sub FrmConfiguracionDeJuego_Load(sender As Object, e As EventArgs) Handles MyBase.Load

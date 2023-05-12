@@ -1,7 +1,7 @@
 ﻿Imports BibliotecaDeClases
 Module Modulo
     Public numBombas As Integer
-    Public jugador As Usuario
+    Public jugador As New Usuario
     Public botones(9, 9) As Button
     Public dificultad As Integer
     Public temporizador As Timer

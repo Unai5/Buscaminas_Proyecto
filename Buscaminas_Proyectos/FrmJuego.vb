@@ -98,7 +98,7 @@ Public Class FrmJuego
                     y = rnd.Next(Dific.FACIL)
                 End If
 
-            Loop While botones(x, y).Tag.bombasAlrededor = -1 OrElse IndiceInvalido(botones(x, y), xprimerclic, yprimerclic)
+            Loop While botones(x, y).Tag.bombasAlrededor = -1 OrElse IndiceInvalido(botones(x, y), xPrimerClic, yPrimerClic)
 
             botones(x, y).Tag.bombasAlrededor = -1
 
@@ -320,7 +320,7 @@ Public Class FrmJuego
 
     Private Sub btnSalir_Click(sender As Object, e As EventArgs) Handles btnSalir.Click
         FrmConfiguracionDeJuego.Show()
-        Me.Close()
+        Me.Visible = False
     End Sub
     Private minutosSegundos(1) As Byte
     Private Sub tmrReloj_Tick(sender As Object, e As EventArgs) Handles tmrReloj.Tick

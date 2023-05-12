@@ -20,11 +20,20 @@
         jugador.Nombre = txtNuevoUsuario.Text
         jugador.Contraseña = txtNuevaContraseña.Text
         FrmConfiguracionDeJuego.Show()
-        Me.Close()
+        Me.Visible = False
     End Sub
 
+    Private Sub FrmRegistro_FormClosing(sender As Object, e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
+
+        Dim resp As DialogResult
+        resp = MessageBox.Show("¿Estas seguro de cerrar el juego?", "Atención", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+        If resp = Windows.Forms.DialogResult.No Then
+            e.Cancel = True
+        End If
+    End Sub
     Private Sub btnVolver_Click(sender As Object, e As EventArgs) Handles btnVolver.Click
         FrmInicioDeSesion.Show()
-        Me.Close()
+        Me.Visible = False
     End Sub
+
 End Class
