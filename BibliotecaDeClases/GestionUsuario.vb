@@ -13,12 +13,12 @@ Public Class GestionUsuario
         'TODO ¿Que pasa si no existe el fichero
         'TODO Que pasa si no hay asteriscos y solo hay un campo
 
-        Dim ficheroR As New StreamReader(".\Ficheros\TodosLosUsuarios.txt")
+        Dim ficheroR As New StreamReader(".\..\..\Ficheros\TodosLosUsuarios.txt")
 
         Do Until ficheroR.EndOfStream
             Dim linea As String = ficheroR.ReadLine
             Dim datosLinea() As String = linea.Split("*")
-            _Usuarios.Add(New Usuario(datosLinea(0), datosLinea(1)))
+            _Usuarios.Add(New Usuario(datosLinea(0), datosLinea(1), datosLinea(2), datosLinea(3), datosLinea(4)))
         Loop
 
         ficheroR.Close()
@@ -29,7 +29,7 @@ Public Class GestionUsuario
         If String.IsNullOrWhiteSpace(nombre) OrElse String.IsNullOrWhiteSpace(contraseña) Then
             Return "Hay elementos vacíos"
         End If
-        Dim nuevo As New Usuario(nombre, contraseña)
+        Dim nuevo As New Usuario(nombre, contraseña, 0, 0, 0)
         For i = 0 To _Usuarios.Count - 1
             If _Usuarios(i).Equals(nuevo) Then
                 Return $"Ya existe el usuario {nombre}"
@@ -38,7 +38,8 @@ Public Class GestionUsuario
         _Usuarios.Add(nuevo)
 
         Dim ficheroW As New StreamWriter(".\..\..\Ficheros\TodosLosUsuarios.txt", True)
-        ficheroW.WriteLine(nuevo.Nombre & "*" & nuevo.Contraseña)
+        ficheroW.WriteLine()
+        ficheroW.Write(nuevo.Nombre & "*" & nuevo.Contraseña & "*" & nuevo.MejorTiempoFacil & "*" & nuevo.MejorTiempoMedio & "*" & nuevo.MejorTiempoDificil)
         ficheroW.Close()
         Return "Usuario creado"
     End Function
@@ -52,14 +53,15 @@ Public Class GestionUsuario
         Return "No existe el usuario, no se puede iniciar sesion"
     End Function
 
-    Public Function OrdenarFichero(dificultad As Integer)
+    Public Function OrdenarFichero(dificultad)
         'Dim ficheroSinOrdenar As StreamReader(".\Ficheros\" + nombreFichero)
+        Dim ranking As New List(Of Usuario)
         Dim primero As Usuario
         If dificultad = 1 Then
             Dim ficheroW As New StreamWriter(".\..\..\Ficheros\RankingFacil.txt", True)
             ficheroW.Flush()
-            For i = 0 To _Usuarios.Count
-                For j = i To _Usuarios.Count
+            For i = 0 To ranking.Count
+                For j = i To ranking.Count
                     If j = i Then
                         primero = _Usuarios(j)
                     ElseIf _Usuarios(j).MejorTiempoFacil > primero.MejorTiempoFacil Then
@@ -102,11 +104,6 @@ Public Class GestionUsuario
             ficheroW.Close()
         End If
 
-    End Function
-    Public Function AnadirPartida(tiempo As String, usuario As String, modoJuego As String)
-        'For Each usu As Usuario In Usuarios
-        '    ficheroPartidas.WriteLine(tiempo & "*" & usuario & "*" & modoJuego)
-        'Next
     End Function
 
 End Class

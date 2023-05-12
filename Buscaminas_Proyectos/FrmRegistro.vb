@@ -1,4 +1,5 @@
 ﻿Public Class FrmRegistro
+    Private jugador = New BibliotecaDeClases.Usuario
     Private Sub btnCompletarRegistro_Click(sender As Object, e As EventArgs) Handles btnCompletarRegistro.Click
         If String.IsNullOrWhiteSpace(txtNuevoUsuario.Text) Then
             MessageBox.Show("Es necesario introducir un nombre de Usuario", "Error")
@@ -19,6 +20,9 @@
         MessageBox.Show(gestionUsrs.AñadirUsuario(txtNuevoUsuario.Text, txtNuevaContraseña.Text))
         jugador.Nombre = txtNuevoUsuario.Text
         jugador.Contraseña = txtNuevaContraseña.Text
+        jugador.MejorTiempoFacil = 0
+        jugador.MejorTiempoMedio = 0
+        jugador.MejorTiempoDificil = 0
         FrmConfiguracionDeJuego.Show()
         Me.Close()
     End Sub
@@ -26,5 +30,9 @@
     Private Sub btnVolver_Click(sender As Object, e As EventArgs) Handles btnVolver.Click
         FrmInicioDeSesion.Show()
         Me.Close()
+    End Sub
+
+    Private Sub FrmRegistro_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
     End Sub
 End Class

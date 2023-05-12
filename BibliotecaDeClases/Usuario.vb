@@ -3,13 +3,16 @@ Public Class Usuario
     Implements IEquatable(Of Usuario)
     Public Property Nombre As String
     Public Property Contraseña As String
-    Public Property MejorTiempoFacil As TimeSpan
-    Public Property MejorTiempoMedio As TimeSpan
-    Public Property MejorTiempoDificil As TimeSpan
+    Public Property MejorTiempoFacil As Integer
+    Public Property MejorTiempoMedio As Integer
+    Public Property MejorTiempoDificil As Integer
 
-    Public Sub New(nombre As String, contraseña As String)
+    Public Sub New(nombre As String, contraseña As String, mejorTiempoFacil As Integer, mejorTiempoMedio As Integer, mejorTiempoDificil As Integer)
         Me.Nombre = nombre
         Me.Contraseña = contraseña
+        Me.MejorTiempoFacil = mejorTiempoFacil
+        Me.MejorTiempoMedio = mejorTiempoMedio
+        Me.MejorTiempoDificil = mejorTiempoDificil
     End Sub
 
     Public Sub New()
