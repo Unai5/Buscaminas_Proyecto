@@ -69,6 +69,7 @@ Partial Class FrmJuego
         Me.Controls.Add(Me.btnSalir)
         Me.Controls.Add(Me.btnReiniciar)
         Me.Name = "FrmJuego"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Form1"
         Me.ResumeLayout(False)
         Me.PerformLayout()
