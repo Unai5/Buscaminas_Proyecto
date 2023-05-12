@@ -62,6 +62,6 @@
 
     Private Sub btnRegisto_Click(sender As Object, e As EventArgs) Handles btnRegisto.Click
         FrmRegistro.Show()
-        Me.Close()
+        Me.Visible = False
     End Sub
 End Class

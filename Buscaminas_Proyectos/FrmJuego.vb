@@ -319,7 +319,7 @@ Public Class FrmJuego
 
     Private Sub btnSalir_Click(sender As Object, e As EventArgs) Handles btnSalir.Click
         FrmConfiguracionDeJuego.Show()
-        Me.Close()
+        Me.Visible = False
     End Sub
     Private minutosSegundos(1) As Byte
     Private Sub tmrReloj_Tick(sender As Object, e As EventArgs) Handles tmrReloj.Tick
@@ -332,4 +332,13 @@ Public Class FrmJuego
         txtReloj.Text = $"{Format(minutosSegundos(0), "##00")}:{Format(minutosSegundos(1), "##00")}"
     End Sub
 
+
+    Private Sub FrmInicioSesion_FormClosing(sender As Object, e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
+
+        Dim resp As DialogResult
+        resp = MessageBox.Show("¿Estas seguro de cerrar el juego?", "Atención", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+        If resp = Windows.Forms.DialogResult.No Then
+            e.Cancel = True
+        End If
+    End Sub
 End Class
