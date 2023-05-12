@@ -1,4 +1,4 @@
-﻿1Imports System.Reflection
+﻿Imports System.Reflection
 
 Public Class FrmConfiguracionDeJuego
     Private Sub btnAceptar_Click(sender As Object, e As EventArgs) Handles btnAceptar.Click

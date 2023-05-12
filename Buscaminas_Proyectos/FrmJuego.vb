@@ -62,7 +62,8 @@ Public Class FrmJuego
                     .Tag = New BibliotecaDeClases.TagBoton(0, i, j),
                     .BackColor = Color.LightBlue,
                     .ForeColor = Color.Black,
-                    .Enabled = True
+                    .Enabled = True,
+                    .BackgroundImageLayout = ImageLayout.Stretch
                 }
                 AddHandler botones(i, j).Click, AddressOf BotonClic
                 AddHandler botones(i, j).MouseDown, AddressOf BotonClicDerecho
@@ -184,8 +185,8 @@ Public Class FrmJuego
         boton.BackColor = Nothing
         boton.Image = Nothing
         If boton.Tag.bombasAlrededor = -1 Then
-            If File.Exists("..\..\img\mina.jpg") Then
-                TryCast(boton, Button).Image = Image.FromFile("..\..\img\mina.jpg")
+            If File.Exists(".\img\mina.jpg") Then
+                TryCast(boton, Button).BackgroundImage = Image.FromFile(".\img\mina.jpg")
             Else
                 TryCast(boton, Button).Text = "B"
             End If
@@ -259,8 +260,8 @@ Public Class FrmJuego
             For i = 0 To botones.GetLength(0) - 1
                 For j = 0 To botones.GetLength(1) - 1
                     If botones(i, j).Tag.bombasAlrededor = -1 Then
-                        If File.Exists("..\..\img\mina.jpg") Then
-                            botones(i, j).Image = Image.FromFile("..\..\img\mina.jpg")
+                        If File.Exists(".\img\mina.jpg") Then
+                            botones(i, j).BackgroundImage = Image.FromFile(".\img\mina.jpg")
                         Else
                             botones(i, j).Text = "B"
                         End If
@@ -288,8 +289,8 @@ Public Class FrmJuego
         If e.Button = System.Windows.Forms.MouseButtons.Right Then
 
             If sender.ForeColor = Color.Black Then
-                If File.Exists("../../img/banderita.png") Then
-                    sender.BackgroundImage = Image.FromFile("../../img/banderita.png")
+                If File.Exists("./img/banderita.png") Then
+                    sender.BackgroundImage = Image.FromFile("./img/banderita.png")
                 Else
                     sender.text = "^^"
                 End If
@@ -331,5 +332,7 @@ Public Class FrmJuego
         minutosSegundos(1) += 1
         txtReloj.Text = $"{Format(minutosSegundos(0), "##00")}:{Format(minutosSegundos(1), "##00")}"
     End Sub
+
+
 
 End Class
