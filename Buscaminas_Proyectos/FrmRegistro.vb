@@ -20,7 +20,7 @@
         jugador.Nombre = txtNuevoUsuario.Text
         jugador.Contraseña = txtNuevaContraseña.Text
         FrmConfiguracionDeJuego.Show()
-        Me.Close()
+        Me.Visible = False
     End Sub
 
     Private Sub FrmRegistro_FormClosing(sender As Object, e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
