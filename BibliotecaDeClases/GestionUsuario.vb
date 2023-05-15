@@ -13,7 +13,7 @@ Public Class GestionUsuario
         'TODO ¿Que pasa si no existe el fichero
         'TODO Que pasa si no hay asteriscos y solo hay un campo
 
-        Dim ficheroR As New StreamReader(".\..\..\Ficheros\TodosLosUsuarios.txt")
+        Dim ficheroR As New StreamReader(".\Ficheros\TodosLosUsuarios.txt")
 
         Do Until ficheroR.EndOfStream
             Dim linea As String = ficheroR.ReadLine
@@ -37,7 +37,7 @@ Public Class GestionUsuario
         Next
         _Usuarios.Add(nuevo)
 
-        Dim ficheroW As New StreamWriter(".\..\..\Ficheros\TodosLosUsuarios.txt", True)
+        Dim ficheroW As New StreamWriter(".\Ficheros\TodosLosUsuarios.txt", True)
         ficheroW.WriteLine()
         ficheroW.Write(nuevo.Nombre & "*" & nuevo.Contraseña & "*" & nuevo.MejorTiempoFacil & "*" & nuevo.MejorTiempoMedio & "*" & nuevo.MejorTiempoDificil)
         ficheroW.Close()
