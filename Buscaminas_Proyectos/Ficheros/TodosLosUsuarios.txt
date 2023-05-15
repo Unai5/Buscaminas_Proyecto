@@ -1,5 +1,3 @@
 ﻿admin*admin*0*0*0
-inazio*ast*0*0*0
-e*e*0*0*0
-d*s*0*0*0
-l*m*0*0*0
+asdf*sdf*0*0*0
+qewr*qwer*0*0*0

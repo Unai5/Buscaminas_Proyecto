@@ -59,7 +59,7 @@ Public Class FrmJuego
                     .Name = $"btn{i}{j}",
                     .Size = New Size(28, 28),
                     .Tag = New BibliotecaDeClases.TagBoton(0, i, j),
-                    .BackColor = BackColor.LightGreen,
+                    .BackColor = BackColor.LightBlue,
                     .ForeColor = Color.Black,
                     .Enabled = True,
                     .BackgroundImageLayout = ImageLayout.Stretch
@@ -278,6 +278,9 @@ Public Class FrmJuego
         tmrReloj.Stop()
         If ganador Then
             MessageBox.Show($"VAYA MÁQUINA! {vbCrLf}Y sólo has tardado: {Format(minutosSegundos(0), "##00")}:{Format(minutosSegundos(1), "##00")}")
+
+
+
         Else
             MessageBox.Show($"GAME OVER! {vbCrLf}En el tiempo: {Format(minutosSegundos(0), "##00")}:{Format(minutosSegundos(1), "##00")}")
         End If
