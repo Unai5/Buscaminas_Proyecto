@@ -1,46 +1,49 @@
-﻿Imports System.Drawing.Drawing2D
-Imports System.Drawing.Text
-Imports System.Linq.Expressions
-Imports System.Net.Sockets
-Imports System.Security.Cryptography.X509Certificates
-Imports BibliotecaDeClases
-
-Public Enum NivelDificultad As Byte
+﻿Imports System.IO
+Public Enum Dific As Byte
     FACIL = 7
     MEDIO = 10
     DIFICIL = 16
 End Enum
 Public Class FrmJuego
-
+    Private cerrarPorBoton As Boolean = False
+    Private casillasSinBomba As Integer = 0
     Private Sub FrmJuego_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         esPrimerClick = True
         MaximizeBox = False
         AutoSizeMode = AutoSizeMode.GrowAndShrink
+        txtReloj.TextAlign = HorizontalAlignment.Center
+        txtReloj.Enabled = False
+
 
         If dificultad = 1 Then
 
             Me.Size = New Size(270, 360)
             Me.btnReiniciar.Location = New Point(20, 270)
             Me.btnSalir.Location = New Point(150, 270)
-
-            GenerarBotones(NivelDificultad.FACIL, NivelDificultad.FACIL)
+            txtReloj.Location = New Point(80, 10)
+            GenerarBotones(Dific.FACIL, Dific.FACIL)
 
         ElseIf dificultad = 3 Then
 
             Me.Size = New Size(520, 610)
             Me.btnReiniciar.Location = New Point(60, 520)
             Me.btnSalir.Location = New Point(300, 520)
-            GenerarBotones(16, 16)
+            txtReloj.Location = New Point(200, 10)
+            GenerarBotones(Dific.DIFICIL, Dific.DIFICIL)
 
         Else
             Me.Size = New Size(350, 450)
             Me.btnReiniciar.Location = New Point(40, 360)
             Me.btnSalir.Location = New Point(200, 360)
-            GenerarBotones(10, 10)
+            txtReloj.Location = New Point(120, 10)
+            GenerarBotones(Dific.MEDIO, Dific.MEDIO)
 
         End If
 
+        txtReloj.Text = "00:00"
+        tmrReloj.Interval = 1000
+        tmrReloj.Start()
 
     End Sub
 
@@ -55,10 +58,11 @@ Public Class FrmJuego
                     .Text = Nothing,
                     .Name = $"btn{i}{j}",
                     .Size = New Size(28, 28),
-                    .Tag = New TagBoton(0, i, j),
-                    .BackColor = BackColor.LightGreen,
+                    .Tag = New BibliotecaDeClases.TagBoton(0, i, j),
+                    .BackColor = Color.LightBlue,
                     .ForeColor = Color.Black,
-                    .Enabled = True
+                    .Enabled = True,
+                    .BackgroundImageLayout = ImageLayout.Stretch
                 }
                 AddHandler botones(i, j).Click, AddressOf BotonClic
                 AddHandler botones(i, j).MouseDown, AddressOf BotonClicDerecho
@@ -83,17 +87,17 @@ Public Class FrmJuego
             Dim x, y As Integer
             Do
                 If dificultad = 3 Then
-                    x = rnd.Next(NivelDificultad.DIFICIL)
-                    y = rnd.Next(NivelDificultad.DIFICIL)
+                    x = rnd.Next(Dific.DIFICIL)
+                    y = rnd.Next(Dific.DIFICIL)
                 ElseIf dificultad = 2 Then
-                    x = rnd.Next(NivelDificultad.MEDIO)
-                    y = rnd.Next(NivelDificultad.MEDIO)
+                    x = rnd.Next(Dific.MEDIO)
+                    y = rnd.Next(Dific.MEDIO)
                 Else
-                    x = rnd.Next(NivelDificultad.FACIL)
-                    y = rnd.Next(NivelDificultad.FACIL)
+                    x = rnd.Next(Dific.FACIL)
+                    y = rnd.Next(Dific.FACIL)
                 End If
 
-            Loop While botones(x, y).Tag.bombasAlrededor = -1 AndAlso Not botones(x, y).Equals(botones(xPrimerClic, yPrimerClic))
+            Loop While botones(x, y).Tag.bombasAlrededor = -1 OrElse IndiceInvalido(botones(x, y), xPrimerClic, yPrimerClic)
 
             botones(x, y).Tag.bombasAlrededor = -1
 
@@ -129,42 +133,108 @@ Public Class FrmJuego
             Next
         Next
 
+        If xPrimerClic - 1 >= 0 AndAlso yPrimerClic - 1 >= 0 Then Inhabilitar(botones(xPrimerClic - 1, yPrimerClic - 1))
 
+        If yPrimerClic - 1 >= 0 Then Inhabilitar(botones(xPrimerClic, yPrimerClic - 1))
+
+        If xPrimerClic + 1 <= botones.GetLength(0) - 1 AndAlso yPrimerClic - 1 >= 0 Then Inhabilitar(botones(xPrimerClic + 1, yPrimerClic - 1))
+
+        If xPrimerClic + 1 <= botones.GetLength(0) - 1 Then Inhabilitar(botones(xPrimerClic + 1, yPrimerClic))
+
+        If xPrimerClic + 1 <= botones.GetLength(0) - 1 AndAlso yPrimerClic + 1 <= botones.GetLength(1) - 1 Then Inhabilitar(botones(xPrimerClic + 1, yPrimerClic + 1))
+
+        If yPrimerClic + 1 <= botones.GetLength(1) - 1 Then Inhabilitar(botones(xPrimerClic, yPrimerClic + 1))
+
+        If xPrimerClic - 1 >= 0 AndAlso yPrimerClic + 1 <= botones.GetLength(1) - 1 Then Inhabilitar(botones(xPrimerClic - 1, yPrimerClic + 1))
+
+        If xPrimerClic - 1 >= 0 Then Inhabilitar(botones(xPrimerClic - 1, yPrimerClic))
 
     End Sub
 
+    Private Function IndiceInvalido(boton As Button, x As Integer, y As Integer) As Boolean
+        If boton.Equals(botones(x, y)) Then Return True
+        If x - 1 >= 0 AndAlso y - 1 >= 0 Then
+            If boton.Equals(botones(x - 1, y - 1)) Then Return True
+        End If
+        If y - 1 >= 0 Then
+            If boton.Equals(botones(x, y - 1)) Then Return True
+        End If
+        If x + 1 <= botones.GetLength(0) - 1 AndAlso y - 1 >= 0 Then
+            If boton.Equals(botones(x + 1, y - 1)) Then Return True
+        End If
+        If x + 1 <= botones.GetLength(0) - 1 Then
+            If boton.Equals(botones(x + 1, y)) Then Return True
+        End If
+        If x + 1 <= botones.GetLength(0) - 1 AndAlso y + 1 <= botones.GetLength(1) - 1 Then
+            If boton.Equals(botones(x + 1, y + 1)) Then Return True
+        End If
+        If y + 1 <= botones.GetLength(1) - 1 Then
+            If boton.Equals(botones(x, y + 1)) Then Return True
+        End If
+        If x - 1 >= 0 AndAlso y + 1 <= botones.GetLength(1) - 1 Then
+            If boton.Equals(botones(x - 1, y + 1)) Then Return True
+        End If
+        If x - 1 >= 0 Then
+            If boton.Equals(botones(x - 1, y)) Then Return True
+        End If
+        Return False
+    End Function
+
+    Private Sub Inhabilitar(boton As Button)
+        boton.BackColor = Nothing
+        boton.Image = Nothing
+        If boton.Tag.bombasAlrededor = -1 Then
+            If File.Exists(".\img\mina.jpg") Then
+                TryCast(boton, Button).BackgroundImage = Image.FromFile(".\img\mina.jpg")
+            Else
+                TryCast(boton, Button).Text = "B"
+            End If
+        Else
+            If boton.Tag.bombasAlrededor > 0 Then
+                TryCast(boton, Button).Text = boton.Tag.bombasalrededor
+            End If
+        End If
+        RemoveHandler TryCast(boton, Button).Click, AddressOf BotonClic
+        RemoveHandler TryCast(boton, Button).MouseDown, AddressOf BotonClicDerecho
+        boton.Enabled = False
+    End Sub
+
     Private Sub ReiniciarPartida(ancho As Integer, alto As Integer)
+        tmrReloj.Stop()
+        esPrimerClick = True
         For i = 0 To botones.GetLength(0) - 1
             For j = 0 To botones.GetLength(1) - 1
                 Controls.Remove(botones(i, j))
             Next
         Next
         If dificultad = 1 Then
-            ReDim botones(NivelDificultad.FACIL - 1, NivelDificultad.FACIL - 1)
-            GenerarBotones(NivelDificultad.FACIL, NivelDificultad.FACIL)
+            ReDim botones(Dific.FACIL - 1, Dific.FACIL - 1)
+            GenerarBotones(Dific.FACIL, Dific.FACIL)
         ElseIf dificultad = 3 Then
             ReDim botones(15, 15)
             GenerarBotones(16, 16)
         Else
-            ReDim botones(NivelDificultad.MEDIO - 1, NivelDificultad.MEDIO - 1)
-            GenerarBotones(NivelDificultad.MEDIO, NivelDificultad.MEDIO)
+            ReDim botones(Dific.MEDIO - 1, Dific.MEDIO - 1)
+            GenerarBotones(Dific.MEDIO, Dific.MEDIO)
         End If
-
+        minutosSegundos(0) = 0
+        minutosSegundos(1) = 0
+        txtReloj.Text = "00:00"
+        tmrReloj.Start()
     End Sub
 
-    Private Sub BotonClic(sender As Button, e As EventArgs)
-
+    Private Sub BotonClic(sender As Object, e As EventArgs)
 
         If esPrimerClick Then
-
             GenerarBombas(sender.Tag.posX, sender.Tag.posY)
-
-            esPrimerClick = False
-
+            For i = 0 To botones.GetLength(0) - 1
+                For j = 0 To botones.GetLength(1) - 1
+                    If botones(i, j).Tag.bombasAlrededor <> -1 Then
+                        casillasSinBomba += 1
+                    End If
+                Next
+            Next
         End If
-
-
-
 
         sender.BackColor = Nothing
         If sender.Tag.bombasAlrededor > -1 Then
@@ -174,35 +244,63 @@ Public Class FrmJuego
                 sender.Text = ""
             End If
             sender.Enabled = False
+            If esPrimerClick Then
+                casillasSinBomba -= 9
+                esPrimerClick = False
+            Else
+                casillasSinBomba -= 1
+            End If
+            If casillasSinBomba = 0 Then
+                PartidaTerminada(True)
+            End If
         End If
 
         If sender.Tag.bombasAlrededor = -1 Then
             For i = 0 To botones.GetLength(0) - 1
                 For j = 0 To botones.GetLength(1) - 1
                     If botones(i, j).Tag.bombasAlrededor = -1 Then
-                        botones(i, j).Image = Image.FromFile("..\..\img\mina.jpg")
+                        If File.Exists(".\img\mina.jpg") Then
+                            botones(i, j).BackgroundImage = Image.FromFile(".\img\mina.jpg")
+                        Else
+                            botones(i, j).Text = "B"
+                        End If
                     End If
                     RemoveHandler botones(i, j).Click, AddressOf BotonClic
                     RemoveHandler botones(i, j).MouseDown, AddressOf BotonClicDerecho
                 Next
             Next
+            PartidaTerminada(False)
         End If
 
     End Sub
 
+    Private Sub PartidaTerminada(ganador As Boolean)
+        tmrReloj.Stop()
+        If ganador Then
+            MessageBox.Show($"VAYA MÁQUINA! {vbCrLf}Y sólo has tardado: {Format(minutosSegundos(0), "##00")}:{Format(minutosSegundos(1), "##00")}")
+        Else
+            MessageBox.Show($"GAME OVER! {vbCrLf}En el tiempo: {Format(minutosSegundos(0), "##00")}:{Format(minutosSegundos(1), "##00")}")
+        End If
+    End Sub
 
-    Private Sub BotonClicDerecho(sender As Button, e As MouseEventArgs)
+    Private Sub BotonClicDerecho(sender As Object, e As MouseEventArgs)
 
         If e.Button = System.Windows.Forms.MouseButtons.Right Then
 
             If sender.ForeColor = Color.Black Then
-                sender.BackgroundImage = Image.FromFile("../../img/banderita.png")
+                If File.Exists("./img/banderita.png") Then
+                    sender.BackgroundImage = Image.FromFile("./img/banderita.png")
+                Else
+                    sender.text = "^^"
+                End If
+
                 sender.ForeColor = Color.White
-                RemoveHandler sender.Click, AddressOf BotonClic
+                RemoveHandler TryCast(sender, Button).Click, AddressOf BotonClic
             Else
                 sender.BackgroundImage = Nothing
+                sender.text = ""
                 sender.ForeColor = Color.Black
-                AddHandler sender.Click, AddressOf BotonClic
+                AddHandler TryCast(sender, Button).Click, AddressOf BotonClic
             End If
 
         End If
@@ -220,8 +318,32 @@ Public Class FrmJuego
     End Sub
 
     Private Sub btnSalir_Click(sender As Object, e As EventArgs) Handles btnSalir.Click
+        cerrarPorBoton = True
         FrmConfiguracionDeJuego.Show()
+        Me.Visible = False
         Me.Close()
     End Sub
+    Private Sub FrmJuego_FormClosing(sender As Object, e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
+        If cerrarPorBoton = True Then
+            Exit Sub
+        End If
+        Dim resp As DialogResult
+        resp = MessageBox.Show("¿Estas seguro de cerrar el juego?", "Atención", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+        If resp = Windows.Forms.DialogResult.No Then
+            e.Cancel = True
+        End If
+    End Sub
+    Private minutosSegundos(1) As Byte
+    Private Sub tmrReloj_Tick(sender As Object, e As EventArgs) Handles tmrReloj.Tick
+        If minutosSegundos(1) = 59 Then
+            minutosSegundos(1) = 0
+            minutosSegundos(0) += 1
+            Exit Sub
+        End If
+        minutosSegundos(1) += 1
+        txtReloj.Text = $"{Format(minutosSegundos(0), "##00")}:{Format(minutosSegundos(1), "##00")}"
+    End Sub
+
+
 
 End Class

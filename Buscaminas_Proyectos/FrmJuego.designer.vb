@@ -22,8 +22,11 @@ Partial Class FrmJuego
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.btnReiniciar = New System.Windows.Forms.Button()
         Me.btnSalir = New System.Windows.Forms.Button()
+        Me.tmrReloj = New System.Windows.Forms.Timer(Me.components)
+        Me.txtReloj = New System.Windows.Forms.TextBox()
         Me.SuspendLayout()
         '
         'btnReiniciar
@@ -47,19 +50,34 @@ Partial Class FrmJuego
         Me.btnSalir.Text = "SALIR"
         Me.btnSalir.UseVisualStyleBackColor = True
         '
+        'tmrReloj
+        '
+        '
+        'txtReloj
+        '
+        Me.txtReloj.Location = New System.Drawing.Point(173, 12)
+        Me.txtReloj.Name = "txtReloj"
+        Me.txtReloj.Size = New System.Drawing.Size(100, 20)
+        Me.txtReloj.TabIndex = 2
+        '
         'FrmJuego
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(491, 441)
+        Me.Controls.Add(Me.txtReloj)
         Me.Controls.Add(Me.btnSalir)
         Me.Controls.Add(Me.btnReiniciar)
         Me.Name = "FrmJuego"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Form1"
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 
     Friend WithEvents btnReiniciar As Button
     Friend WithEvents btnSalir As Button
+    Friend WithEvents tmrReloj As Timer
+    Friend WithEvents txtReloj As TextBox
 End Class

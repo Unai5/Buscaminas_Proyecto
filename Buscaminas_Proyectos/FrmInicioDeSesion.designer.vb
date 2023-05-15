@@ -27,7 +27,7 @@ Partial Class FrmInicioDeSesion
         Me.btnIniciarSesion = New System.Windows.Forms.Button()
         Me.txtUsuario = New System.Windows.Forms.TextBox()
         Me.lblBuscaminas = New System.Windows.Forms.Label()
-        Me.btnRegistrarse = New System.Windows.Forms.Button()
+        Me.btnRegisto = New System.Windows.Forms.Button()
         Me.pnlUsr = New System.Windows.Forms.Panel()
         Me.pnlContraseña = New System.Windows.Forms.Panel()
         Me.lblContraseña = New System.Windows.Forms.Label()
@@ -75,17 +75,17 @@ Partial Class FrmInicioDeSesion
         Me.lblBuscaminas.TabIndex = 3
         Me.lblBuscaminas.Text = "BUSCAMINAS"
         '
-        'btnRegistrarse
+        'btnRegisto
         '
-        Me.btnRegistrarse.BackColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.btnRegistrarse.FlatAppearance.BorderColor = System.Drawing.Color.Snow
-        Me.btnRegistrarse.Font = New System.Drawing.Font("Cooper Black", 12.0!)
-        Me.btnRegistrarse.Location = New System.Drawing.Point(268, 287)
-        Me.btnRegistrarse.Name = "btnRegistrarse"
-        Me.btnRegistrarse.Size = New System.Drawing.Size(115, 37)
-        Me.btnRegistrarse.TabIndex = 4
-        Me.btnRegistrarse.Text = "Registrarse"
-        Me.btnRegistrarse.UseVisualStyleBackColor = False
+        Me.btnRegisto.BackColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.btnRegisto.FlatAppearance.BorderColor = System.Drawing.Color.Snow
+        Me.btnRegisto.Font = New System.Drawing.Font("Cooper Black", 12.0!)
+        Me.btnRegisto.Location = New System.Drawing.Point(268, 287)
+        Me.btnRegisto.Name = "btnRegisto"
+        Me.btnRegisto.Size = New System.Drawing.Size(115, 37)
+        Me.btnRegisto.TabIndex = 4
+        Me.btnRegisto.Text = "Registrarse"
+        Me.btnRegisto.UseVisualStyleBackColor = False
         '
         'pnlUsr
         '
@@ -134,9 +134,11 @@ Partial Class FrmInicioDeSesion
         Me.ClientSize = New System.Drawing.Size(491, 442)
         Me.Controls.Add(Me.pnlContraseña)
         Me.Controls.Add(Me.pnlUsr)
-        Me.Controls.Add(Me.btnRegistrarse)
+        Me.Controls.Add(Me.btnRegisto)
         Me.Controls.Add(Me.lblBuscaminas)
         Me.Controls.Add(Me.btnIniciarSesion)
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
         Me.Name = "FrmInicioDeSesion"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Form1"
@@ -153,7 +155,7 @@ Partial Class FrmInicioDeSesion
     Friend WithEvents btnIniciarSesion As Button
     Friend WithEvents txtUsuario As TextBox
     Friend WithEvents lblBuscaminas As Label
-    Friend WithEvents btnRegistrarse As Button
+    Friend WithEvents btnRegisto As Button
     Friend WithEvents pnlUsr As Panel
     Friend WithEvents pnlContraseña As Panel
     Friend WithEvents lblContraseña As Label

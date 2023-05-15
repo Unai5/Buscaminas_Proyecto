@@ -1,4 +1,5 @@
 ﻿Public Class frmRanking
+    Private cerrarPorBoton As Boolean = False
     Private Sub frmRanking_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         If gestionUsrs.Usuarios Is Nothing Then
             MessageBox.Show("No hay usuarios todavía")
@@ -53,48 +54,19 @@
     End Sub
 
     Private Sub btnVolver_Click(sender As Object, e As EventArgs) Handles btnVolver.Click
-        If btnDificultad.Visible = True Then
-            Me.Close()
-            FrmConfiguracionDeJuego.Show()
-        Else
-        End If
-        lstRanking.Items.Clear()
-        lblRanking.Text = "RANKING FÁCIL"
-        btnDificultad.Text = "Dificultad: Media"
-        If gestionUsrs.Usuarios Is Nothing Then
-            MessageBox.Show("No hay usuarios todavía")
-        Else
-            For Each per In gestionUsrs.Usuarios
-                lstRanking.Items.Add($"{per.Nombre} ...............{per.MejorTiempoFacil}")
-            Next
-        End If
-        btnDificultad.Visible = True
-        btnDificultad.Location = New Point(56, 384)
-        btnVolver.Location = New Point(346, 386)
-
-    End Sub
-    Private Sub lstRanking_DoubleClick(sender As Object, e As EventArgs) Handles lstRanking.DoubleClick
-        If lstRanking.SelectedItem = "" OrElse lstRanking.SelectedItem Is Nothing Then
-            MessageBox.Show($"No has seleccionado a nadie", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-        Else
-            btnDificultad.Visible = False
-            btnVolver.Location = New Point(217, 386)
-            lblRanking.Text = $"RANKING DE {lstRanking.SelectedItem.ToString.ToUpper}"
-            If lstRanking.SelectedItem.ToString.Length > 10 Then
-                lblRanking.Location = New Point(225 - (lblRanking.Width / 4), 22)
-            Else
-                lblRanking.Location = New Point(225 - (lblRanking.Width / 6), 22)
-            End If
-            If gestionUsrs.Usuarios Is Nothing Then
-                MessageBox.Show("No hay usuarios todavía")
-            Else
-                'Encontrar usuario
-                For Each tiempo In gestionUsrs.Usuarios
-                    'lstRanking.Items.Add($"{per.Nombre} ...............{per.MejorTiempoFacil}")
-                Next
-            End If
-        End If
+        cerrarPorBoton = True
+        FrmConfiguracionDeJuego.Show()
+        Me.Close()
     End Sub
 
-
+    Private Sub FrmRanking_FormClosing(sender As Object, e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
+        If cerrarPorBoton = True Then
+            Exit Sub
+        End If
+        Dim resp As DialogResult
+        resp = MessageBox.Show("¿Estas seguro de cerrar el juego?", "Atención", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+        If resp = Windows.Forms.DialogResult.No Then
+            e.Cancel = True
+        End If
+    End Sub
 End Class

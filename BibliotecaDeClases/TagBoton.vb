@@ -1,4 +1,6 @@
-﻿Public Class TagBoton
+﻿Imports Microsoft.VisualBasic.ApplicationServices
+
+Public Class TagBoton
 
     Public Property bombasAlrededor As Integer
     Public Property posX As Integer
