@@ -53,55 +53,81 @@ Public Class GestionUsuario
         Return "No existe el usuario, no se puede iniciar sesion"
     End Function
 
-    Public Function OrdenarFichero(dificultad)
-        'Dim ficheroSinOrdenar As StreamReader(".\Ficheros\" + nombreFichero)
-        Dim ranking As New List(Of Usuario)
-        Dim primero As Usuario
+    Public Function ComprobarTiempo(tiempo As Integer, dificultad As Integer, nombre As String) As String
         If dificultad = 1 Then
-            Dim ficheroW As New StreamWriter(".\..\..\Ficheros\RankingFacil.txt", True)
-            ficheroW.Flush()
-            For i = 0 To ranking.Count
-                For j = i To ranking.Count
-                    If j = i Then
-                        primero = _Usuarios(j)
-                    ElseIf _Usuarios(j).MejorTiempoFacil > primero.MejorTiempoFacil Then
-                        primero = _Usuarios(j)
+            For i = 0 To _Usuarios.Count - 1
+                If _Usuarios(i).Nombre = nombre Then
+                    If tiempo < _Usuarios(i).MejorTiempoFacil Then
+                        _Usuarios(i).MejorTiempoFacil = tiempo
                     End If
-                Next
-                _Usuarios(i) = primero
-                ficheroW.WriteLine(primero.Nombre & "*" & primero.MejorTiempoFacil.ToString)
+                End If
             Next
-            ficheroW.Close()
         ElseIf dificultad = 2 Then
-            Dim ficheroW As New StreamWriter(".\..\..\Ficheros\RankingMedio.txt", True)
-            ficheroW.Flush()
-            For i = 0 To _Usuarios.Count
-                For j = i To _Usuarios.Count
-                    If j = i Then
-                        primero = _Usuarios(j)
-                    ElseIf _Usuarios(j).MejorTiempoMedio > primero.MejorTiempoMedio Then
-                        primero = _Usuarios(j)
+            For i = 0 To _Usuarios.Count - 1
+                If _Usuarios(i).Nombre = nombre Then
+                    If tiempo < _Usuarios(i).MejorTiempoMedio Then
+                        _Usuarios(i).MejorTiempoMedio = tiempo
                     End If
-                Next
-                _Usuarios(i) = primero
-                ficheroW.WriteLine(primero.Nombre & "*" & primero.MejorTiempoMedio.ToString)
+                End If
             Next
-            ficheroW.Close()
         Else
-            Dim ficheroW As New StreamWriter(".\..\..\Ficheros\RankingDificil.txt", True)
-            ficheroW.Flush()
-            For i = 0 To _Usuarios.Count
-                For j = i To _Usuarios.Count
-                    If j = i Then
-                        primero = _Usuarios(j)
-                    ElseIf _Usuarios(j).MejorTiempoDificil > primero.MejorTiempoDificil Then
-                        primero = _Usuarios(j)
+            For i = 0 To _Usuarios.Count - 1
+                If _Usuarios(i).Nombre = nombre Then
+                    If tiempo < _Usuarios(i).MejorTiempoDificil Then
+                        _Usuarios(i).MejorTiempoDificil = tiempo
+                    End If
+                End If
+            Next
+        End If
+    End Function
+
+    Public Function OrdenarLista(dificultad As Integer) As List(Of Usuario)
+        Dim rankingFacil As New List(Of Usuario)
+        Dim rankingMedio As New List(Of Usuario)
+        Dim rankingDificil As New List(Of Usuario)
+        Dim insertado As Boolean = False
+        If dificultad = 1 Then
+            For i = 0 To _Usuarios.Count - 1 'RECORRE LA LISTA DE USUARIOS
+                For j = 0 To rankingFacil.Count - 1 'RECORRE EL RANKING
+                    If _Usuarios(i).MejorTiempoFacil < rankingFacil(j).MejorTiempoFacil Then
+                        rankingFacil.Insert(j, _Usuarios(i))
+                        insertado = True
+                        Exit For
                     End If
                 Next
-                _Usuarios(i) = primero
-                ficheroW.WriteLine(primero.Nombre & "*" & primero.MejorTiempoDificil.ToString)
+                If insertado = False Then
+                    rankingFacil.Add(_Usuarios(i))
+                End If
             Next
-            ficheroW.Close()
+            Return rankingFacil
+        ElseIf dificultad = 2 Then
+            For i = 0 To _Usuarios.Count - 1 'RECORRE LA LISTA DE USUARIOS
+                For j = 0 To rankingMedio.Count - 1 'RECORRE EL RANKING
+                    If _Usuarios(i).MejorTiempoMedio < rankingMedio(j).MejorTiempoMedio Then
+                        rankingMedio.Insert(j, _Usuarios(i))
+                        insertado = True
+                        Exit For
+                    End If
+                Next
+                If insertado = False Then
+                    rankingMedio.Add(_Usuarios(i))
+                End If
+            Next
+            Return rankingMedio
+        Else
+            For i = 0 To _Usuarios.Count - 1 'RECORRE LA LISTA DE USUARIOS
+                For j = 0 To rankingDificil.Count - 1 'RECORRE EL RANKING
+                    If _Usuarios(i).MejorTiempoDificil < rankingDificil(j).MejorTiempoDificil Then
+                        rankingDificil.Insert(j, _Usuarios(i))
+                        insertado = True
+                        Exit For
+                    End If
+                Next
+                If insertado = False Then
+                    rankingDificil.Add(_Usuarios(i))
+                End If
+            Next
+            Return rankingDificil
         End If
 
     End Function
