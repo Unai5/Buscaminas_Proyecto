@@ -137,6 +137,8 @@ Partial Class FrmInicioDeSesion
         Me.Controls.Add(Me.btnRegisto)
         Me.Controls.Add(Me.lblBuscaminas)
         Me.Controls.Add(Me.btnIniciarSesion)
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
         Me.Name = "FrmInicioDeSesion"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Form1"

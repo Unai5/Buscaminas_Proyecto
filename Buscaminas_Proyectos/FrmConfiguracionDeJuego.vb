@@ -1,6 +1,5 @@
-﻿Imports System.Reflection
-
-Public Class FrmConfiguracionDeJuego
+﻿Public Class FrmConfiguracionDeJuego
+    Private cerrarPorBoton As Boolean = False
     Private Sub btnAceptar_Click(sender As Object, e As EventArgs) Handles btnAceptar.Click
 
         If Not radButtFacil.Checked AndAlso Not radButtNormal.Checked AndAlso Not radButtDificil.Checked Then
@@ -15,14 +14,17 @@ Public Class FrmConfiguracionDeJuego
         ElseIf radButtDificil.Checked Then
             dificultad = 3
         End If
-
+        cerrarPorBoton = True
         FrmJuego.Show()
         Me.Visible = False
+        Me.Close()
 
     End Sub
 
-    Private Sub FrmInicioSesion_FormClosing(sender As Object, e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
-
+    Private Sub FrmConfiguracionDeJuego_FormClosing(sender As Object, e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
+        If cerrarPorBoton = True Then
+            Exit Sub
+        End If
         Dim resp As DialogResult
         resp = MessageBox.Show("¿Estas seguro de cerrar el juego?", "Atención", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
         If resp = Windows.Forms.DialogResult.No Then
@@ -30,8 +32,9 @@ Public Class FrmConfiguracionDeJuego
         End If
     End Sub
     Private Sub btnVolver_Click(sender As Object, e As EventArgs) Handles btnVolver.Click
+        cerrarPorBoton = True
         FrmInicioDeSesion.Show()
-        Me.Visible = False
+        Me.Close()
     End Sub
 
     Private Sub FrmConfiguracionDeJuego_Load(sender As Object, e As EventArgs) Handles MyBase.Load
