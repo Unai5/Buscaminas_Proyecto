@@ -1,12 +1,11 @@
 ﻿Imports System.IO
-Imports BibliotecaDeClases
-
 Public Enum Dific As Byte
     FACIL = 7
     MEDIO = 10
     DIFICIL = 16
 End Enum
 Public Class FrmJuego
+    Private cerrarPorBoton As Boolean = False
     Private casillasSinBomba As Integer = 0
     Private Sub FrmJuego_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
@@ -319,8 +318,20 @@ Public Class FrmJuego
     End Sub
 
     Private Sub btnSalir_Click(sender As Object, e As EventArgs) Handles btnSalir.Click
+        cerrarPorBoton = True
         FrmConfiguracionDeJuego.Show()
         Me.Visible = False
+        Me.Close()
+    End Sub
+    Private Sub FrmJuego_FormClosing(sender As Object, e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
+        If cerrarPorBoton = True Then
+            Exit Sub
+        End If
+        Dim resp As DialogResult
+        resp = MessageBox.Show("¿Estas seguro de cerrar el juego?", "Atención", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+        If resp = Windows.Forms.DialogResult.No Then
+            e.Cancel = True
+        End If
     End Sub
     Private minutosSegundos(1) As Byte
     Private Sub tmrReloj_Tick(sender As Object, e As EventArgs) Handles tmrReloj.Tick

@@ -1,4 +1,5 @@
 ﻿Public Class frmRanking
+    Private cerrarPorBoton As Boolean = False
     Private Sub frmRanking_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         If gestionUsrs.Usuarios Is Nothing Then
             MessageBox.Show("No hay usuarios todavía")
@@ -53,12 +54,15 @@
     End Sub
 
     Private Sub btnVolver_Click(sender As Object, e As EventArgs) Handles btnVolver.Click
+        cerrarPorBoton = True
         FrmConfiguracionDeJuego.Show()
-        Me.Visible = False
+        Me.Close()
     End Sub
 
     Private Sub FrmRanking_FormClosing(sender As Object, e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
-
+        If cerrarPorBoton = True Then
+            Exit Sub
+        End If
         Dim resp As DialogResult
         resp = MessageBox.Show("¿Estas seguro de cerrar el juego?", "Atención", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
         If resp = Windows.Forms.DialogResult.No Then
