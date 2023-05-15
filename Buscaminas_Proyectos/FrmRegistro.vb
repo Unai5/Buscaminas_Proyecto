@@ -22,13 +22,14 @@
             MessageBox.Show($"{gestionUsrs.AñadirUsuario(txtNuevoUsuario.Text, txtNuevaContraseña.Text)}")
             Exit Sub
         End If
+        MessageBox.Show($"{gestionUsrs.AñadirUsuario(txtNuevoUsuario.Text, txtNuevaContraseña.Text)}")
         jugador.Nombre = txtNuevoUsuario.Text
         jugador.Contraseña = txtNuevaContraseña.Text
         jugador.MejorTiempoFacil = 0
         jugador.MejorTiempoMedio = 0
         jugador.MejorTiempoDificil = 0
         cerrarPorBoton = True
-        FrmConfiguracionDeJuego.Show()
+        FrmInicioDeSesion.Show()
         Me.Visible = False
         Me.Close()
     End Sub
