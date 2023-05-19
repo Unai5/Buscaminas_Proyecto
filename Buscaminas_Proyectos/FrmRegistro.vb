@@ -18,11 +18,12 @@
             MessageBox.Show("Repite la contraseña correctamente", "Error")
             Exit Sub
         End If
-        If gestionUsrs.AñadirUsuario(txtNuevoUsuario.Text, txtNuevaContraseña.Text) <> "Usuario creado" Then
-            MessageBox.Show($"{gestionUsrs.AñadirUsuario(txtNuevoUsuario.Text, txtNuevaContraseña.Text)}")
+        Dim str As String = gestionUsrs.AñadirUsuario(txtNuevoUsuario.Text, txtNuevaContraseña.Text)
+        If str <> "Usuario creado" Then
+            MessageBox.Show(str)
             Exit Sub
         End If
-        MessageBox.Show($"{gestionUsrs.AñadirUsuario(txtNuevoUsuario.Text, txtNuevaContraseña.Text)}")
+        MessageBox.Show(str)
         jugador.Nombre = txtNuevoUsuario.Text
         jugador.Contraseña = txtNuevaContraseña.Text
         jugador.MejorTiempoFacil = 0
@@ -50,4 +51,5 @@
         Me.Visible = False
         Me.Close()
     End Sub
+
 End Class

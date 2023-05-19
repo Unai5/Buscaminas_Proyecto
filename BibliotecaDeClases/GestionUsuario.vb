@@ -53,7 +53,7 @@ Public Class GestionUsuario
         Return "No existe el usuario, no se puede iniciar sesion"
     End Function
 
-    Public Function ComprobarTiempo(tiempo As Integer, dificultad As Integer, nombre As String) As String
+    Public Sub ComprobarTiempo(tiempo As Integer, dificultad As Integer, nombre As String) As String
         If dificultad = 1 Then
             For i = 0 To _Usuarios.Count - 1
                 If _Usuarios(i).Nombre = nombre Then
@@ -79,7 +79,7 @@ Public Class GestionUsuario
                 End If
             Next
         End If
-    End Function
+    End Sub
 
     Public Function OrdenarLista(dificultad As Integer) As List(Of Usuario)
         Dim rankingFacil As New List(Of Usuario)
