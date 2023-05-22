@@ -50,15 +50,16 @@ Public Class GestionUsuario
                 Return "Sesión iniciada"
             End If
         Next
-        Return "No existe el usuario, no se puede iniciar sesion"
+        Return "Usuario y/o contraseña incorrectos. No se puede iniciar sesión."
     End Function
 
-    Public Sub ComprobarTiempo(tiempo As Integer, dificultad As Integer, nombre As String) As String
+    Public Function ComprobarTiempo(tiempo As Integer, dificultad As Integer, nombre As String) As Integer
         If dificultad = 1 Then
             For i = 0 To _Usuarios.Count - 1
                 If _Usuarios(i).Nombre = nombre Then
                     If tiempo < _Usuarios(i).MejorTiempoFacil Then
                         _Usuarios(i).MejorTiempoFacil = tiempo
+                        Return tiempo
                     End If
                 End If
             Next
@@ -67,6 +68,7 @@ Public Class GestionUsuario
                 If _Usuarios(i).Nombre = nombre Then
                     If tiempo < _Usuarios(i).MejorTiempoMedio Then
                         _Usuarios(i).MejorTiempoMedio = tiempo
+                        Return tiempo
                     End If
                 End If
             Next
@@ -75,11 +77,13 @@ Public Class GestionUsuario
                 If _Usuarios(i).Nombre = nombre Then
                     If tiempo < _Usuarios(i).MejorTiempoDificil Then
                         _Usuarios(i).MejorTiempoDificil = tiempo
+                        Return tiempo
                     End If
                 End If
             Next
         End If
-    End Sub
+
+    End Function
 
     Public Function OrdenarLista(dificultad As Integer) As List(Of Usuario)
         Dim rankingFacil As New List(Of Usuario)
