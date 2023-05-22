@@ -1,4 +1,6 @@
 ﻿Imports System.IO
+Imports BibliotecaDeClases
+
 Public Enum Dific As Byte
     FACIL = 7
     MEDIO = 10
@@ -59,7 +61,7 @@ Public Class FrmJuego
                     .Name = $"btn{i}{j}",
                     .Size = New Size(28, 28),
                     .Tag = New BibliotecaDeClases.TagBoton(0, i, j),
-                    .BackColor = BackColor.LightGreen,
+                    .BackColor = BackColor.LightBlue,
                     .ForeColor = Color.Black,
                     .Enabled = True,
                     .BackgroundImageLayout = ImageLayout.Stretch
@@ -194,6 +196,7 @@ Public Class FrmJuego
                 TryCast(boton, Button).Text = boton.Tag.bombasalrededor
             End If
         End If
+        boton.Tag.clickeada = True
         RemoveHandler TryCast(boton, Button).Click, AddressOf BotonClic
         RemoveHandler TryCast(boton, Button).MouseDown, AddressOf BotonClicDerecho
         boton.Enabled = False
@@ -227,16 +230,10 @@ Public Class FrmJuego
 
         If esPrimerClick Then
             GenerarBombas(sender.Tag.posX, sender.Tag.posY)
-            For i = 0 To botones.GetLength(0) - 1
-                For j = 0 To botones.GetLength(1) - 1
-                    If botones(i, j).Tag.bombasAlrededor <> -1 Then
-                        casillasSinBomba += 1
-                    End If
-                Next
-            Next
         End If
 
         sender.BackColor = Nothing
+        sender.tag.clickeada = True
         If sender.Tag.bombasAlrededor > -1 Then
             If sender.Tag.bombasAlrededor > 0 Then
                 sender.Text = sender.Tag.bombasAlrededor
@@ -245,8 +242,15 @@ Public Class FrmJuego
             End If
             sender.Enabled = False
             If esPrimerClick Then
-                casillasSinBomba -= 9
                 esPrimerClick = False
+                casillasSinBomba = 0
+                For i = 0 To botones.GetLength(0) - 1
+                    For j = 0 To botones.GetLength(1) - 1
+                        If botones(i, j).Tag.bombasAlrededor > -1 AndAlso botones(i, j).Tag.clickeada = False Then
+                            casillasSinBomba += 1
+                        End If
+                    Next
+                Next
             Else
                 casillasSinBomba -= 1
             End If
@@ -277,6 +281,11 @@ Public Class FrmJuego
     Private Sub PartidaTerminada(ganador As Boolean)
         tmrReloj.Stop()
         If ganador Then
+            Dim gestion As New GestionUsuario
+            Dim tmp As Integer = gestion.ComprobarTiempo(minutosSegundos(0) * 60 + minutosSegundos(1), 0, "")
+
+
+
             MessageBox.Show($"VAYA MÁQUINA! {vbCrLf}Y sólo has tardado: {Format(minutosSegundos(0), "##00")}:{Format(minutosSegundos(1), "##00")}")
         Else
             MessageBox.Show($"GAME OVER! {vbCrLf}En el tiempo: {Format(minutosSegundos(0), "##00")}:{Format(minutosSegundos(1), "##00")}")

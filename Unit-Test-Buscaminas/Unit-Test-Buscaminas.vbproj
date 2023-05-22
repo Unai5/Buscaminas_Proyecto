@@ -117,6 +117,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BibliotecaDeClases\BibliotecaDeClases.vbproj">
+      <Project>{d7649845-e29c-4126-90ee-2469f3aaa3f6}</Project>
+      <Name>BibliotecaDeClases</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Buscaminas_Proyectos\Buscaminas_Proyecto.vbproj">
       <Project>{a5304858-4b87-43d0-add5-7f4433ca0049}</Project>
       <Name>Buscaminas_Proyectos</Name>

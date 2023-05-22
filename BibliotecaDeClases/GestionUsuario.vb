@@ -13,7 +13,7 @@ Public Class GestionUsuario
         'TODO ¿Que pasa si no existe el fichero
         'TODO Que pasa si no hay asteriscos y solo hay un campo
 
-        Dim ficheroR As New StreamReader(".\..\..\Ficheros\TodosLosUsuarios.txt")
+        Dim ficheroR As New StreamReader(".\Ficheros\TodosLosUsuarios.txt")
 
         Do Until ficheroR.EndOfStream
             Dim linea As String = ficheroR.ReadLine
@@ -37,7 +37,7 @@ Public Class GestionUsuario
         Next
         _Usuarios.Add(nuevo)
 
-        Dim ficheroW As New StreamWriter(".\..\..\Ficheros\TodosLosUsuarios.txt", True)
+        Dim ficheroW As New StreamWriter(".\Ficheros\TodosLosUsuarios.txt", True)
         ficheroW.WriteLine()
         ficheroW.Write(nuevo.Nombre & "*" & nuevo.Contraseña & "*" & nuevo.MejorTiempoFacil & "*" & nuevo.MejorTiempoMedio & "*" & nuevo.MejorTiempoDificil)
         ficheroW.Close()
@@ -50,15 +50,16 @@ Public Class GestionUsuario
                 Return "Sesión iniciada"
             End If
         Next
-        Return "No existe el usuario, no se puede iniciar sesion"
+        Return "Usuario y/o contraseña incorrectos. No se puede iniciar sesión."
     End Function
 
-    Public Function ComprobarTiempo(tiempo As Integer, dificultad As Integer, nombre As String) As String
+    Public Function ComprobarTiempo(tiempo As Integer, dificultad As Integer, nombre As String) As Integer
         If dificultad = 1 Then
             For i = 0 To _Usuarios.Count - 1
                 If _Usuarios(i).Nombre = nombre Then
                     If tiempo < _Usuarios(i).MejorTiempoFacil Then
                         _Usuarios(i).MejorTiempoFacil = tiempo
+                        Return tiempo
                     End If
                 End If
             Next
@@ -67,6 +68,7 @@ Public Class GestionUsuario
                 If _Usuarios(i).Nombre = nombre Then
                     If tiempo < _Usuarios(i).MejorTiempoMedio Then
                         _Usuarios(i).MejorTiempoMedio = tiempo
+                        Return tiempo
                     End If
                 End If
             Next
@@ -75,10 +77,12 @@ Public Class GestionUsuario
                 If _Usuarios(i).Nombre = nombre Then
                     If tiempo < _Usuarios(i).MejorTiempoDificil Then
                         _Usuarios(i).MejorTiempoDificil = tiempo
+                        Return tiempo
                     End If
                 End If
             Next
         End If
+
     End Function
 
     Public Function OrdenarLista(dificultad As Integer) As List(Of Usuario)

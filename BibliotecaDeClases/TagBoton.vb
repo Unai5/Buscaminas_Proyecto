@@ -2,6 +2,7 @@
 
 Public Class TagBoton
 
+    Public Property clickeada As Boolean = False
     Public Property bombasAlrededor As Integer
     Public Property posX As Integer
     Public Property posY As Integer
@@ -11,6 +12,8 @@ Public Class TagBoton
         Me.posX = posX
         Me.posY = posY
     End Sub
+
+
 
     Public Overrides Function Equals(obj As Object) As Boolean
         Dim boton = TryCast(obj, TagBoton)
