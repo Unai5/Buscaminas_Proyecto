@@ -9,19 +9,23 @@ Public Class GestionUsuario
         End Get
     End Property
 
-    Public Sub New()
+    Public Sub New(ByRef errores As String)
         'TODO ¿Que pasa si no existe el fichero
         'TODO Que pasa si no hay asteriscos y solo hay un campo
+        Try
+            Dim ficheroR As New StreamReader(".\Ficheros\TodosLosUsuarios.txt")
+            Do Until ficheroR.EndOfStream
+                Dim linea As String = ficheroR.ReadLine
+                Dim datosLinea() As String = linea.Split("*")
+                _Usuarios.Add(New Usuario(datosLinea(0), datosLinea(1), datosLinea(2), datosLinea(3), datosLinea(4)))
+            Loop
+            ficheroR.Close()
+        Catch ex As FileNotFoundException
+            errores = ex.Message
+        Catch ex As IOException
+            errores = ex.Message
+        End Try
 
-        Dim ficheroR As New StreamReader(".\Ficheros\TodosLosUsuarios.txt")
-
-        Do Until ficheroR.EndOfStream
-            Dim linea As String = ficheroR.ReadLine
-            Dim datosLinea() As String = linea.Split("*")
-            _Usuarios.Add(New Usuario(datosLinea(0), datosLinea(1), datosLinea(2), datosLinea(3), datosLinea(4)))
-        Loop
-
-        ficheroR.Close()
 
     End Sub
 
@@ -29,7 +33,7 @@ Public Class GestionUsuario
         If String.IsNullOrWhiteSpace(nombre) OrElse String.IsNullOrWhiteSpace(contraseña) Then
             Return "Hay elementos vacíos"
         End If
-        Dim nuevo As New Usuario(nombre, contraseña, 0, 0, 0)
+        Dim nuevo As New Usuario(nombre, contraseña, -1, -1, -1)
         For i = 0 To _Usuarios.Count - 1
             If _Usuarios(i).Equals(nuevo) Then
                 Return $"Ya existe el usuario {nombre}"
@@ -93,7 +97,7 @@ Public Class GestionUsuario
         If dificultad = 1 Then
             For i = 0 To _Usuarios.Count - 1 'RECORRE LA LISTA DE USUARIOS
                 For j = 0 To rankingFacil.Count - 1 'RECORRE EL RANKING
-                    If _Usuarios(i).MejorTiempoFacil < rankingFacil(j).MejorTiempoFacil Then
+                    If _Usuarios(i).MejorTiempoFacil < rankingFacil(j).MejorTiempoFacil AndAlso _Usuarios(i).MejorTiempoFacil <> 0 Then
                         rankingFacil.Insert(j, _Usuarios(i))
                         insertado = True
                         Exit For
@@ -133,7 +137,6 @@ Public Class GestionUsuario
             Next
             Return rankingDificil
         End If
-
     End Function
 
 End Class

@@ -1,10 +1,14 @@
-﻿Public Class frmRanking
+﻿Imports BibliotecaDeClases
+Public Class FrmRanking
     Private cerrarPorBoton As Boolean = False
-    Private Sub frmRanking_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        If gestionUsrs.Usuarios Is Nothing Then
-            MessageBox.Show("No hay usuarios todavía")
+    Private Sub FrmRanking_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Dim gstUsr As New GestionUsuario
+        If gstUsr.OrdenarLista(1) Is Nothing Then
+            MessageBox.Show("No hay usuarios todavía, prueba en otra dificultad")
+            Exit Sub
         Else
-            For Each per In gestionUsrs.Usuarios
+            Dim listaUsuarios As List(Of Usuario) = gstUsr.OrdenarLista(1)
+            For Each per In listaUsuarios
                 lstRanking.Items.Add($"{per.Nombre} ........................... {per.MejorTiempoFacil}")
             Next
         End If
@@ -15,38 +19,46 @@
     End Sub
 
     Private Sub btnDificultad_Click(sender As Object, e As EventArgs) Handles btnDificultad.Click
-        'lstRanking.Items.Clear()
+        Dim gstUsr As New GestionUsuario
         Dim a As String = "Fácil"
         Dim b As String = "Medio"
         Dim c As String = "Difícil"
+        lstRanking.Items.Clear()
         If lblRanking.Text.Substring(8) = a.ToUpper Then
             btnDificultad.Text = $"Dificultad: {c}"
             lblRanking.Text = $"RANKING {b.ToUpper}"
-            If gestionUsrs.Usuarios Is Nothing Then
-                MessageBox.Show("No hay usuarios todavía")
+            If gstUsr.OrdenarLista(1) Is Nothing Then
+                MessageBox.Show("No hay usuarios todavía, prueba en otra dificultad")
+                Exit Sub
             Else
-                For Each per In gestionUsrs.Usuarios
-                    lstRanking.Items.Add($"{per.Nombre} ...............{per.MejorTiempoMedio}")
+                Dim listaUsuarios As List(Of Usuario) = gstUsr.OrdenarLista(2)
+                For Each per In listaUsuarios
+                    lstRanking.Items.Add($"{per.Nombre} ........................... {per.MejorTiempoFacil}")
                 Next
             End If
         ElseIf lblRanking.Text.Substring(8) = b.ToUpper Then
             btnDificultad.Text = $"Dificultad: {a}"
             lblRanking.Text = $"RANKING {c.ToUpper}"
-            If gestionUsrs.Usuarios Is Nothing Then
-                MessageBox.Show("No hay usuarios todavía")
+
+            If gstUsr.OrdenarLista(3) Is Nothing Then
+                MessageBox.Show("No hay usuarios todavía, prueba en otra dificultad")
+                Exit Sub
             Else
-                For Each per In gestionUsrs.Usuarios
-                    lstRanking.Items.Add($"{per.Nombre} ...............{per.MejorTiempoDificil}")
+                Dim listaUsuarios As List(Of Usuario) = gstUsr.OrdenarLista(3)
+                For Each per In listaUsuarios
+                    lstRanking.Items.Add($"{per.Nombre} ........................... {per.MejorTiempoFacil}")
                 Next
             End If
         ElseIf lblRanking.Text.Substring(8) = c.ToUpper Then
             btnDificultad.Text = $"Dificultad: {b}"
             lblRanking.Text = $"RANKING {a.ToUpper}"
-            If gestionUsrs.Usuarios Is Nothing Then
-                MessageBox.Show("No hay usuarios todavía")
+            If gstUsr.OrdenarLista(1) Is Nothing Then
+                MessageBox.Show("No hay usuarios todavía, prueba en otra dificultad")
+                Exit Sub
             Else
-                For Each per In gestionUsrs.Usuarios
-                    lstRanking.Items.Add($"{per.Nombre} ...............{per.MejorTiempoFacil}")
+                Dim listaUsuarios As List(Of Usuario) = gstUsr.OrdenarLista(1)
+                For Each per In listaUsuarios
+                    lstRanking.Items.Add($"{per.Nombre} ........................... {per.MejorTiempoFacil}")
                 Next
             End If
         End If
@@ -55,7 +67,8 @@
 
     Private Sub btnVolver_Click(sender As Object, e As EventArgs) Handles btnVolver.Click
         cerrarPorBoton = True
-        FrmConfiguracionDeJuego.Show()
+        FrmInicioDeSesion.Show()
+        Me.Visible = False
         Me.Close()
     End Sub
 

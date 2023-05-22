@@ -97,10 +97,10 @@
     <Compile Include="FrmJuego.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmRanking.designer.vb">
-      <DependentUpon>frmRanking.vb</DependentUpon>
+    <Compile Include="FrmRanking.designer.vb">
+      <DependentUpon>FrmRanking.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmRanking.vb">
+    <Compile Include="FrmRanking.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmRegistro.designer.vb">
@@ -140,8 +140,8 @@
     <EmbeddedResource Include="FrmJuego.resx">
       <DependentUpon>FrmJuego.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmRanking.resx">
-      <DependentUpon>frmRanking.vb</DependentUpon>
+    <EmbeddedResource Include="FrmRanking.resx">
+      <DependentUpon>FrmRanking.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmRegistro.resx">
       <DependentUpon>FrmRegistro.vb</DependentUpon>
