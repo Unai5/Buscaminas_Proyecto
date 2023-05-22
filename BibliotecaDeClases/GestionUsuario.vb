@@ -9,7 +9,7 @@ Public Class GestionUsuario
         End Get
     End Property
 
-    Public Sub New()
+    Public Sub New(ByRef errores As String)
         'TODO ¿Que pasa si no existe el fichero
         'TODO Que pasa si no hay asteriscos y solo hay un campo
         Try
@@ -21,7 +21,9 @@ Public Class GestionUsuario
             Loop
             ficheroR.Close()
         Catch ex As FileNotFoundException
-
+            errores = ex.Message
+        Catch ex As IOException
+            errores = ex.Message
         End Try
 
 
@@ -31,7 +33,7 @@ Public Class GestionUsuario
         If String.IsNullOrWhiteSpace(nombre) OrElse String.IsNullOrWhiteSpace(contraseña) Then
             Return "Hay elementos vacíos"
         End If
-        Dim nuevo As New Usuario(nombre, contraseña, 0, 0, 0)
+        Dim nuevo As New Usuario(nombre, contraseña, -1, -1, -1)
         For i = 0 To _Usuarios.Count - 1
             If _Usuarios(i).Equals(nuevo) Then
                 Return $"Ya existe el usuario {nombre}"
