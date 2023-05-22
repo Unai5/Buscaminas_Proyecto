@@ -5,5 +5,5 @@ Module Modulo
     Public dificultad As Integer
     Public temporizador As Timer
     Public esPrimerClick As Boolean
-    Public gestionUsrs As New GestionUsuario
+    Public gestionUsrs As GestionUsuario
 End Module

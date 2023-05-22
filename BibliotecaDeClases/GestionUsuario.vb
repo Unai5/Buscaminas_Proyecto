@@ -50,10 +50,10 @@ Public Class GestionUsuario
                 Return "Sesión iniciada"
             End If
         Next
-        Return "No existe el usuario, no se puede iniciar sesion"
+        Return "Usuario y/o contraseña incorrectos. No se puede iniciar sesión."
     End Function
 
-    Public Sub ComprobarTiempo(tiempo As Integer, dificultad As Integer, nombre As String) As String
+    Public Sub ComprobarTiempo(tiempo As Integer, dificultad As Integer, nombre As String)
         If dificultad = 1 Then
             For i = 0 To _Usuarios.Count - 1
                 If _Usuarios(i).Nombre = nombre Then
