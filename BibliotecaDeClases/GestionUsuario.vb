@@ -129,7 +129,6 @@ Public Class GestionUsuario
             Next
             Return rankingDificil
         End If
-
     End Function
 
 End Class
