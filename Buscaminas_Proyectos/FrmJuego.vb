@@ -1,4 +1,6 @@
 ﻿Imports System.IO
+Imports BibliotecaDeClases
+
 Public Enum Dific As Byte
     FACIL = 7
     MEDIO = 10
@@ -279,10 +281,12 @@ Public Class FrmJuego
     Private Sub PartidaTerminada(ganador As Boolean)
         tmrReloj.Stop()
         If ganador Then
+            Dim gestion As New GestionUsuario
+            Dim tmp As Integer = gestion.ComprobarTiempo(minutosSegundos(0) * 60 + minutosSegundos(1), 0, "")
+
+
+
             MessageBox.Show($"VAYA MÁQUINA! {vbCrLf}Y sólo has tardado: {Format(minutosSegundos(0), "##00")}:{Format(minutosSegundos(1), "##00")}")
-
-
-
         Else
             MessageBox.Show($"GAME OVER! {vbCrLf}En el tiempo: {Format(minutosSegundos(0), "##00")}:{Format(minutosSegundos(1), "##00")}")
         End If
