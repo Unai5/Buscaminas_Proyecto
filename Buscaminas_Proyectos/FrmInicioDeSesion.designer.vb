@@ -32,6 +32,7 @@ Partial Class FrmInicioDeSesion
         Me.pnlContraseña = New System.Windows.Forms.Panel()
         Me.lblContraseña = New System.Windows.Forms.Label()
         Me.txtContraseña = New System.Windows.Forms.TextBox()
+        Me.btnRanking = New System.Windows.Forms.Button()
         Me.pnlUsr.SuspendLayout()
         Me.pnlContraseña.SuspendLayout()
         Me.SuspendLayout()
@@ -50,7 +51,7 @@ Partial Class FrmInicioDeSesion
         '
         Me.btnIniciarSesion.BackColor = System.Drawing.Color.LightGreen
         Me.btnIniciarSesion.Font = New System.Drawing.Font("Cooper Black", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnIniciarSesion.Location = New System.Drawing.Point(118, 287)
+        Me.btnIniciarSesion.Location = New System.Drawing.Point(118, 270)
         Me.btnIniciarSesion.Name = "btnIniciarSesion"
         Me.btnIniciarSesion.Size = New System.Drawing.Size(140, 37)
         Me.btnIniciarSesion.TabIndex = 1
@@ -80,7 +81,7 @@ Partial Class FrmInicioDeSesion
         Me.btnRegisto.BackColor = System.Drawing.SystemColors.ButtonHighlight
         Me.btnRegisto.FlatAppearance.BorderColor = System.Drawing.Color.Snow
         Me.btnRegisto.Font = New System.Drawing.Font("Cooper Black", 12.0!)
-        Me.btnRegisto.Location = New System.Drawing.Point(268, 287)
+        Me.btnRegisto.Location = New System.Drawing.Point(268, 270)
         Me.btnRegisto.Name = "btnRegisto"
         Me.btnRegisto.Size = New System.Drawing.Size(115, 37)
         Me.btnRegisto.TabIndex = 4
@@ -92,7 +93,7 @@ Partial Class FrmInicioDeSesion
         Me.pnlUsr.BackColor = System.Drawing.Color.LightGreen
         Me.pnlUsr.Controls.Add(Me.lblUsuario)
         Me.pnlUsr.Controls.Add(Me.txtUsuario)
-        Me.pnlUsr.Location = New System.Drawing.Point(84, 135)
+        Me.pnlUsr.Location = New System.Drawing.Point(84, 119)
         Me.pnlUsr.Name = "pnlUsr"
         Me.pnlUsr.Size = New System.Drawing.Size(334, 40)
         Me.pnlUsr.TabIndex = 5
@@ -102,7 +103,7 @@ Partial Class FrmInicioDeSesion
         Me.pnlContraseña.BackColor = System.Drawing.Color.LightGreen
         Me.pnlContraseña.Controls.Add(Me.lblContraseña)
         Me.pnlContraseña.Controls.Add(Me.txtContraseña)
-        Me.pnlContraseña.Location = New System.Drawing.Point(104, 192)
+        Me.pnlContraseña.Location = New System.Drawing.Point(104, 176)
         Me.pnlContraseña.Name = "pnlContraseña"
         Me.pnlContraseña.Size = New System.Drawing.Size(292, 42)
         Me.pnlContraseña.TabIndex = 6
@@ -120,10 +121,22 @@ Partial Class FrmInicioDeSesion
         'txtContraseña
         '
         Me.txtContraseña.Font = New System.Drawing.Font("Rockwell", 11.25!)
-        Me.txtContraseña.Location = New System.Drawing.Point(117, 9)
+        Me.txtContraseña.Location = New System.Drawing.Point(117, 8)
         Me.txtContraseña.Name = "txtContraseña"
         Me.txtContraseña.Size = New System.Drawing.Size(163, 25)
         Me.txtContraseña.TabIndex = 2
+        '
+        'btnRanking
+        '
+        Me.btnRanking.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.btnRanking.FlatAppearance.BorderColor = System.Drawing.Color.Snow
+        Me.btnRanking.Font = New System.Drawing.Font("Cooper Black", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnRanking.Location = New System.Drawing.Point(221, 335)
+        Me.btnRanking.Name = "btnRanking"
+        Me.btnRanking.Size = New System.Drawing.Size(76, 30)
+        Me.btnRanking.TabIndex = 7
+        Me.btnRanking.Text = "Ranking"
+        Me.btnRanking.UseVisualStyleBackColor = False
         '
         'FrmInicioDeSesion
         '
@@ -132,6 +145,7 @@ Partial Class FrmInicioDeSesion
         Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(491, 442)
+        Me.Controls.Add(Me.btnRanking)
         Me.Controls.Add(Me.pnlContraseña)
         Me.Controls.Add(Me.pnlUsr)
         Me.Controls.Add(Me.btnRegisto)
@@ -160,4 +174,5 @@ Partial Class FrmInicioDeSesion
     Friend WithEvents pnlContraseña As Panel
     Friend WithEvents lblContraseña As Label
     Friend WithEvents txtContraseña As TextBox
+    Friend WithEvents btnRanking As Button
 End Class

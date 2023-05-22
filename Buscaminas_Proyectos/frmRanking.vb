@@ -1,7 +1,7 @@
 ﻿Imports BibliotecaDeClases
-Public Class frmRanking
+Public Class FrmRanking
     Private cerrarPorBoton As Boolean = False
-    Private Sub frmRanking_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub FrmRanking_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim gstUsr As New GestionUsuario
         If gstUsr.OrdenarLista(1) Is Nothing Then
             MessageBox.Show("No hay usuarios todavía, prueba en otra dificultad")
