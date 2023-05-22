@@ -79,6 +79,12 @@
     <Compile Include="FrmConfiguracionDeJuego.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmGanador.Designer.vb">
+      <DependentUpon>frmGanador.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmGanador.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FrmInicioDeSesion.designer.vb">
       <DependentUpon>FrmInicioDeSesion.vb</DependentUpon>
     </Compile>
@@ -125,6 +131,9 @@
     <EmbeddedResource Include="FrmConfiguracionDeJuego.resx">
       <DependentUpon>FrmConfiguracionDeJuego.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmGanador.resx">
+      <DependentUpon>frmGanador.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmInicioDeSesion.resx">
       <DependentUpon>FrmInicioDeSesion.vb</DependentUpon>
     </EmbeddedResource>
@@ -166,6 +175,7 @@
     <Content Include="img\banderita.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="img\copa.jpeg" />
     <Content Include="img\mina.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

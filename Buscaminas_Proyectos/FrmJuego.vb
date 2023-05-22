@@ -84,26 +84,26 @@ Public Class FrmJuego
 
     Private Sub GenerarBombas(xPrimerClic As Integer, yPrimerClic As Integer)
 
-        Dim rnd As New Random
-        For i = 0 To numBombas - 1
-            Dim x, y As Integer
-            Do
-                If dificultad = 3 Then
-                    x = rnd.Next(Dific.DIFICIL)
-                    y = rnd.Next(Dific.DIFICIL)
-                ElseIf dificultad = 2 Then
-                    x = rnd.Next(Dific.MEDIO)
-                    y = rnd.Next(Dific.MEDIO)
-                Else
-                    x = rnd.Next(Dific.FACIL)
-                    y = rnd.Next(Dific.FACIL)
-                End If
+        'Dim rnd As New Random
+        'For i = 0 To numBombas - 1
+        '    Dim x, y As Integer
+        '    Do
+        '        If dificultad = 3 Then
+        '            x = rnd.Next(Dific.DIFICIL)
+        '            y = rnd.Next(Dific.DIFICIL)
+        '        ElseIf dificultad = 2 Then
+        '            x = rnd.Next(Dific.MEDIO)
+        '            y = rnd.Next(Dific.MEDIO)
+        '        Else
+        '            x = rnd.Next(Dific.FACIL)
+        '            y = rnd.Next(Dific.FACIL)
+        '        End If
 
-            Loop While botones(x, y).Tag.bombasAlrededor = -1 OrElse IndiceInvalido(botones(x, y), xPrimerClic, yPrimerClic)
+        '    Loop While botones(x, y).Tag.bombasAlrededor = -1 OrElse IndiceInvalido(botones(x, y), xPrimerClic, yPrimerClic)
 
-            botones(x, y).Tag.bombasAlrededor = -1
+        '    botones(x, y).Tag.bombasAlrededor = -1
 
-        Next
+        'Next
 
         Dim bombasAlrededor As Integer
         For i = 0 To botones.GetLength(0) - 1
@@ -280,13 +280,25 @@ Public Class FrmJuego
 
     Private Sub PartidaTerminada(ganador As Boolean)
         tmrReloj.Stop()
+        Dim dif As Integer = dificultad
+        Dim difStr As String
+        If dif = 1 Then
+            difStr = "fácil"
+        ElseIf dif = 2 Then
+            difStr = "intermedia"
+        Else
+            difStr = "difícil"
+        End If
         If ganador Then
-            Dim gestion As New GestionUsuario
-            Dim tmp As Integer = gestion.ComprobarTiempo(minutosSegundos(0) * 60 + minutosSegundos(1), 0, "")
-
-
-
-            MessageBox.Show($"VAYA MÁQUINA! {vbCrLf}Y sólo has tardado: {Format(minutosSegundos(0), "##00")}:{Format(minutosSegundos(1), "##00")}")
+            Dim tmp As Integer = gestionUsrs.ComprobarTiempo(minutosSegundos(0) * 60 + minutosSegundos(1), dificultad, "")
+            If tmp = -1 Then
+                MessageBox.Show($"¡HAS GANADO! {vbCrLf}Sólo has tardado: {Format(minutosSegundos(0), "##00")}:{Format(minutosSegundos(1), "##00")}")
+            Else
+                tiempoPartida(0) = minutosSegundos(0)
+                tiempoPartida(1) = minutosSegundos(1)
+                frmGanador.Show()
+                Me.Close()
+            End If
         Else
             MessageBox.Show($"GAME OVER! {vbCrLf}En el tiempo: {Format(minutosSegundos(0), "##00")}:{Format(minutosSegundos(1), "##00")}")
         End If

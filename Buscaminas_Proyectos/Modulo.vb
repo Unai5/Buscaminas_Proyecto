@@ -6,4 +6,5 @@ Module Modulo
     Public temporizador As Timer
     Public esPrimerClick As Boolean
     Public gestionUsrs As GestionUsuario
+    Public tiempoPartida(1) As Integer
 End Module

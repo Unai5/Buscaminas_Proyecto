@@ -28,6 +28,17 @@
 
     End Sub
 
+    <TestMethod()> Public Sub AñadirUsuarioTestError2()
+
+        Dim target As New BibliotecaDeClases.GestionUsuario
+
+        Dim expected As String = "Hay elementos vacíos"
+        Dim actual As String = target.AñadirUsuario("", "juan")
+
+        Assert.AreEqual(expected, actual)
+
+    End Sub
+
     <TestMethod()> Public Sub ValidarUsuarioTest()
 
         Dim target As New BibliotecaDeClases.GestionUsuario
@@ -43,12 +54,13 @@
 
         Dim target As New BibliotecaDeClases.GestionUsuario
 
-        Dim expected As String = "No existe el usuario, no se puede iniciar sesion"
+        Dim expected As String = "Usuario y/o contraseña incorrectos. No se puede iniciar sesión."
         Dim actual As String = target.ValidarUsuario("a", "juan")
 
         Assert.AreEqual(expected, actual)
 
     End Sub
+
 
 
 End Class
