@@ -67,7 +67,8 @@ Public Class FrmRanking
 
     Private Sub btnVolver_Click(sender As Object, e As EventArgs) Handles btnVolver.Click
         cerrarPorBoton = True
-        FrmConfiguracionDeJuego.Show()
+        FrmInicioDeSesion.Show()
+        Me.Visible = False
         Me.Close()
     End Sub
 
