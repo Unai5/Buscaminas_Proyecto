@@ -62,7 +62,7 @@
         End If
     End Sub
     Private Sub FrmInicioDeSesion_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        gestionUsrs = New BibliotecaDeClases.GestionUsuario
+        gestionUsrs = New BibliotecaDeClases.GestionUsuario("eyyy")
         txtContraseña.Clear()
         txtUsuario.Clear()
     End Sub

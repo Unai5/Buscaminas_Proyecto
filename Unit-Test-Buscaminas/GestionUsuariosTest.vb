@@ -1,14 +1,11 @@
 ﻿Imports BibliotecaDeClases
 <TestClass()> Public Class GestionUsuariosTest
-
+    Dim target As New BibliotecaDeClases.GestionUsuario("")
     <TestMethod()> Public Sub ConstructorTest()
-        Dim target As New BibliotecaDeClases.GestionUsuario
         Assert.IsNotNull(target)
     End Sub
 
     <TestMethod()> Public Sub AñadirUsuarioTest()
-
-        Dim target As New BibliotecaDeClases.GestionUsuario
 
         Dim expected As String = "Usuario creado"
         Dim actual As String = target.AñadirUsuario("juan", "juan")
@@ -19,8 +16,6 @@
 
     <TestMethod()> Public Sub AñadirUsuarioTestError()
 
-        Dim target As New BibliotecaDeClases.GestionUsuario
-
         Dim expected As String = "Ya existe el usuario juan"
         Dim actual As String = target.AñadirUsuario("juan", "juan")
 
@@ -29,8 +24,6 @@
     End Sub
 
     <TestMethod()> Public Sub AñadirUsuarioTestError2()
-
-        Dim target As New BibliotecaDeClases.GestionUsuario
 
         Dim expected As String = "Hay elementos vacíos"
         Dim actual As String = target.AñadirUsuario("", "juan")
@@ -41,8 +34,6 @@
 
     <TestMethod()> Public Sub ValidarUsuarioTest()
 
-        Dim target As New BibliotecaDeClases.GestionUsuario
-
         Dim expected As String = "Sesión iniciada"
         Dim actual As String = target.ValidarUsuario("juan", "juan")
 
@@ -51,8 +42,6 @@
     End Sub
 
     <TestMethod()> Public Sub ValidarUsuarioTestError()
-
-        Dim target As New BibliotecaDeClases.GestionUsuario
 
         Dim expected As String = "Usuario y/o contraseña incorrectos. No se puede iniciar sesión."
         Dim actual As String = target.ValidarUsuario("a", "juan")
