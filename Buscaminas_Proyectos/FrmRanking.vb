@@ -12,7 +12,7 @@ Public Class FrmRanking
         lblRanking.Text = $"RANKING {dificultades(difActual).ToUpper}"
         lblRanking.Location = New Point(225 - (lblRanking.Width / 6), 22)
 
-        Dim listaRanking = gestionUsrs.OrdenarLista(dificultades(difActual + 1))
+        Dim listaRanking = gestionUsrs.OrdenarLista(difActual + 1)
         If listaRanking Is Nothing OrElse listaRanking.Count = 0 Then
             lstRanking.Items.Add("    ")
             lstRanking.Items.Add("    ")
