@@ -7,6 +7,8 @@ Public Enum Dific As Byte
     DIFICIL = 16
 End Enum
 Public Class FrmJuego
+    Private botones(9, 9) As Button
+    Private numBombas As Integer
     Private cerrarPorBoton As Boolean = False
     Private casillasSinBomba As Integer = 0
     Private Sub FrmJuego_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -84,26 +86,26 @@ Public Class FrmJuego
 
     Private Sub GenerarBombas(xPrimerClic As Integer, yPrimerClic As Integer)
 
-        'Dim rnd As New Random
-        'For i = 0 To numBombas - 1
-        '    Dim x, y As Integer
-        '    Do
-        '        If dificultad = 3 Then
-        '            x = rnd.Next(Dific.DIFICIL)
-        '            y = rnd.Next(Dific.DIFICIL)
-        '        ElseIf dificultad = 2 Then
-        '            x = rnd.Next(Dific.MEDIO)
-        '            y = rnd.Next(Dific.MEDIO)
-        '        Else
-        '            x = rnd.Next(Dific.FACIL)
-        '            y = rnd.Next(Dific.FACIL)
-        '        End If
+        Dim rnd As New Random
+        For i = 0 To numBombas - 1
+            Dim x, y As Integer
+            Do
+                If dificultad = 3 Then
+                    x = rnd.Next(Dific.DIFICIL)
+                    y = rnd.Next(Dific.DIFICIL)
+                ElseIf dificultad = 2 Then
+                    x = rnd.Next(Dific.MEDIO)
+                    y = rnd.Next(Dific.MEDIO)
+                Else
+                    x = rnd.Next(Dific.FACIL)
+                    y = rnd.Next(Dific.FACIL)
+                End If
 
-        '    Loop While botones(x, y).Tag.bombasAlrededor = -1 OrElse IndiceInvalido(botones(x, y), xPrimerClic, yPrimerClic)
+            Loop While botones(x, y).Tag.bombasAlrededor = -1 OrElse IndiceInvalido(botones(x, y), xPrimerClic, yPrimerClic)
 
-        '    botones(x, y).Tag.bombasAlrededor = -1
+            botones(x, y).Tag.bombasAlrededor = -1
 
-        'Next
+        Next
 
         Dim bombasAlrededor As Integer
         For i = 0 To botones.GetLength(0) - 1
@@ -297,7 +299,7 @@ Public Class FrmJuego
                 tiempoPartida(0) = minutosSegundos(0)
                 tiempoPartida(1) = minutosSegundos(1)
                 frmGanador.Show()
-                Me.Close()
+                Me.Hide()
             End If
         Else
             MessageBox.Show($"GAME OVER! {vbCrLf}En el tiempo: {Format(minutosSegundos(0), "##00")}:{Format(minutosSegundos(1), "##00")}")

@@ -2,11 +2,11 @@
 Public Class FrmRanking
     Private cerrarPorBoton As Boolean = False
     Private Sub FrmRanking_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        If gestionUsrs.OrdenarLista(1) Is Nothing Then
+        Dim listaUsuarios As List(Of Usuario) = gestionUsrs.OrdenarLista(1)
+        If listaUsuarios Is Nothing Then
             MessageBox.Show("No hay usuarios todavía, prueba en otra dificultad")
             Exit Sub
         Else
-            Dim listaUsuarios As List(Of Usuario) = gestionUsrs.OrdenarLista(1)
             For Each per In listaUsuarios
                 lstRanking.Items.Add($"{per.Nombre} ........................... {per.MejorTiempoFacil}")
             Next

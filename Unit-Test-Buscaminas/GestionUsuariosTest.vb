@@ -13,7 +13,7 @@
         Assert.AreEqual(expected, actual)
 
     End Sub
--.
+
     <TestMethod()> Public Sub AñadirUsuarioTestError()
 
         Dim expected As String = "Ya existe el usuario juan"
@@ -50,6 +50,25 @@
 
     End Sub
 
+    'PRUEBAS UNITARIAS PROPIAS DE NUESTRA APLICACIÓN
 
+    <TestMethod()> Public Sub ComprobarTiempoTest()
+
+        Dim expected As String = "1"
+        Dim actual As String = target.ComprobarTiempo(1, 1, "admin")
+
+        Assert.AreEqual(expected, actual)
+
+    End Sub
+
+    <TestMethod()> Public Sub ComprobarTiempoTest2()
+
+        Dim expected As String = "-1"
+        target.ComprobarTiempo(1000, 1, "admin")
+        Dim actual As String = target.ComprobarTiempo(2000, 1, "admin")
+
+        Assert.AreEqual(expected, actual)
+
+    End Sub
 
 End Class

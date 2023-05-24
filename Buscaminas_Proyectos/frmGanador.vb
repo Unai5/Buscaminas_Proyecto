@@ -12,4 +12,11 @@
         Label3.Text += $"{Format(tiempoPartida(0), "##00")} : {Format(tiempoPartida(1), "##00")}"
 
     End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        FrmJuego.Show()
+        Me.Close()
+        Me.Close()
+    End Sub
+
 End Class
