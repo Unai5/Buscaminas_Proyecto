@@ -74,10 +74,4 @@
         Me.Close()
     End Sub
 
-    Private Sub btnRanking_Click(sender As Object, e As EventArgs) Handles btnRanking.Click
-        cerrarPorBoton = True
-        FrmRanking.Show()
-        Me.Visible = False
-        Me.Close()
-    End Sub
 End Class
