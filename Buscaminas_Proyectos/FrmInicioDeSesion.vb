@@ -1,7 +1,14 @@
-﻿Public Class FrmInicioDeSesion
+﻿Imports BibliotecaDeClases
+
+Public Class FrmInicioDeSesion
     Private cerrarPorBoton As Boolean = False
     Const caracteresValidos = "abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ1234567890!¡¿?- "
     Private Sub btnAceptar_Click(sender As Object, e As EventArgs) Handles btnIniciarSesion.Click
+        Dim errores As String = ""
+        gestionUsrs = New GestionUsuario(errores)
+        If errores <> "" Then
+            MessageBox.Show($"{errores}")
+        End If
         If String.IsNullOrWhiteSpace(txtUsuario.Text) Then
             MessageBox.Show("Introduce usuario", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Exit Sub

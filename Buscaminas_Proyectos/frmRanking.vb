@@ -1,68 +1,56 @@
-﻿Imports BibliotecaDeClases
+﻿Imports System.Runtime.ConstrainedExecution
+Imports BibliotecaDeClases
 Public Class FrmRanking
     Private cerrarPorBoton As Boolean = False
+    Dim dificultades() As String = {"Fácil", "Medio", "Difícil"}
+    Dim difActual As Byte = 0
+    Dim difSiguiente As Byte = 1
     Private Sub FrmRanking_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim errores As String = ""
         gestionUsrs = New GestionUsuario(errores)
-        Dim listaUsuarios As List(Of Usuario) = gestionUsrs.OrdenarLista(1)
-        If listaUsuarios Is Nothing Then
-            MessageBox.Show("No hay usuarios todavía, prueba en otra dificultad")
+        btnDificultad.Text = $"Dificultad: {dificultades(difSiguiente)}"
+        lblRanking.Text = $"RANKING {dificultades(difActual).ToUpper}"
+        lblRanking.Location = New Point(225 - (lblRanking.Width / 6), 22)
+
+        Dim listaRanking = gestionUsrs.OrdenarLista(dificultades(difActual + 1))
+        If listaRanking Is Nothing OrElse listaRanking.Count = 0 Then
+            lstRanking.Items.Add("    ")
+            lstRanking.Items.Add("    ")
+            lstRanking.Items.Add("    ")
+            lstRanking.Items.Add("          No hay partidas ganadas")
             Exit Sub
         Else
-            For Each per In listaUsuarios
+            For Each per In listaRanking
                 lstRanking.Items.Add($"{per.Nombre} ........................... {per.MejorTiempoFacil}")
             Next
         End If
 
-        btnDificultad.Text = "Dificultad: Media"
-        lblRanking.Text = "RANKING FÁCIL"
-        lblRanking.Location = New Point(225 - (lblRanking.Width / 6), 22)
+
     End Sub
 
     Private Sub btnDificultad_Click(sender As Object, e As EventArgs) Handles btnDificultad.Click
-        Dim errores As String = ""
-        gestionUsrs = New GestionUsuario(errores)
-        Dim a As String = "Fácil"
-        Dim b As String = "Medio"
-        Dim c As String = "Difícil"
         lstRanking.Items.Clear()
-        If lblRanking.Text.Substring(8) = a.ToUpper Then
-            btnDificultad.Text = $"Dificultad: {c}"
-            lblRanking.Text = $"RANKING {b.ToUpper}"
-            If gestionUsrs.OrdenarLista(1) Is Nothing Then
-                MessageBox.Show("No hay usuarios todavía, prueba en otra dificultad")
-                Exit Sub
-            Else
-                Dim listaUsuarios As List(Of Usuario) = gestionUsrs.OrdenarLista(2)
-                For Each per In listaUsuarios
-                    lstRanking.Items.Add($"{per.Nombre} ........................... {per.MejorTiempoFacil}")
-                Next
-            End If
-        ElseIf lblRanking.Text.Substring(8) = b.ToUpper Then
-            btnDificultad.Text = $"Dificultad: {a}"
-            lblRanking.Text = $"RANKING {c.ToUpper}"
-
-            If gestionUsrs.OrdenarLista(3) Is Nothing Then
-                MessageBox.Show("No hay usuarios todavía, prueba en otra dificultad")
-                Exit Sub
-            Else
-                Dim listaUsuarios As List(Of Usuario) = gestionUsrs.OrdenarLista(3)
-                For Each per In listaUsuarios
-                    lstRanking.Items.Add($"{per.Nombre} ........................... {per.MejorTiempoFacil}")
-                Next
-            End If
-        ElseIf lblRanking.Text.Substring(8) = c.ToUpper Then
-            btnDificultad.Text = $"Dificultad: {b}"
-            lblRanking.Text = $"RANKING {a.ToUpper}"
-            If gestionUsrs.OrdenarLista(1) Is Nothing Then
-                MessageBox.Show("No hay usuarios todavía, prueba en otra dificultad")
-                Exit Sub
-            Else
-                Dim listaUsuarios As List(Of Usuario) = gestionUsrs.OrdenarLista(1)
-                For Each per In listaUsuarios
-                    lstRanking.Items.Add($"{per.Nombre} ........................... {per.MejorTiempoFacil}")
-                Next
-            End If
+        difActual += 1
+        If difActual > 2 Then
+            difActual = 0
+        End If
+        difSiguiente += 1
+        If difSiguiente > 2 Then
+            difSiguiente = 0
+        End If
+        lblRanking.Text = $"RANKING {dificultades(difActual).ToUpper}"
+        btnDificultad.Text = $"Dificultad: {dificultades(difSiguiente)}"
+        Dim listaRanking = gestionUsrs.OrdenarLista(difActual + 1)
+        If listaRanking Is Nothing OrElse listaRanking.Count = 0 Then
+            lstRanking.Items.Add("    ")
+            lstRanking.Items.Add("    ")
+            lstRanking.Items.Add("    ")
+            lstRanking.Items.Add("          No hay partidas ganadas")
+            Exit Sub
+        Else
+            For Each per In listaRanking
+                lstRanking.Items.Add($"{per.Nombre} ........................... {per.MejorTiempoFacil}")
+            Next
         End If
         lblRanking.Location = New Point(225 - (lblRanking.Width / 6), 22)
     End Sub
