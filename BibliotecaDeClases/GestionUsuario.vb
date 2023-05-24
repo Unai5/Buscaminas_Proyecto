@@ -17,6 +17,9 @@ Public Class GestionUsuario
             Do Until ficheroR.EndOfStream
                 Dim linea As String = ficheroR.ReadLine
                 Dim datosLinea() As String = linea.Split("*")
+                If datosLinea.Length < 5 Then
+                    errores = "Error, hay una línea que no está bien escrita"
+                End If
                 _Usuarios.Add(New Usuario(datosLinea(0), datosLinea(1), datosLinea(2), datosLinea(3), datosLinea(4)))
             Loop
             ficheroR.Close()
@@ -25,10 +28,7 @@ Public Class GestionUsuario
         Catch ex As IOException
             errores = ex.Message
         End Try
-
-
     End Sub
-
     Public Function AñadirUsuario(nombre As String, contraseña As String) As String
         If String.IsNullOrWhiteSpace(nombre) OrElse String.IsNullOrWhiteSpace(contraseña) Then
             Return "Hay elementos vacíos"
@@ -40,11 +40,17 @@ Public Class GestionUsuario
             End If
         Next
         _Usuarios.Add(nuevo)
+        Try
+            Dim ficheroW As New StreamWriter(".\Ficheros\TodosLosUsuarios.txt", True)
+            ficheroW.WriteLine()
+            ficheroW.Write(nuevo.Nombre & "*" & nuevo.Contraseña & "*" & nuevo.MejorTiempoFacil & "*" & nuevo.MejorTiempoMedio & "*" & nuevo.MejorTiempoDificil)
+            ficheroW.Close()
+        Catch ex As FileNotFoundException
+            Return ex.Message
+        Catch ex As IOException
+            Return ex.Message
+        End Try
 
-        Dim ficheroW As New StreamWriter(".\Ficheros\TodosLosUsuarios.txt", True)
-        ficheroW.WriteLine()
-        ficheroW.Write(nuevo.Nombre & "*" & nuevo.Contraseña & "*" & nuevo.MejorTiempoFacil & "*" & nuevo.MejorTiempoMedio & "*" & nuevo.MejorTiempoDificil)
-        ficheroW.Close()
         Return "Usuario creado"
     End Function
 
@@ -96,43 +102,52 @@ Public Class GestionUsuario
         Dim insertado As Boolean = False
         If dificultad = 1 Then
             For i = 0 To _Usuarios.Count - 1 'RECORRE LA LISTA DE USUARIOS
-                For j = 0 To rankingFacil.Count - 1 'RECORRE EL RANKING
-                    If _Usuarios(i).MejorTiempoFacil < rankingFacil(j).MejorTiempoFacil AndAlso _Usuarios(i).MejorTiempoFacil <> 0 Then
-                        rankingFacil.Insert(j, _Usuarios(i))
-                        insertado = True
-                        Exit For
+                If _Usuarios(i).MejorTiempoFacil <> -1 Then
+                    insertado = False
+                    For j = 0 To rankingFacil.Count - 1 'RECORRE EL RANKING
+                        If _Usuarios(i).MejorTiempoFacil < rankingFacil(j).MejorTiempoFacil Then
+                            rankingFacil.Insert(j, _Usuarios(i))
+                            insertado = True
+                            Exit For
+                        End If
+                    Next
+                    If insertado = False Then
+                        rankingFacil.Add(_Usuarios(i))
                     End If
-                Next
-                If insertado = False Then
-                    rankingFacil.Add(_Usuarios(i))
                 End If
             Next
             Return rankingFacil
         ElseIf dificultad = 2 Then
             For i = 0 To _Usuarios.Count - 1 'RECORRE LA LISTA DE USUARIOS
-                For j = 0 To rankingMedio.Count - 1 'RECORRE EL RANKING
-                    If _Usuarios(i).MejorTiempoMedio < rankingMedio(j).MejorTiempoMedio Then
-                        rankingMedio.Insert(j, _Usuarios(i))
-                        insertado = True
-                        Exit For
+                If _Usuarios(i).MejorTiempoMedio <> -1 Then
+                    insertado = False
+                    For j = 0 To rankingMedio.Count - 1 'RECORRE EL RANKING
+                        If _Usuarios(i).MejorTiempoMedio < rankingMedio(j).MejorTiempoMedio Then
+                            rankingMedio.Insert(j, _Usuarios(i))
+                            insertado = True
+                            Exit For
+                        End If
+                    Next
+                    If insertado = False Then
+                        rankingMedio.Add(_Usuarios(i))
                     End If
-                Next
-                If insertado = False Then
-                    rankingMedio.Add(_Usuarios(i))
                 End If
             Next
             Return rankingMedio
         Else
             For i = 0 To _Usuarios.Count - 1 'RECORRE LA LISTA DE USUARIOS
-                For j = 0 To rankingDificil.Count - 1 'RECORRE EL RANKING
-                    If _Usuarios(i).MejorTiempoDificil < rankingDificil(j).MejorTiempoDificil Then
-                        rankingDificil.Insert(j, _Usuarios(i))
-                        insertado = True
-                        Exit For
+                If _Usuarios(i).MejorTiempoDificil <> -1 Then
+                    insertado = False
+                    For j = 0 To rankingDificil.Count - 1 'RECORRE EL RANKING
+                        If _Usuarios(i).MejorTiempoDificil < rankingDificil(j).MejorTiempoDificil Then
+                            rankingDificil.Insert(j, _Usuarios(i))
+                            insertado = True
+                            Exit For
+                        End If
+                    Next
+                    If insertado = False Then
+                        rankingDificil.Add(_Usuarios(i))
                     End If
-                Next
-                If insertado = False Then
-                    rankingDificil.Add(_Usuarios(i))
                 End If
             Next
             Return rankingDificil
