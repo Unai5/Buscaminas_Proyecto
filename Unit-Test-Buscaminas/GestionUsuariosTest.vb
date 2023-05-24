@@ -50,7 +50,7 @@
 
     End Sub
 
-    'PRUEBAS UNITARIAS PROPIAS DE NUESTRA APLICACIÓN
+    'PRUEBAS UNITARIAS PROPIAS DE NUESTRA APLICACIÓN:
 
     <TestMethod()> Public Sub ComprobarTiempoTest()
 

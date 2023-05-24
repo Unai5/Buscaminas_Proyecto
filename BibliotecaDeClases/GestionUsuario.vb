@@ -110,6 +110,7 @@ Public Class GestionUsuario
                 If insertado = False Then
                     rankingFacil.Add(_Usuarios(i))
                 End If
+                insertado = False
             Next
             Return rankingFacil
         ElseIf dificultad = 2 Then
@@ -124,6 +125,7 @@ Public Class GestionUsuario
                 If insertado = False Then
                     rankingMedio.Add(_Usuarios(i))
                 End If
+                insertado = False
             Next
             Return rankingMedio
         Else
@@ -138,6 +140,7 @@ Public Class GestionUsuario
                 If insertado = False Then
                     rankingDificil.Add(_Usuarios(i))
                 End If
+                insertado = False
             Next
             Return rankingDificil
         End If
