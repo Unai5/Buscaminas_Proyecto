@@ -45,6 +45,9 @@ Public Class GestionUsuario
         ficheroW.WriteLine()
         ficheroW.Write(nuevo.Nombre & "*" & nuevo.Contraseña & "*" & nuevo.MejorTiempoFacil & "*" & nuevo.MejorTiempoMedio & "*" & nuevo.MejorTiempoDificil)
         ficheroW.Close()
+
+        _Usuarios.Add(nuevo)
+
         Return "Usuario creado"
     End Function
 
@@ -61,7 +64,7 @@ Public Class GestionUsuario
         If dificultad = 1 Then
             For i = 0 To _Usuarios.Count - 1
                 If _Usuarios(i).Nombre = nombre Then
-                    If tiempo < _Usuarios(i).MejorTiempoFacil OrElse _Usuarios(i).MejorTiempoFacil Then
+                    If tiempo < _Usuarios(i).MejorTiempoFacil OrElse _Usuarios(i).MejorTiempoFacil = -1 Then
                         _Usuarios(i).MejorTiempoFacil = tiempo
                         Return tiempo
                     End If
@@ -70,7 +73,7 @@ Public Class GestionUsuario
         ElseIf dificultad = 2 Then
             For i = 0 To _Usuarios.Count - 1
                 If _Usuarios(i).Nombre = nombre Then
-                    If tiempo < _Usuarios(i).MejorTiempoMedio OrElse _Usuarios(i).MejorTiempoMedio Then
+                    If tiempo < _Usuarios(i).MejorTiempoMedio OrElse _Usuarios(i).MejorTiempoMedio = -1 Then
                         _Usuarios(i).MejorTiempoMedio = tiempo
                         Return tiempo
                     End If
@@ -79,7 +82,7 @@ Public Class GestionUsuario
         Else
             For i = 0 To _Usuarios.Count - 1
                 If _Usuarios(i).Nombre = nombre Then
-                    If tiempo < _Usuarios(i).MejorTiempoDificil OrElse _Usuarios(i).MejorTiempoDificil Then
+                    If tiempo < _Usuarios(i).MejorTiempoDificil OrElse _Usuarios(i).MejorTiempoDificil = -1 Then
                         _Usuarios(i).MejorTiempoDificil = tiempo
                         Return tiempo
                     End If

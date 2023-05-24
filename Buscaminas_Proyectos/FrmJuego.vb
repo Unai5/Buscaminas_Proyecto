@@ -290,7 +290,7 @@ Public Class FrmJuego
             difStr = "difícil"
         End If
         If ganador Then
-            Dim tmp As Integer = gestionUsrs.ComprobarTiempo(minutosSegundos(0) * 60 + minutosSegundos(1), dificultad, "")
+            Dim tmp As Integer = gestionUsrs.ComprobarTiempo(minutosSegundos(0) * 60 + minutosSegundos(1), dificultad, usuarioActivo)
             If tmp = -1 Then
                 MessageBox.Show($"¡HAS GANADO! {vbCrLf}Sólo has tardado: {Format(minutosSegundos(0), "##00")}:{Format(minutosSegundos(1), "##00")}")
             Else

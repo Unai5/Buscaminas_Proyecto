@@ -46,6 +46,7 @@
         End If
         'jugador.Nombre = txtUsuario.Text
         'jugador.Contraseña = txtContraseña.Text
+        usuarioActivo = txtUsuario.Text
         cerrarPorBoton = True
         FrmConfiguracionDeJuego.Show()
         Me.Visible = False

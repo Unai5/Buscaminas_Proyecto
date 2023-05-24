@@ -7,4 +7,5 @@ Module Modulo
     Public esPrimerClick As Boolean
     Public gestionUsrs As GestionUsuario
     Public tiempoPartida(1) As Integer
+    Public usuarioActivo As String
 End Module
