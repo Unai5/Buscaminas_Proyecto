@@ -2,6 +2,8 @@
 Public Class FrmRanking
     Private cerrarPorBoton As Boolean = False
     Private Sub FrmRanking_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Dim errores As String = ""
+        gestionUsrs = New GestionUsuario(errores)
         Dim listaUsuarios As List(Of Usuario) = gestionUsrs.OrdenarLista(1)
         If listaUsuarios Is Nothing Then
             MessageBox.Show("No hay usuarios todavía, prueba en otra dificultad")
@@ -18,6 +20,8 @@ Public Class FrmRanking
     End Sub
 
     Private Sub btnDificultad_Click(sender As Object, e As EventArgs) Handles btnDificultad.Click
+        Dim errores As String = ""
+        gestionUsrs = New GestionUsuario(errores)
         Dim a As String = "Fácil"
         Dim b As String = "Medio"
         Dim c As String = "Difícil"
@@ -65,7 +69,7 @@ Public Class FrmRanking
 
     Private Sub btnVolver_Click(sender As Object, e As EventArgs) Handles btnVolver.Click
         cerrarPorBoton = True
-        FrmInicioDeSesion.Show()
+        FrmConfiguracionDeJuego.Show()
         Me.Visible = False
         Me.Close()
     End Sub
