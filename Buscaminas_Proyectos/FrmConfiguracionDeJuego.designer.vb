@@ -29,6 +29,7 @@ Partial Class FrmConfiguracionDeJuego
         Me.lblTitulo = New System.Windows.Forms.Label()
         Me.btnAceptar = New System.Windows.Forms.Button()
         Me.btnVolver = New System.Windows.Forms.Button()
+        Me.btnRanking = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'radButtNormal
@@ -109,11 +110,24 @@ Partial Class FrmConfiguracionDeJuego
         Me.btnVolver.Text = "Volver"
         Me.btnVolver.UseVisualStyleBackColor = False
         '
+        'btnRanking
+        '
+        Me.btnRanking.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.btnRanking.FlatAppearance.BorderColor = System.Drawing.Color.Snow
+        Me.btnRanking.Font = New System.Drawing.Font("Cooper Black", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnRanking.Location = New System.Drawing.Point(239, 376)
+        Me.btnRanking.Name = "btnRanking"
+        Me.btnRanking.Size = New System.Drawing.Size(76, 30)
+        Me.btnRanking.TabIndex = 13
+        Me.btnRanking.Text = "Ranking"
+        Me.btnRanking.UseVisualStyleBackColor = False
+        '
         'FrmConfiguracionDeJuego
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(545, 431)
+        Me.Controls.Add(Me.btnRanking)
         Me.Controls.Add(Me.btnVolver)
         Me.Controls.Add(Me.btnAceptar)
         Me.Controls.Add(Me.lblTitulo)
@@ -137,4 +151,5 @@ Partial Class FrmConfiguracionDeJuego
     Friend WithEvents lblTitulo As Label
     Friend WithEvents btnAceptar As Button
     Friend WithEvents btnVolver As Button
+    Friend WithEvents btnRanking As Button
 End Class

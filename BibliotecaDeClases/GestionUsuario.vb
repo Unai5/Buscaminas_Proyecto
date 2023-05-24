@@ -96,6 +96,7 @@ Public Class GestionUsuario
         Dim rankingFacil As New List(Of Usuario)
         Dim rankingMedio As New List(Of Usuario)
         Dim rankingDificil As New List(Of Usuario)
+        Dim rankingVacio As New List(Of Usuario)
         Dim insertado As Boolean = False
         If dificultad = 1 Then
             For i = 0 To _Usuarios.Count - 1 'RECORRE LA LISTA DE USUARIOS
@@ -140,6 +141,7 @@ Public Class GestionUsuario
             Next
             Return rankingDificil
         End If
+        Return rankingVacio
     End Function
 
 End Class
