@@ -26,6 +26,7 @@ Partial Class frmGanador
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
+        Me.Button1 = New System.Windows.Forms.Button()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -68,11 +69,21 @@ Partial Class frmGanador
         Me.Label3.TabIndex = 3
         Me.Label3.Text = "Nueva marca: "
         '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(124, 381)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(127, 29)
+        Me.Button1.TabIndex = 4
+        Me.Button1.Text = "VOLVER"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
         'frmGanador
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(394, 394)
+        Me.ClientSize = New System.Drawing.Size(394, 422)
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
@@ -89,4 +100,5 @@ Partial Class frmGanador
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents Label3 As Label
+    Friend WithEvents Button1 As Button
 End Class
