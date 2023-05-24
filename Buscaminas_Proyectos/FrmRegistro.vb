@@ -26,9 +26,9 @@
         MessageBox.Show(str)
         jugador.Nombre = txtNuevoUsuario.Text
         jugador.Contraseña = txtNuevaContraseña.Text
-        jugador.MejorTiempoFacil = 0
-        jugador.MejorTiempoMedio = 0
-        jugador.MejorTiempoDificil = 0
+        jugador.MejorTiempoFacil = -1
+        jugador.MejorTiempoMedio = -1
+        jugador.MejorTiempoDificil = -1
         cerrarPorBoton = True
         FrmInicioDeSesion.Show()
         Me.Visible = False
@@ -52,4 +52,7 @@
         Me.Close()
     End Sub
 
+    Private Sub FrmRegistro_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    End Sub
 End Class
