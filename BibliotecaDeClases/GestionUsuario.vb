@@ -23,11 +23,13 @@ Public Class GestionUsuario
                 _Usuarios.Add(New Usuario(datosLinea(0), datosLinea(1), datosLinea(2), datosLinea(3), datosLinea(4)))
             Loop
             ficheroR.Close()
+            errores = ""
         Catch ex As FileNotFoundException
             errores = ex.Message
         Catch ex As IOException
             errores = ex.Message
         End Try
+
     End Sub
     Public Function AñadirUsuario(nombre As String, contraseña As String) As String
         If String.IsNullOrWhiteSpace(nombre) OrElse String.IsNullOrWhiteSpace(contraseña) Then
